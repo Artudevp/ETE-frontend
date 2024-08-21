@@ -1,5 +1,6 @@
 import Style from './Header.module.css'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function Header() {
 	const [visible, setVisible] = useState(true)
@@ -41,7 +42,7 @@ function Header() {
 						<a href='#'>Sobre nosotros</a>
 					</li>
 					<li>
-						<a id='btnLogin'>Iniciar sesión</a>
+						<Link to="/login">Iniciar sesión</Link>
 					</li>
 				</ul>
 			</div>
