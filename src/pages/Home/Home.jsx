@@ -3,19 +3,29 @@ import imgWelcome from '../../assets/imgWelcome.jpg'
 import imgAtardecer from '../../assets/imgAtardecer.jpg'
 import imgPlan from '../../assets/imgPlan.jpg'
 import Login from '../../components/Login/Login'
+import Register from '../../components/Register/Register'
 import Header from '../../components/Header/Header'
 import { useEffect, useState } from 'react'
 
-function Home({ login }) {
-	const [active, setActive] = useState(false)
+function Home({ login, register }) {
+	const [activeLogin, setActiveLogin] = useState(false)
+	const [activeRegister, setActiveRegister] = useState(false)
 
 	useEffect(() => {
 		if (login) {
-			setActive(true)
+			setActiveLogin(true)
 		} else {
-			setActive(false)
+			setActiveLogin(false)
 		}
 	}, [login])
+
+	useEffect(() => {
+		if (register) {
+			setActiveRegister(true)
+		} else {
+			setActiveRegister(false)
+		}
+	}, [register])
 
 	return (
 		<>
@@ -117,7 +127,8 @@ function Home({ login }) {
 					Próximamente se añadirá más contenido :D
 				</section>
 			</main>
-			<Login active={active} />
+			<Login active={activeLogin} />
+			<Register active={activeRegister} />
 		</>
 	)
 }
