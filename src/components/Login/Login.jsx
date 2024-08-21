@@ -1,13 +1,13 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 function Login({ active }) {
-
 	return (
 		<div
-			id='modalLogin'
 			className='text-white flex bg-opacity-50 bg-black items-center justify-center fixed top-0 left-0 h-full w-full transition-opacity duration-300 z-20'
-			style={{ opacity: active ? '1' : '0', pointerEvents: active ? 'all' : 'none' }}
+			style={{
+				opacity: active ? '1' : '0',
+				pointerEvents: active ? 'all' : 'none',
+			}}
 		>
 			<div className=' bg-neutral-800 max-w-md p-9 rounded-md text-center mx-5 flex flex-col gap-6 relative pt-14 w-full'>
 				<img
@@ -56,11 +56,9 @@ function Login({ active }) {
 				</form>
 				<div className='flex flex-col gap-2'>
 					<a href='#'>¿Olvidó sus credenciales?</a>
-					<button className='btnChangeWindow'>
-						¿Eres nuevo? Crea una cuenta ahora mismo!
-					</button>
+					<Link to='/register'>¿Eres nuevo? Crea una cuenta ahora mismo!</Link>
 				</div>
-				<Link to="/" className='absolute right-3 top-3 cursor-pointer'>
+				<Link to='/' className='absolute right-3 top-3 cursor-pointer'>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						width='1.5em'

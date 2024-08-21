@@ -42,7 +42,7 @@ function Header() {
 						<a href='#'>Sobre nosotros</a>
 					</li>
 					<li>
-						<Link to="/login">Iniciar sesión</Link>
+						<Link to='/login'>Iniciar sesión</Link>
 					</li>
 				</ul>
 			</div>
