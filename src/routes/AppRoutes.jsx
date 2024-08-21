@@ -7,6 +7,7 @@ function AppRoutes() {
 			<BrowserRouter>
 				<Routes>
 					<Route index element={<Home />} />
+					<Route path='/login' element={<Home login={true} />} />
 					<Route path='/about' element={<h1>About</h1>} />
 					<Route path='/contact' element={<h1>Contact</h1>} />
 				</Routes>
