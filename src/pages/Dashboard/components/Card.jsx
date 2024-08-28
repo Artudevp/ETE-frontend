@@ -1,4 +1,4 @@
-import habitación from '../../../assets/habitación.png'
+import habitación from '../../../assets/habitacion.png'
 
 function Card() {
 	return (
