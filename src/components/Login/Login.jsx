@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom'
 
 function Login({ active }) {
+	const onSubmit = e => {
+		e.preventDefault()
+		window.location = '/dashboard'
+	}
+
 	return (
 		<div
 			className='text-white flex bg-opacity-50 bg-black items-center justify-center fixed top-0 left-0 h-full w-full transition-opacity duration-300 z-20'
@@ -16,12 +21,7 @@ function Login({ active }) {
 					className='absolute w-24 -top-12 left-[40%]'
 				/>
 				<h1 className='text-4xl'>Iniciar Sesión</h1>
-				<form
-					noValidate
-					id='formLogin'
-					action='#'
-					className='flex flex-col gap-5'
-				>
+				<form noValidate id='formLogin' className='flex flex-col gap-5'>
 					<div className='flex flex-col items-start gap-1'>
 						<label htmlFor='emailLogin' className='text-lg'>
 							Correo electrónico
@@ -49,6 +49,7 @@ function Login({ active }) {
 							id='botonEnviarLogin'
 							type='submit'
 							className='text-lg py-2 px-4 border-2 border-green-500 rounded'
+							onClick={e => onSubmit(e)}
 						>
 							Ingresar
 						</button>
