@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 function Login({ active }) {
 	const onSubmit = e => {
 		e.preventDefault()
-		window.location = '/dashboard'
+		window.location = '/user/dashboard'
 	}
 
 	return (

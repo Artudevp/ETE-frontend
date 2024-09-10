@@ -15,7 +15,7 @@ function SideBar() {
 			<ul className='flex flex-col gap-5'>
 				<li>
 					<NavLink
-						to='/dashboard/alojamientos'
+						to='/user/dashboard/alojamientos'
 						className='flex flex-col items-center '
 						style={({ isActive }) => {
 							return {
@@ -29,7 +29,7 @@ function SideBar() {
 				</li>
 				<li>
 					<NavLink
-						to='/dashboard/actividades'
+						to='/user/dashboard/actividades'
 						className='flex flex-col items-center'
 						style={({ isActive }) => {
 							return {
@@ -43,7 +43,7 @@ function SideBar() {
 				</li>
 				<li>
 					<NavLink
-						to='/dashboard/servicios'
+						to='/user/dashboard/servicios'
 						className='flex flex-col items-center'
 						style={({ isActive }) => {
 							return {
@@ -59,7 +59,7 @@ function SideBar() {
 			<ul className='flex flex-col gap-5'>
 				<li>
 					<NavLink
-						to='/dashboard/notificaciones'
+						to='/user/dashboard/notificaciones'
 						className='flex flex-col items-center'
 						style={({ isActive }) => {
 							return {

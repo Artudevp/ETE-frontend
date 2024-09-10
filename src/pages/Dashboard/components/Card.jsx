@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import habitación from '../../../assets/habitacion.png'
 
 function Card() {
@@ -12,9 +13,12 @@ function Card() {
 			/>
 			<div className='flex flex-col gap-1 items-center bg-white text-center rounded-b-xl py-2'>
 				<h2>Habitación 2 personas</h2>
-				<button className='px-10 py-1 rounded border border-green-400 bg-green-200 cursor-pointer'>
+				<Link
+					to='/user/dashboard/alojamientos/habitacion'
+					className='px-10 py-1 rounded border border-green-400 bg-green-200 cursor-pointer'
+				>
 					Ver
-				</button>
+				</Link>
 			</div>
 		</div>
 	)
