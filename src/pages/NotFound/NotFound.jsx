@@ -3,7 +3,7 @@ import Icon from '/public/icon.png'
 
 function NotFound() {
 	return (
-		<div className='w-full flex flex-col justify-center items-center gap-2'>
+		<div className='w-full h-full flex flex-col justify-center items-center gap-2'>
 			<img src={Icon} alt='Icon Eco Tour Express' className='size-60' />
 			<h1 className='font-bold text-2xl'>
 				<span className='text-green-500'>404</span> - Página no encontrada

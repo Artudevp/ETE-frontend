@@ -30,21 +30,24 @@ function Home({ login, register }) {
 	return (
 		<>
 			<Header />
-			<main id='main' className='text-white gap-20 grid justify-center'>
+			<main
+				id='main'
+				className='bg-[#0a0908] text-white gap-20 grid justify-center'
+			>
 				<div className='h-screen w-full grid place-items-center content-center gap-6'>
 					<img
-						className={`${Style.imgWelcome} h-screen object-cover brightness-50 absolute -z-10 w-full top-0 left-0`}
+						className={`${Style.imgWelcome} h-screen object-cover brightness-50 absolute w-full top-0 left-0`}
 						src={imgWelcome}
 						alt='background Image'
 					/>
 					<img
-						className='max-w-24'
+						className='max-w-24 z-10'
 						src='./icon.png'
 						alt='Logo'
 						width='96px'
 						height='96px'
 					/>
-					<h1 className='text-center text-3xl text-balance'>
+					<h1 className='text-center text-3xl text-balance z-10'>
 						¡Conoce tu próximo destino para disfrutar en familia!
 					</h1>
 					<div className='grid place-items-center relative top-24 gap-4'>

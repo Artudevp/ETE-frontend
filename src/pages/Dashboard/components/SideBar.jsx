@@ -11,7 +11,7 @@ function SideBar() {
 		window.location = '/'
 	}
 	return (
-		<nav className='h-dvh w-32 bg-green-200 px-5 py-2 flex flex-col justify-between shadow-2xl'>
+		<nav className='h-dvh w-32 bg-green-200 px-5 py-2 flex flex-col justify-between shadow-2xl fixed'>
 			<ul className='flex flex-col gap-5'>
 				<li>
 					<NavLink
