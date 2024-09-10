@@ -12,6 +12,7 @@ function AppRoutes() {
 					<Route path='login' element={<Home login={true} />} />
 					<Route path='register' element={<Home register={true} />} />
 					<Route path='/user/dashboard/*' element={<Dashboard />} />
+					<Route path='/admin/dashboard/*' element={<Admin />} />
 				</Routes>
 			</BrowserRouter>
 		</>
