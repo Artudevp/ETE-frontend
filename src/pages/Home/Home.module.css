@@ -1,3 +1,147 @@
+.main {
+	background-color: #0a0908;
+	color: #fff;
+	gap: 5rem;
+	display: grid;
+	justify-content: center;
+}
+
+.main > div {
+	display: grid;
+	height: 100vh;
+	width: 100%;
+	place-items: center;
+	align-content: center;
+	gap: 1.5rem;
+}
+
 .imgWelcome {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: inherit;
+	width: inherit;
+	object-fit: cover;
+	filter: brightness(0.5);
 	mask-image: linear-gradient(black 80%, transparent);
+}
+
+.contentWelcome {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	z-index: 1;
+}
+
+.logoHome {
+	max-width: 8rem;
+}
+
+.titleHome {
+	font-size: 30px;
+	line-height: 36px;
+	text-wrap: balance;
+	text-align: center;
+	font-weight: 400;
+}
+
+.arrowBox {
+	position: relative;
+	top: 6rem;
+	display: grid;
+	place-items: center;
+	gap: 1rem;
+}
+
+.arrowBox > a {
+	font-size: 24px;
+	line-height: 32px;
+	color: #fff;
+	text-decoration: none;
+}
+
+@keyframes arrowAnimation {
+	0%,
+	100% {
+		transform: translateY(-25%);
+		animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+	}
+	50% {
+		transform: none;
+		animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+	}
+}
+
+.arrow {
+	width: 2.5rem;
+	animation: arrowAnimation 1s infinite;
+}
+
+.section {
+	display: flex;
+	height: auto;
+	flex-direction: column;
+	place-items: center;
+	place-content: center;
+	gap: 1.25rem;
+	padding: 0 1.5rem;
+}
+
+.section > img {
+	height: 20rem;
+	border-radius: 1rem;
+	object-fit: cover;
+}
+
+.sectionContent {
+	display: grid;
+	gap: 0.5rem;
+	text-align: center;
+}
+
+.sectionContent > h2 {
+	font-size: 30px;
+	line-height: 36px;
+	font-weight: bold;
+}
+
+.sectionContent > h2 > span {
+	color: #22c55e;
+}
+
+.sectionContent > p {
+	max-width: 36rem;
+	text-wrap: pretty;
+	font-size: 20px;
+	line-height: 28px;
+}
+
+.comingSoon {
+	text-align: center;
+}
+
+@media (min-width: 1024px) {
+	.section {
+		flex-direction: row;
+		gap: 2.5rem;
+	}
+
+	.section > img {
+		max-width: 36rem;
+	}
+
+	.section:nth-child(odd) {
+		flex-direction: row-reverse;
+	}
+
+	.sectionContent > h2 {
+		font-size: 36px;
+		line-height: 40px;
+	}
+
+	.sectionContent > p {
+		font-size: 24px;
+		line-height: 32px;
+	}
 }

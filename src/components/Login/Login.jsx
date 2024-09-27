@@ -1,3 +1,4 @@
+import Style from './Login.module.css'
 import { Link } from 'react-router-dom'
 
 function Login({ active }) {
@@ -8,58 +9,39 @@ function Login({ active }) {
 
 	return (
 		<div
-			className='text-white flex bg-opacity-50 bg-black items-center justify-center fixed top-0 left-0 h-full w-full transition-opacity duration-300 z-20'
+			className={Style.modalLogin}
 			style={{
 				opacity: active ? '1' : '0',
 				pointerEvents: active ? 'all' : 'none',
 			}}
 		>
-			<div className=' bg-neutral-800 max-w-md p-9 rounded-md text-center mx-5 flex flex-col gap-6 relative pt-14 w-full'>
-				<img
-					src='./icon.png'
-					alt='Icon EcoTourExpress'
-					className='absolute w-24 -top-12 left-[40%]'
-				/>
-				<h1 className='text-4xl'>Iniciar Sesión</h1>
-				<form noValidate id='formLogin' className='flex flex-col gap-5'>
-					<div className='flex flex-col items-start gap-1'>
-						<label htmlFor='emailLogin' className='text-lg'>
-							Correo electrónico
-						</label>
-						<input
-							type='email'
-							name='emailLogin'
-							id='emailLogin'
-							className='w-full bg-transparent border-2 border-green-500 rounded p-1'
-						/>
+			<div className={Style.modalContent}>
+				<img src='./icon.png' alt='Icon EcoTourExpress' />
+				<h1>Iniciar Sesión</h1>
+				<form noValidate id='formLogin' className={Style.formLogin}>
+					<div className={Style.label}>
+						<label htmlFor='emailLogin'>Correo electrónico</label>
+						<input type='email' name='emailLogin' id='emailLogin' />
 					</div>
-					<div className='flex flex-col items-start gap-1'>
-						<label htmlFor='passwordLogin' className='text-lg'>
-							Contraseña
-						</label>
-						<input
-							type='password'
-							name='passwordLogin'
-							id='passwordLogin'
-							className='w-full bg-transparent border-2 border-green-500 rounded p-1'
-						/>
+					<div className={Style.label}>
+						<label htmlFor='passwordLogin'>Contraseña</label>
+						<input type='password' name='passwordLogin' id='passwordLogin' />
 					</div>
-					<div className='flex justify-center'>
+					<div className={Style.boxButton}>
 						<button
 							id='botonEnviarLogin'
 							type='submit'
-							className='text-lg py-2 px-4 border-2 border-green-500 rounded'
 							onClick={e => onSubmit(e)}
 						>
 							Ingresar
 						</button>
 					</div>
 				</form>
-				<div className='flex flex-col gap-2'>
+				<div className={Style.links}>
 					<a href='#'>¿Olvidó sus credenciales?</a>
 					<Link to='/register'>¿Eres nuevo? Crea una cuenta ahora mismo!</Link>
 				</div>
-				<Link to='/' className='absolute right-3 top-3 cursor-pointer'>
+				<Link to='/' className={Style.buttonExit}>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						width='1.5em'

@@ -1,0 +1,14 @@
+.main {
+	display: flex;
+	height: auto;
+	width: 100%;
+	flex-direction: row;
+	gap: 40px;
+	background: #fff;
+}
+
+.content {
+	margin: 0 0 0 160px;
+	height: 100dvh;
+	width: 100%;
+}

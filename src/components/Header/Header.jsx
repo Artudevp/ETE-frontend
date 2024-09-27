@@ -23,12 +23,9 @@ function Header() {
 		return () => window.removeEventListener('scroll', handleScroll)
 	}, [ubicacionPrincipal])
 	return (
-		<header
-			className={`${Style.header} text-white fixed w-full flex justify-center ease-in-out duration-500 z-10`}
-			style={{ top: visible ? '0' : '-150px' }}
-		>
-			<div className=' backdrop-blur-sm p-3 m-3 rounded-lg border-2 border-green-500'>
-				<ul className='flex gap-5 justify-center sm:text-base md:text-lg flex-wrap '>
+		<header className={Style.header} style={{ top: visible ? '0' : '-150px' }}>
+			<div className={Style.headerContent}>
+				<ul>
 					<li>
 						<a href='#main'>Inicio</a>
 					</li>

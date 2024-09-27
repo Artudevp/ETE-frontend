@@ -1,16 +1,17 @@
-import SideBar from './components/SideBar'
+import SideBar from './components/SideBar/SideBar'
 import Alojamientos from '../Alojamientos/Alojamientos'
 import InfoAlojamiento from '../InfoAlojamiento/InfoAlojamiento'
 import Actividades from '../Actividades/Actividades'
 import Servicios from '../Servicios/Servicios'
 import NotFound from '../NotFound/NotFound'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import Style from './Dashboard.module.css'
 
 function Dashboard() {
 	return (
-		<main className='bg-white w-full h-auto flex flex-row gap-10'>
+		<main className={Style.main}>
 			<SideBar />
-			<div className='ml-40 w-full h-dvh'>
+			<div className={Style.content}>
 				<Routes>
 					<Route path='/' element={<Navigate to='alojamientos' />} />
 					<Route path='alojamientos' element={<Alojamientos />} />

@@ -5,18 +5,18 @@ import { IoIosNotificationsOutline } from 'react-icons/io'
 import { IoIosNotifications } from 'react-icons/io'
 import { MdOutlineExitToApp } from 'react-icons/md'
 import { NavLink } from 'react-router-dom'
+import Style from './SideBar.module.css'
 
 function SideBar() {
 	const onClick = () => {
 		window.location = '/'
 	}
 	return (
-		<nav className='h-dvh w-32 bg-green-200 px-5 py-2 flex flex-col justify-between shadow-2xl fixed'>
-			<ul className='flex flex-col gap-5'>
+		<nav className={Style.nav}>
+			<ul>
 				<li>
 					<NavLink
 						to='/user/dashboard/alojamientos'
-						className='flex flex-col items-center '
 						style={({ isActive }) => {
 							return {
 								fontWeight: isActive ? 'bold' : 'normal',
@@ -30,7 +30,6 @@ function SideBar() {
 				<li>
 					<NavLink
 						to='/user/dashboard/actividades'
-						className='flex flex-col items-center'
 						style={({ isActive }) => {
 							return {
 								fontWeight: isActive ? 'bold' : '',
@@ -44,7 +43,6 @@ function SideBar() {
 				<li>
 					<NavLink
 						to='/user/dashboard/servicios'
-						className='flex flex-col items-center'
 						style={({ isActive }) => {
 							return {
 								fontWeight: isActive ? 'bold' : '',
@@ -56,11 +54,10 @@ function SideBar() {
 					</NavLink>
 				</li>
 			</ul>
-			<ul className='flex flex-col gap-5'>
+			<ul>
 				<li>
 					<NavLink
 						to='/user/dashboard/notificaciones'
-						className='flex flex-col items-center'
 						style={({ isActive }) => {
 							return {
 								fontWeight: isActive ? 'bold' : '',
@@ -71,9 +68,11 @@ function SideBar() {
 						<p>Notificaciones</p>
 					</NavLink>
 				</li>
-				<li className='flex flex-col items-center' onClick={onClick}>
-					<MdOutlineExitToApp size='2em' />
-					<p>Salir</p>
+				<li>
+					<a onClick={onClick}>
+						<MdOutlineExitToApp size='2em' />
+						<p>Salir</p>
+					</a>
 				</li>
 			</ul>
 		</nav>

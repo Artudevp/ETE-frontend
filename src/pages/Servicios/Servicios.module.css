@@ -1,0 +1,60 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 28px;
+	padding: 20px 0 0;
+}
+
+.services {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.services > h1 {
+	font-size: 30px;
+	line-height: 36px;
+	font-weight: bold;
+}
+
+.servicesList {
+	display: flex;
+	width: fit-content;
+	gap: 20px;
+	margin: 0 0 0 20px;
+}
+
+.serviceBox {
+	width: 15rem;
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+	gap: 8px;
+	border-radius: 12px;
+	text-align: center;
+	box-shadow: 10px 10px 10px -3px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+	display: flex;
+	align-items: center;
+	height: 7rem;
+	justify-content: center;
+	font-size: 24px;
+	line-height: 32px;
+	font-weight: bold;
+}
+
+.buttonBox {
+	padding: 8px 0;
+}
+
+.buttonBox > button {
+	cursor: pointer;
+	border-radius: 4px;
+	border: 1px solid #4ade80;
+	background: #bbf7d0;
+	padding: 4px 40px;
+	font-size: 16px;
+}

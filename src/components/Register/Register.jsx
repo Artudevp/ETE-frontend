@@ -1,79 +1,52 @@
 import { Link } from 'react-router-dom'
+import Style from './Register.module.css'
 
 function Register({ active }) {
 	return (
 		<div
-			className='text-white flex bg-opacity-50 bg-black items-center justify-center fixed top-0 left-0 h-full w-full transition-opacity duration-300 z-20'
+			className={Style.modalRegister}
 			style={{
 				opacity: active ? '1' : '0',
 				pointerEvents: active ? 'all' : 'none',
 			}}
 		>
-			<div className=' bg-neutral-800 max-w-md p-9 rounded-md text-center mx-5 flex flex-col gap-6 relative pt-14 w-full'>
-				<img
-					src='./icon.png'
-					alt='Icon EcoTourExpress'
-					className='absolute w-24 -top-12 left-[40%]'
-				/>
-				<h1 className='text-4xl'>Registro</h1>
+			<div className={Style.modalContent}>
+				<img src='./icon.png' alt='Icon EcoTourExpress' />
+				<h1>Registro</h1>
 				<form
 					noValidate
 					id='formRegister'
 					action='#'
-					className='flex flex-col gap-5'
+					className={Style.formRegister}
 				>
-					<div className='flex flex-col items-start gap-1'>
-						<label htmlFor='nameRegister' className='text-lg'>
-							Nombre completo
-						</label>
-						<input
-							type='text'
-							name='nameRegister'
-							id='nameRegister'
-							className='w-full bg-transparent border-2 border-green-500 rounded p-1'
-						/>
+					<div className={Style.label}>
+						<label htmlFor='nameRegister'>Nombre completo</label>
+						<input type='text' name='nameRegister' id='nameRegister' />
 					</div>
-					<div className='flex flex-col items-start gap-1'>
-						<label htmlFor='emailRegister' className='text-lg'>
-							Correo electrónico
-						</label>
-						<input
-							type='email'
-							name='emailRegister'
-							id='emailRegister'
-							className='w-full bg-transparent border-2 border-green-500 rounded p-1'
-						/>
+					<div className={Style.label}>
+						<label htmlFor='emailRegister'>Correo electrónico</label>
+						<input type='email' name='emailRegister' id='emailRegister' />
 					</div>
-					<div className='flex flex-col items-start gap-1'>
-						<label htmlFor='passwordRegister' className='text-lg'>
-							Contraseña
-						</label>
+					<div className={Style.label}>
+						<label htmlFor='passwordRegister'>Contraseña</label>
 						<input
 							type='password'
 							name='passwordRegister'
 							id='passwordRegister'
-							className='w-full bg-transparent border-2 border-green-500 rounded p-1'
 						/>
 					</div>
-					<div className='flex justify-center'>
-						<button
-							id='botonEnviarRegistro'
-							type='submit'
-							className='text-lg py-2 px-4 border-2 border-green-500 rounded'
-						>
+					<div className={Style.boxButton}>
+						<button id='botonEnviarRegistro' type='submit'>
 							Crear cuenta
 						</button>
 					</div>
 				</form>
-				<div className='flex flex-col gap-2'>
+				<div className={Style.links}>
 					<Link to='/login' className='btnChangeWindow'>
 						¿Ya tiene cuenta? inicie sesión aquí!
 					</Link>
 				</div>
-				<Link
-					to='/'
-					className='closeButtons absolute right-3 top-3 cursor-pointer'
-				>
+				<Link to='/' className={Style.buttonExit}>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						width='1.5em'
