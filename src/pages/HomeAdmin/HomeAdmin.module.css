@@ -1,0 +1,45 @@
+.main {
+	width: 80%;
+	margin: 20px auto 0;
+	color: rgba(255, 255, 255, 0.87);
+}
+
+.panel .boxTitle {
+	border: 1px solid #3e4053;
+	padding: 1.25rem;
+	background: #282936;
+	border-top-right-radius: 6px;
+	border-top-left-radius: 6px;
+}
+
+.boxTitle > h1 {
+	font-size: 16px;
+}
+
+.panelContent {
+	text-align: center;
+	font-size: 1rem;
+	font-weight: normal;
+	background: #282936;
+	padding: 20px;
+	border: 1px solid #3e4053;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	border-top: 0 none;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.button {
+	color: #1d1e27;
+	background: #93deac;
+	cursor: pointer;
+	align-items: center;
+	font-size: 1rem;
+	padding: 12px 20px;
+	border-radius: 6px;
+	text-decoration: none;
+	display: inline-flex;
+	gap: 7px;
+}
