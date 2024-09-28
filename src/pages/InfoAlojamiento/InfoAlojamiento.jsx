@@ -1,8 +1,6 @@
 import habitación from '../../assets/habitacion.png'
 import { useState } from 'react'
-import { Calendar } from 'primereact/calendar'
 import { FaRegUserCircle } from 'react-icons/fa'
-import { Rating } from 'primereact/rating'
 import Style from './InfoAlojamiento.module.css'
 
 function InfoAlojamiento() {
@@ -34,11 +32,6 @@ function InfoAlojamiento() {
 								<div className={Style.userName}>
 									<FaRegUserCircle />
 									<h3>Usuario</h3>
-									<Rating
-										value={valueStar}
-										onChange={e => setValueStar(e.value)}
-										cancel={false}
-									/>
 								</div>
 								<p>
 									Estadía super cómoda, cuenta con un amplio espacio para estar
@@ -49,11 +42,6 @@ function InfoAlojamiento() {
 								<div className={Style.userName}>
 									<FaRegUserCircle />
 									<h3>Usuario</h3>
-									<Rating
-										value={valueStar}
-										onChange={e => setValueStar(e.value)}
-										cancel={false}
-									/>
 								</div>
 								<p>
 									Estadía super cómoda, cuenta con un amplio espacio para estar
@@ -65,14 +53,7 @@ function InfoAlojamiento() {
 				</div>
 				<div className={Style.boxRight}>
 					<h2>Elige tu fecha de estadía</h2>
-					<Calendar
-						value={date}
-						onChange={e => setDate(e.value)}
-						inline
-						showWeek
-						selectionMode='range'
-						className={Style.calendar}
-					/>
+
 					<button>Reservar ahora</button>
 				</div>
 			</div>
