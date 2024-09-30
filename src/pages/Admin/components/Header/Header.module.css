@@ -15,6 +15,15 @@
 	list-style: none;
 }
 
+.item {
+	color: white;
+	text-decoration: none;
+	display: flex;
+	gap: 8px;
+	padding: 10px;
+	border-radius: 12px;
+}
+
 .itemActive {
 	background: #252631;
 	transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 150ms;

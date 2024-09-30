@@ -50,24 +50,16 @@ function Header() {
 		<header className={Style.header}>
 			<nav>
 				<ul className={Style.items}>
-					{items.map(link => (
-						<li key={link.id}>
+					{items.map(({ id, url, icon, label }) => (
+						<li key={id}>
 							<NavLink
-								to={link.url}
-								style={{
-									color: 'white',
-									textDecoration: 'none',
-									display: 'flex',
-									gap: '8px',
-									padding: '10px',
-									borderRadius: '12px',
-								}}
+								to={url}
 								className={({ isActive }) =>
-									isActive ? Style.itemActive : Style.itemInactive
+									`${Style.item} ${isActive ? Style.itemActive : Style.itemInactive}`
 								}
 							>
-								<i className={link.icon}></i>
-								{link.label}
+								<i className={icon} />
+								{label}
 							</NavLink>
 						</li>
 					))}
