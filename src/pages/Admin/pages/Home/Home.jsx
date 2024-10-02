@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import Style from './HomeAdmin.module.css'
+import Style from './Home.module.css'
 
 import 'primeicons/primeicons.css' //icons
 
-const HomeAdmin = () => {
+const Home = () => {
 	const buttons = [
 		{
 			label: 'Ir a Usuarios',
@@ -87,4 +87,4 @@ const HomeAdmin = () => {
 	)
 }
 
-export default HomeAdmin
+export default Home
