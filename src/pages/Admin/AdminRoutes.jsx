@@ -1,5 +1,5 @@
-import Header from './components/Header/Header'
 import Style from './AdminRoutes.module.css'
+import Header from './components/Header/Header'
 import Home from './pages/Home/Home'
 import Users from './pages/Users/Users'
 import Products from './pages/Products/Products'
@@ -7,8 +7,17 @@ import Clients from './pages/Clients/Clients'
 import Activities from './pages/Activities/Activities'
 import RoutesAdmin from './pages/Routes/Routes'
 import Hospitality from './pages/Hospitality/Hospitality'
-
 import { Routes, Route, Navigate } from 'react-router-dom'
+
+const routes = [
+	{ path: 'home', element: <Home /> },
+	{ path: 'usuarios', element: <Users /> },
+	{ path: 'productos', element: <Products /> },
+	{ path: 'clientes', element: <Clients /> },
+	{ path: 'actividades', element: <Activities /> },
+	{ path: 'rutas', element: <RoutesAdmin /> },
+	{ path: 'hospedaje', element: <Hospitality /> },
+]
 
 function AdminRoutes() {
 	return (
@@ -16,13 +25,9 @@ function AdminRoutes() {
 			<Header />
 			<Routes>
 				<Route path='/' element={<Navigate to='home' />} />
-				<Route path='home' element={<Home />} />
-				<Route path='usuarios' element={<Users />} />
-				<Route path='productos' element={<Products />} />
-				<Route path='clientes' element={<Clients />} />
-				<Route path='actividades' element={<Activities />} />
-				<Route path='rutas' element={<RoutesAdmin />} />
-				<Route path='hospedaje' element={<Hospitality />} />
+				{routes.map(route => (
+					<Route key={route.path} path={route.path} element={route.element} />
+				))}
 			</Routes>
 		</div>
 	)
