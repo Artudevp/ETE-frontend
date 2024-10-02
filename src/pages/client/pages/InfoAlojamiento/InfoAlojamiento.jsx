@@ -1,4 +1,4 @@
-import habitación from '../../assets/habitacion.png'
+import habitación from '../../../../assets/habitacion.png'
 import { useState } from 'react'
 import { FaRegUserCircle } from 'react-icons/fa'
 import Style from './InfoAlojamiento.module.css'

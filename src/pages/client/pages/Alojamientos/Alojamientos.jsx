@@ -1,4 +1,4 @@
-import Card from '../Dashboard/components/Card/Card'
+import Card from '../../components/Card/Card'
 import Style from './Alojamientos.module.css'
 
 function Alojamientos() {

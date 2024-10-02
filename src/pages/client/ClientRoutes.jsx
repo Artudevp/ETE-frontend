@@ -1,13 +1,13 @@
 import SideBar from './components/SideBar/SideBar'
-import Alojamientos from '../Alojamientos/Alojamientos'
-import InfoAlojamiento from '../InfoAlojamiento/InfoAlojamiento'
-import Actividades from '../Actividades/Actividades'
-import Servicios from '../Servicios/Servicios'
-import NotFound from '../NotFound/NotFound'
+import Alojamientos from './pages/Alojamientos/Alojamientos'
+import InfoAlojamiento from './pages/InfoAlojamiento/InfoAlojamiento'
+import Actividades from './pages/Actividades/Actividades'
+import Servicios from './pages/Servicios/Servicios'
+import NotFound from './pages/NotFound/NotFound'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import Style from './Dashboard.module.css'
+import Style from './ClientRoutes.module.css'
 
-function Dashboard() {
+function ClientRoutes() {
 	return (
 		<main className={Style.main}>
 			<SideBar />
@@ -25,4 +25,4 @@ function Dashboard() {
 	)
 }
 
-export default Dashboard
+export default ClientRoutes
