@@ -17,17 +17,24 @@
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 12px 32px;
-	padding: 6px 32px;
+	padding: 6px 20px;
 	list-style: none;
 }
 
-.subHeader > ul > li {
+.subHeader > ul > li > button {
 	color: white;
-	text-decoration: none;
 	display: flex;
 	gap: 8px;
-	padding: 10px;
-	border-radius: 12px;
+	padding: 10px 12px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 1rem;
+	border-radius: 8px;
+}
+
+.subHeader > ul > li > button:hover {
+	background-color: #393b4a;
 }
 
 .content {

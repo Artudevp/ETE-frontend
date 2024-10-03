@@ -1,12 +1,22 @@
 import Styles from './PageSchema.module.css'
 
-function PageSchema({ title, columns, data, actions }) {
+function PageSchema({
+	title,
+	columns,
+	columnsDisplay,
+	data,
+	actions,
+	activeModal,
+	handleRowClick,
+}) {
 	return (
 		<main className={Styles.main}>
 			<section className={Styles.subHeader}>
 				<ul>
 					{actions.map((action, index) => (
-						<li key={index}>{action}</li>
+						<li key={index}>
+							<button onClick={() => activeModal(action)}>{action}</button>
+						</li>
 					))}
 				</ul>
 			</section>
@@ -19,14 +29,14 @@ function PageSchema({ title, columns, data, actions }) {
 						<table>
 							<thead>
 								<tr>
-									{columns.map((column, index) => (
+									{columnsDisplay.map((column, index) => (
 										<th key={index}>{column}</th>
 									))}
 								</tr>
 							</thead>
 							<tbody>
 								{data.map((row, rowIndex) => (
-									<tr key={rowIndex}>
+									<tr key={rowIndex} onClick={() => handleRowClick(row)}>
 										{columns.map((column, colIndex) => (
 											<td key={colIndex}>{row[column.toLowerCase()]}</td>
 										))}
