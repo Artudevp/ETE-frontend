@@ -90,6 +90,10 @@ tbody td {
 	border-bottom: 1px solid #3e4053;
 }
 
+tbody tr {
+	cursor: pointer;
+}
+
 tbody tr:last-child td {
 	border-bottom: 0;
 }
