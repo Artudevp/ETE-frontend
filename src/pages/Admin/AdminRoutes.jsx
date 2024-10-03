@@ -23,12 +23,14 @@ function AdminRoutes() {
 	return (
 		<div className={Style.main}>
 			<Header />
-			<Routes>
-				<Route path='/' element={<Navigate to='home' />} />
-				{routes.map(route => (
-					<Route key={route.path} path={route.path} element={route.element} />
-				))}
-			</Routes>
+			<div className={Style.content}>
+				<Routes>
+					<Route path='/' element={<Navigate to='home' />} />
+					{routes.map(route => (
+						<Route key={route.path} path={route.path} element={route.element} />
+					))}
+				</Routes>
+			</div>
 		</div>
 	)
 }
