@@ -154,6 +154,7 @@ function Users() {
 				actions={actions}
 				activeModal={handleModal}
 				handleRowClick={handleRowClick}
+				dataInitialState={userSelectedState}
 			/>
 			<ModalAdmin
 				active={modal}

@@ -179,6 +179,7 @@ function Hospitality() {
 				actions={actions}
 				activeModal={handleModal}
 				handleRowClick={handleRowClick}
+				dataInitialState={hospedajeSelectedState}
 			/>
 			<ModalAdmin
 				active={modal}

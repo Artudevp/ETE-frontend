@@ -160,6 +160,7 @@ function Activities() {
 				actions={actions}
 				activeModal={handleModal}
 				handleRowClick={handleRowClick}
+				dataInitialState={activitySelectedState}
 			/>
 			<ModalAdmin
 				active={modal}

@@ -176,6 +176,7 @@ function Products() {
 				actions={actions}
 				activeModal={handleModal}
 				handleRowClick={handleRowClick}
+				dataInitialState={productSelectedState}
 			/>
 			<ModalAdmin
 				active={modal}

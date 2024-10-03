@@ -153,6 +153,7 @@ function RoutesAdmin() {
 				actions={actions}
 				activeModal={handleModal}
 				handleRowClick={handleRowClick}
+				dataInitialState={routeSelectedState}
 			/>
 			<ModalAdmin
 				active={modal}

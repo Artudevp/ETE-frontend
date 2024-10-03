@@ -168,6 +168,7 @@ function Clients() {
 				actions={actions}
 				activeModal={handleModal}
 				handleRowClick={handleRowClick}
+				dataInitialState={clientSelectedState}
 			/>
 			<ModalAdmin
 				active={modal}

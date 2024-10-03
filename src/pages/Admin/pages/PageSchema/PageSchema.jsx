@@ -1,4 +1,5 @@
 import Styles from './PageSchema.module.css'
+import { useState } from 'react'
 
 function PageSchema({
 	title,
@@ -8,7 +9,23 @@ function PageSchema({
 	actions,
 	activeModal,
 	handleRowClick,
+	dataInitialState,
 }) {
+	const [selectedRowIndex, setSelectedRowIndex] = useState(null)
+
+	const handleClick = (e, rowIndex, row) => {
+		e.stopPropagation()
+
+		setSelectedRowIndex(prevIndex => {
+			if (prevIndex === rowIndex) {
+				handleRowClick(dataInitialState)
+				return null
+			}
+			handleRowClick(row)
+			return rowIndex
+		})
+	}
+
 	return (
 		<main className={Styles.main}>
 			<section className={Styles.subHeader}>
@@ -36,7 +53,18 @@ function PageSchema({
 							</thead>
 							<tbody>
 								{data.map((row, rowIndex) => (
-									<tr key={rowIndex} onClick={() => handleRowClick(row)}>
+									<tr
+										key={rowIndex}
+										onClick={e => {
+											handleClick(e, rowIndex, row)
+										}}
+										style={{
+											backgroundColor:
+												selectedRowIndex === rowIndex
+													? 'rgb(31, 41, 55)'
+													: 'transparent',
+										}}
+									>
 										{columns.map((column, colIndex) => (
 											<td key={colIndex}>{row[column.toLowerCase()]}</td>
 										))}
