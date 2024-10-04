@@ -1,5 +1,6 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
+import { useProducts } from '../../../../context/ProductsContext'
 import {
 	getProducts,
 	addProduct,
@@ -9,6 +10,12 @@ import {
 import { useState, useEffect } from 'react'
 
 function Products() {
+	const {
+		products,
+		handleSetProducts,
+		handleUpdateProduct,
+		handleDeleteProduct,
+	} = useProducts()
 	const title = 'Gestión de Productos'
 	const columnsDisplay = ['ID', 'Categoria', 'Nombre', 'Precio', 'Cantidad']
 	const columns = [
@@ -31,128 +38,97 @@ function Products() {
 		precio_p: '',
 		cantidad_disponible: '',
 	}
-
-	const [products, setProducts] = useState([])
 	const [modal, setModal] = useState(false)
 	const [contentModal, setContentModal] = useState(contentModalState)
 	const [productSelected, setProductSelected] = useState(productSelectedState)
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const data = await getProducts()
-				setProducts(data)
-			} catch (error) {
-				console.log('Error al obtener productos:', error)
-			}
-		}
-		fetchData()
-	}, [])
-
 	const handleModal = action => {
-		if (action === 'Nuevo') {
-			setModal(!modal)
-			setProductSelected(productSelectedState)
-			setContentModal({
-				title: 'Agregar Producto',
-				button: 'Agregar',
-				inputs: [
-					{
-						type: 'text',
-						name: 'categoria',
-						placeholder: 'Categoria',
-					},
-					{
-						type: 'text',
-						name: 'nombre_p',
-						placeholder: 'Nombre Producto',
-					},
-					{
-						type: 'number',
-						name: 'precio_p',
-						placeholder: 'Precio',
-					},
-					{
-						type: 'number',
-						name: 'cantidad_disponible',
-						placeholder: 'Cantidad en Stock',
-					},
-				],
-			})
-		} else if (action === 'Editar') {
-			setModal(!modal)
-			setContentModal({
-				title: 'Editar Producto',
-				button: 'Editar',
-				inputs: [
-					{
-						type: 'text',
-						name: 'categoria',
-						placeholder: 'Categoria',
-					},
-					{
-						type: 'text',
-						name: 'nombre_p',
-						placeholder: 'Nombre Producto',
-					},
-					{
-						type: 'number',
-						name: 'precio_p',
-						placeholder: 'Precio',
-					},
-					{
-						type: 'number',
-						name: 'cantidad_disponible',
-						placeholder: 'Cantidad en Stock',
-					},
-				],
-			})
-		} else if (action === 'Eliminar') {
-			setModal(!modal)
-			setContentModal({
-				title: 'Eliminar Producto',
-				button: 'Eliminar',
-				inputs: [
-					{
-						type: 'text',
-						name: 'id_producto',
-						placeholder: 'ID',
-					},
-				],
-			})
+		switch (action) {
+			case 'Nuevo':
+				setModal(!modal)
+				setProductSelected(productSelectedState)
+				setContentModal({
+					title: 'Agregar Producto',
+					button: 'Agregar',
+					inputs: [
+						{
+							type: 'text',
+							name: 'categoria',
+							placeholder: 'Categoria',
+						},
+						{
+							type: 'text',
+							name: 'nombre_p',
+							placeholder: 'Nombre Producto',
+						},
+						{
+							type: 'number',
+							name: 'precio_p',
+							placeholder: 'Precio',
+						},
+						{
+							type: 'number',
+							name: 'cantidad_disponible',
+							placeholder: 'Cantidad en Stock',
+						},
+					],
+				})
+				break
+			case 'Editar':
+				setModal(!modal)
+				setContentModal({
+					title: 'Editar Producto',
+					button: 'Editar',
+					inputs: [
+						{
+							type: 'text',
+							name: 'categoria',
+							placeholder: 'Categoria',
+						},
+						{
+							type: 'text',
+							name: 'nombre_p',
+							placeholder: 'Nombre Producto',
+						},
+						{
+							type: 'number',
+							name: 'precio_p',
+							placeholder: 'Precio',
+						},
+						{
+							type: 'number',
+							name: 'cantidad_disponible',
+							placeholder: 'Cantidad en Stock',
+						},
+					],
+				})
+				break
+			case 'Eliminar':
+				setModal(!modal)
+				setContentModal({
+					title: 'Eliminar Producto',
+					button: 'Eliminar',
+					inputs: [
+						{
+							type: 'text',
+							name: 'id_producto',
+							placeholder: 'ID',
+						},
+					],
+				})
+				break
+			default:
+				break
 		}
 	}
 
 	const handleProducts = async productData => {
 		if (contentModal.title === 'Agregar Producto') {
-			try {
-				const data = await addProduct(productData)
-				setProducts([...products, data])
-			} catch (error) {
-				console.error('Error al agregar producto:', error)
-			}
+			handleSetProducts(productData)
 		} else if (contentModal.title === 'Editar Producto') {
-			try {
-				const data = await updateProduct(productData)
-				setProducts(
-					products.map(product =>
-						product.id_producto === data.id_producto ? data : product,
-					),
-				)
-			} catch (error) {
-				console.error('Error al actualizar producto:', error)
-			}
+			handleUpdateProduct(productData)
 		} else if (contentModal.title === 'Eliminar Producto') {
-			try {
-				await deleteProduct(productData.id_producto)
-				setProducts(
-					products.filter(
-						product => product.id_producto !== productData.id_producto,
-					),
-				)
-			} catch (error) {
-				console.error('Error al eliminar producto:', error)
-			}
+			handleDeleteProduct(productData.id_producto)
 		}
 	}
 
@@ -172,7 +148,7 @@ function Products() {
 				title={title}
 				columns={columns}
 				columnsDisplay={columnsDisplay}
-				data={products}
+				data={Array.isArray(products) ? products : []}
 				actions={actions}
 				activeModal={handleModal}
 				handleRowClick={handleRowClick}

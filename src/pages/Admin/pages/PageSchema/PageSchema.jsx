@@ -52,24 +52,30 @@ function PageSchema({
 								</tr>
 							</thead>
 							<tbody>
-								{data.map((row, rowIndex) => (
-									<tr
-										key={rowIndex}
-										onClick={e => {
-											handleClick(e, rowIndex, row)
-										}}
-										style={{
-											backgroundColor:
-												selectedRowIndex === rowIndex
-													? 'rgb(31, 41, 55)'
-													: 'transparent',
-										}}
-									>
-										{columns.map((column, colIndex) => (
-											<td key={colIndex}>{row[column.toLowerCase()]}</td>
-										))}
+								{Array.isArray(data) && data.length > 0 ? (
+									data.map((row, rowIndex) => (
+										<tr
+											key={rowIndex}
+											onClick={e => {
+												handleClick(e, rowIndex, row)
+											}}
+											style={{
+												backgroundColor:
+													selectedRowIndex === rowIndex
+														? 'rgb(31, 41, 55)'
+														: 'transparent',
+											}}
+										>
+											{columns.map((column, colIndex) => (
+												<td key={colIndex}>{row[column.toLowerCase()]}</td>
+											))}
+										</tr>
+									))
+								) : (
+									<tr>
+										<td colSpan={columns.length}>No hay datos disponibles</td>
 									</tr>
-								))}
+								)}
 							</tbody>
 						</table>
 					</div>

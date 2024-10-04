@@ -1,14 +1,11 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
-import {
-	getRoutes,
-	addRoute,
-	updateRoute,
-	deleteRoute,
-} from '../../../../services/Rutas'
-import { useState, useEffect } from 'react'
+import { useRoutes } from '../../../../context/RoutesContext'
+import { useState } from 'react'
 
 function RoutesAdmin() {
+	const { routes, handleSetRoutes, handleUpdateRoute, handleDeleteRoute } =
+		useRoutes()
 	const title = 'Gestión de Rutas'
 	const columnsDisplay = ['ID', 'Nombre', 'Duración', 'Precio']
 	const columns = ['id_ruta', 'nombre_ruta', 'duración_ruta', 'precio']
@@ -25,112 +22,87 @@ function RoutesAdmin() {
 		precio: '',
 	}
 
-	const [routes, setRoutes] = useState([])
 	const [modal, setModal] = useState(false)
 	const [contentModal, setContentModal] = useState(contentModalState)
 	const [routeSelected, setRouteSelected] = useState(routeSelectedState)
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const data = await getRoutes()
-				setRoutes(data)
-				console.log(data)
-			} catch (error) {
-				console.log('Error al obtener rutas:', error)
-			}
-		}
-		fetchData()
-	}, [])
-
 	const handleModal = action => {
-		if (action === 'Nuevo') {
-			setModal(!modal)
-			setRouteSelected(routeSelectedState)
-			setContentModal({
-				title: 'Nuevo Ruta',
-				button: 'Crear',
-				inputs: [
-					{
-						type: 'text',
-						name: 'nombre_ruta',
-						placeholder: 'Nombre',
-					},
-					{
-						type: 'number',
-						name: 'duración_ruta',
-						placeholder: 'Duración (Horas)',
-					},
-					{
-						type: 'number',
-						name: 'precio',
-						placeholder: 'Precio',
-					},
-				],
-			})
-		} else if (action === 'Editar') {
-			setModal(!modal)
-			setContentModal({
-				title: 'Editar Ruta',
-				button: 'Actualizar',
-				inputs: [
-					{
-						type: 'text',
-						name: 'nombre_ruta',
-						placeholder: 'Nombre',
-					},
-					{
-						type: 'number',
-						name: 'duración_ruta',
-						placeholder: 'Duración (Horas)',
-					},
-					{
-						type: 'number',
-						name: 'precio',
-						placeholder: 'Precio',
-					},
-				],
-			})
-		} else if (action === 'Eliminar') {
-			setModal(!modal)
-			setContentModal({
-				title: 'Eliminar Ruta',
-				button: 'Eliminar',
-				inputs: [
-					{
-						type: 'text',
-						name: 'id_ruta',
-						placeholder: 'ID',
-					},
-				],
-			})
+		switch (action) {
+			case 'Nuevo':
+				setModal(!modal)
+				setRouteSelected(routeSelectedState)
+				setContentModal({
+					title: 'Nuevo Ruta',
+					button: 'Crear',
+					inputs: [
+						{
+							type: 'text',
+							name: 'nombre_ruta',
+							placeholder: 'Nombre',
+						},
+						{
+							type: 'number',
+							name: 'duración_ruta',
+							placeholder: 'Duración (Horas)',
+						},
+						{
+							type: 'number',
+							name: 'precio',
+							placeholder: 'Precio',
+						},
+					],
+				})
+				break
+			case 'Editar':
+				setModal(!modal)
+				setContentModal({
+					title: 'Editar Ruta',
+					button: 'Actualizar',
+					inputs: [
+						{
+							type: 'text',
+							name: 'nombre_ruta',
+							placeholder: 'Nombre',
+						},
+						{
+							type: 'number',
+							name: 'duración_ruta',
+							placeholder: 'Duración (Horas)',
+						},
+						{
+							type: 'number',
+							name: 'precio',
+							placeholder: 'Precio',
+						},
+					],
+				})
+				break
+			case 'Eliminar':
+				setModal(!modal)
+				setContentModal({
+					title: 'Eliminar Ruta',
+					button: 'Eliminar',
+					inputs: [
+						{
+							type: 'text',
+							name: 'id_ruta',
+							placeholder: 'ID',
+						},
+					],
+				})
+				break
+			default:
+				break
 		}
 	}
 
 	const handleRoutes = async routeData => {
 		if (contentModal.title === 'Nuevo Ruta') {
-			try {
-				const data = await addRoute(routeData)
-				setRoutes([...routes, data])
-			} catch (error) {
-				console.error('Error al agregar ruta:', error)
-			}
+			handleSetRoutes(routeData)
 		} else if (contentModal.title === 'Editar Ruta') {
-			try {
-				const data = await updateRoute(routeData)
-				setRoutes(
-					routes.map(route => (route.id_ruta === data.id_ruta ? data : route)),
-				)
-			} catch (error) {
-				console.error('Error al actualizar ruta:', error)
-			}
+			handleUpdateRoute(routeData)
 		} else if (contentModal.title === 'Eliminar Ruta') {
-			try {
-				await deleteRoute(routeData.id_ruta)
-				setRoutes(routes.filter(route => route.id_ruta !== routeData.id_ruta))
-			} catch (error) {
-				console.error('Error al eliminar ruta:', error)
-			}
+			handleDeleteRoute(routeData.id_ruta)
 		}
 	}
 
@@ -149,7 +121,7 @@ function RoutesAdmin() {
 				title={title}
 				columns={columns}
 				columnsDisplay={columnsDisplay}
-				data={routes}
+				data={Array.isArray(routes) ? routes : []}
 				actions={actions}
 				activeModal={handleModal}
 				handleRowClick={handleRowClick}

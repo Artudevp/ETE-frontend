@@ -1,14 +1,15 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
-import {
-	getHospitality,
-	addHospitality,
-	updateHospitality,
-	deleteHospitality,
-} from '../../../../services/Hospedajes'
-import { useState, useEffect } from 'react'
+import { useHospitality } from '../../../../context/HospitalityContext'
+import { useState } from 'react'
 
 function Hospitality() {
+	const {
+		hospitality,
+		handleSetHospitality,
+		handleUpdateHospitality,
+		handleDeleteHospitality,
+	} = useHospitality()
 	const title = 'Gestión de Hospedaje'
 	const columnsDisplay = ['ID', 'Tipo', 'Capacidad', 'Disponibilidad', 'Precio']
 	const columns = [
@@ -24,143 +25,111 @@ function Hospitality() {
 		button: '',
 		inputs: [],
 	}
-	const hospedajeSelectedState = {
+	const hospitalitySelectedState = {
 		id_hospedaje: '',
 		tipo_hab: '',
 		capacidad: '',
 		disponibilidad: '',
 		precio_hab: '',
 	}
-
-	const [hospedaje, setHospedaje] = useState([])
 	const [modal, setModal] = useState(false)
 	const [contentModal, setContentModal] = useState(contentModalState)
-	const [hospedajeSelected, setHospedajeSelected] = useState(
-		hospedajeSelectedState,
+	const [hospitalitySelected, setHospitalitySelect] = useState(
+		hospitalitySelectedState,
 	)
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const data = await getHospitality()
-				setHospedaje(data)
-				console.log(data)
-			} catch (error) {
-				console.error('Error al obtener hospedaje:', error)
-			}
-		}
-		fetchData()
-	}, [])
-
 	const handleModal = action => {
-		if (action === 'Nuevo') {
-			setModal(!modal)
-			setHospedajeSelected(hospedajeSelectedState)
-			setContentModal({
-				title: 'Agregar Hospedaje',
-				button: 'Agregar',
-				inputs: [
-					{
-						type: 'text',
-						name: 'tipo_hab',
-						placeholder: 'Tipo',
-					},
-					{
-						type: 'text',
-						name: 'capacidad',
-						placeholder: 'Capacidad',
-					},
-					{
-						type: 'text',
-						name: 'disponibilidad',
-						placeholder: 'Disponibilidad',
-					},
-					{
-						type: 'number',
-						name: 'precio_hab',
-						placeholder: 'Precio',
-					},
-				],
-			})
-		} else if (action === 'Editar') {
-			setModal(!modal)
-			setContentModal({
-				title: 'Editar Hospedaje',
-				button: 'Editar',
-				inputs: [
-					{
-						type: 'text',
-						name: 'tipo_hab',
-						placeholder: 'Tipo',
-					},
-					{
-						type: 'text',
-						name: 'capacidad',
-						placeholder: 'Capacidad',
-					},
-					{
-						type: 'text',
-						name: 'disponibilidad',
-						placeholder: 'Disponibilidad',
-					},
-					{
-						type: 'number',
-						name: 'precio_hab',
-						placeholder: 'Precio',
-					},
-				],
-			})
-		} else if (action === 'Eliminar') {
-			setModal(!modal)
-			setContentModal({
-				title: 'Eliminar Hospedaje',
-				button: 'Eliminar',
-				inputs: [
-					{
-						type: 'text',
-						name: 'id_hospedaje',
-						placeholder: 'ID',
-					},
-				],
-			})
+		switch (action) {
+			case 'Nuevo':
+				setModal(!modal)
+				setHospitalitySelect(hospitalitySelectedState)
+				setContentModal({
+					title: 'Agregar Hospedaje',
+					button: 'Agregar',
+					inputs: [
+						{
+							type: 'text',
+							name: 'tipo_hab',
+							placeholder: 'Tipo',
+						},
+						{
+							type: 'text',
+							name: 'capacidad',
+							placeholder: 'Capacidad',
+						},
+						{
+							type: 'text',
+							name: 'disponibilidad',
+							placeholder: 'Disponibilidad',
+						},
+						{
+							type: 'number',
+							name: 'precio_hab',
+							placeholder: 'Precio',
+						},
+					],
+				})
+				break
+			case 'Editar':
+				setModal(!modal)
+				setContentModal({
+					title: 'Editar Hospedaje',
+					button: 'Editar',
+					inputs: [
+						{
+							type: 'text',
+							name: 'tipo_hab',
+							placeholder: 'Tipo',
+						},
+						{
+							type: 'text',
+							name: 'capacidad',
+							placeholder: 'Capacidad',
+						},
+						{
+							type: 'text',
+							name: 'disponibilidad',
+							placeholder: 'Disponibilidad',
+						},
+						{
+							type: 'number',
+							name: 'precio_hab',
+							placeholder: 'Precio',
+						},
+					],
+				})
+				break
+			case 'Eliminar':
+				setModal(!modal)
+				setContentModal({
+					title: 'Eliminar Hospedaje',
+					button: 'Eliminar',
+					inputs: [
+						{
+							type: 'text',
+							name: 'id_hospedaje',
+							placeholder: 'ID',
+						},
+					],
+				})
+				break
+			default:
+				break
 		}
 	}
 
-	const handleHospedaje = async hospedajeData => {
+	const handleHospitality = async hospedajeData => {
 		if (contentModal.title === 'Agregar Hospedaje') {
-			try {
-				const data = await addHospitality(hospedajeData)
-				setHospedaje([...hospedaje, data])
-			} catch (error) {
-				console.error('Error al agregar hospedaje:', error)
-			}
+			handleSetHospitality(hospedajeData)
 		} else if (contentModal.title === 'Editar Hospedaje') {
-			try {
-				const data = await updateHospitality(hospedajeData)
-				setHospedaje(
-					hospedaje.map(hospedaje =>
-						hospedaje.id_hospedaje === data.id_hospedaje ? data : hospedaje,
-					),
-				)
-			} catch (error) {
-				console.error('Error al actualizar hospedaje:', error)
-			}
+			handleUpdateHospitality(hospedajeData)
 		} else if (contentModal.title === 'Eliminar Hospedaje') {
-			try {
-				await deleteHospitality(hospedajeData.id_hospedaje)
-				setHospedaje(
-					hospedaje.filter(
-						hospedaje => hospedaje.id_hospedaje !== hospedajeData.id_hospedaje,
-					),
-				)
-			} catch (error) {
-				console.error('Error al eliminar hospedaje:', error)
-			}
+			handleDeleteHospitality(hospedajeData.id_hospedaje)
 		}
 	}
 
 	const handleRowClick = row => {
-		setHospedajeSelected({
+		setHospitalitySelect({
 			id_hospedaje: row.id_hospedaje || '',
 			tipo_hab: row.tipo_hab || '',
 			capacidad: row.capacidad || '',
@@ -175,18 +144,18 @@ function Hospitality() {
 				title={title}
 				columns={columns}
 				columnsDisplay={columnsDisplay}
-				data={hospedaje}
+				data={Array.isArray(hospitality) ? hospitality : []}
 				actions={actions}
 				activeModal={handleModal}
 				handleRowClick={handleRowClick}
-				dataInitialState={hospedajeSelectedState}
+				dataInitialState={hospitalitySelectedState}
 			/>
 			<ModalAdmin
 				active={modal}
 				setActive={setModal}
 				content={contentModal}
-				setData={handleHospedaje}
-				rowSelected={hospedajeSelected}
+				setData={handleHospitality}
+				rowSelected={hospitalitySelected}
 			/>
 		</>
 	)

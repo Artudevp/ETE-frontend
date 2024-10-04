@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { CombinedContextProvider } from '../context/CombinedContextProvider'
 import Home from '../pages/Home/Home'
 import ClientRoutes from '../pages/client/ClientRoutes'
 import AdminRoutes from '../pages/Admin/AdminRoutes'
@@ -13,14 +14,20 @@ const routes = [
 function AppRoutes() {
 	return (
 		<>
-			<BrowserRouter>
-				<Routes>
-					<Route index element={<Home />} />
-					{routes.map(route => (
-						<Route key={route.path} path={route.path} element={route.element} />
-					))}
-				</Routes>
-			</BrowserRouter>
+			<CombinedContextProvider>
+				<BrowserRouter>
+					<Routes>
+						<Route index element={<Home />} />
+						{routes.map(route => (
+							<Route
+								key={route.path}
+								path={route.path}
+								element={route.element}
+							/>
+						))}
+					</Routes>
+				</BrowserRouter>
+			</CombinedContextProvider>
 		</>
 	)
 }
