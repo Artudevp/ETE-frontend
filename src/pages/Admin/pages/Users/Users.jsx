@@ -55,8 +55,8 @@ function Users() {
 			case 'Editar':
 				setModal(!modal)
 				setContentModal({
-					title: 'Agregar Usuario',
-					button: 'Agregar',
+					title: 'Editar Usuario',
+					button: 'Editar',
 					inputs: [
 						{
 							type: 'text',
