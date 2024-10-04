@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import useEntityManagement from '../hooks/useEntityManagement'
 import {
 	getActivities,
 	addActivity,
@@ -13,51 +14,18 @@ export const useActivities = () => {
 }
 
 export const ActivitiesProvider = ({ children }) => {
-	const [activities, setActivities] = useState([])
-
-	const fetchActivities = async () => {
-		try {
-			const data = await getActivities()
-			setActivities(data)
-		} catch (error) {
-			console.error('Error al obtener actividades:', error)
-		}
-	}
-
-	const handleSetActivities = async activityData => {
-		try {
-			const data = await addActivity(activityData)
-			setActivities([...activities, data])
-		} catch (error) {
-			console.error('Error al agregar actividad:', error)
-		}
-	}
-
-	const handleUpdateActivity = async activityData => {
-		try {
-			const data = await updateActivity(activityData)
-			setActivities(
-				activities.map(activity =>
-					activity.id_actividad === activityData.id_actividad ? data : activity,
-				),
-			)
-		} catch (error) {
-			console.error('Error al actualizar actividad:', error)
-		}
-	}
-
-	const handleDeleteActivity = async id => {
-		try {
-			await deleteActivity(id)
-			setActivities(activities.filter(activity => activity.id_actividad !== id))
-		} catch (error) {
-			console.error('Error al eliminar actividad:', error)
-		}
-	}
-
-	useEffect(() => {
-		fetchActivities()
-	}, [])
+	const {
+		entities: activities,
+		handleSetEntity: handleSetActivities,
+		handleUpdateEntity: handleUpdateActivity,
+		handleDeleteEntity: handleDeleteActivity,
+	} = useEntityManagement(
+		getActivities,
+		addActivity,
+		updateActivity,
+		deleteActivity,
+		'actividad',
+	)
 
 	return (
 		<ActivitiesContext.Provider
