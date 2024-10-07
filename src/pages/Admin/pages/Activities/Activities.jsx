@@ -1,5 +1,6 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
+import Error from '../../../../components/Error/Error'
 import { useActivities } from '../../../../context/ActivitiesContext'
 import { useState } from 'react'
 
@@ -9,6 +10,7 @@ function Activities() {
 		handleSetActivities,
 		handleUpdateActivity,
 		handleDeleteActivity,
+		errorModal,
 	} = useActivities()
 	const title = 'Gestión de Actividades'
 	const columnsDisplay = ['ID', 'Nombre', 'Duración', 'Precio']
@@ -140,6 +142,7 @@ function Activities() {
 				setData={handleActivities}
 				rowSelected={activitySelected}
 			/>
+			<Error error={errorModal} />
 		</>
 	)
 }

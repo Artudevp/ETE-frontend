@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 import useEntityManagement from '../hooks/useEntityManagement'
-import { getUsers, addUser, updateUser, deleteUser } from '../services/Usuarios'
+import { getUsers, addUser, updateUser, deleteUser } from '../services/usuarios'
 
 export const UsersContext = createContext()
 
@@ -14,6 +14,7 @@ export const UsersProvider = ({ children }) => {
 		handleSetEntity: handleSetUsers,
 		handleUpdateEntity: handleUpdateUser,
 		handleDeleteEntity: handleDeleteUser,
+		errorModal,
 	} = useEntityManagement(getUsers, addUser, updateUser, deleteUser, 'usuario')
 
 	return (
@@ -23,6 +24,7 @@ export const UsersProvider = ({ children }) => {
 				handleSetUsers,
 				handleUpdateUser,
 				handleDeleteUser,
+				errorModal,
 			}}
 		>
 			{children}
