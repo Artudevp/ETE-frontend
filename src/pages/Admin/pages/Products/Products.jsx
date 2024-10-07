@@ -20,7 +20,20 @@ function Products() {
 		'precio_p',
 		'cantidad_disponible',
 	]
-	const actions = ['Nuevo', 'Editar', 'Eliminar']
+	const actions = [
+		{
+			label: 'Nuevo',
+			icon: 'pi pi-fw pi-plus',
+		},
+		{
+			label: 'Editar',
+			icon: 'pi pi-fw pi-pencil',
+		},
+		{
+			label: 'Eliminar',
+			icon: 'pi pi-fw pi-trash',
+		},
+	]
 	const contentModalState = {
 		title: '',
 		button: '',

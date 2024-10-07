@@ -7,7 +7,7 @@
 .content {
 	overflow-y: auto;
 	height: calc(100vh - 80px);
-	padding: 0 0 12px;
+	padding: 0 0 5px;
 }
 
 .content::-webkit-scrollbar {

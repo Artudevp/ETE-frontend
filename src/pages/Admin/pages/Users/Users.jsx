@@ -16,7 +16,20 @@ function Users() {
 	const title = 'Gestión de Usuarios'
 	const columnsDisplay = ['ID', 'Nombre', 'Correo', 'Contraseña']
 	const columns = ['id_usuario', 'nombre', 'correo', 'contraseña']
-	const actions = ['Nuevo', 'Editar', 'Eliminar']
+	const actions = [
+		{
+			label: 'Nuevo',
+			icon: 'pi pi-fw pi-user-plus',
+		},
+		{
+			label: 'Editar',
+			icon: 'pi pi-fw pi-user-edit',
+		},
+		{
+			label: 'Eliminar',
+			icon: 'pi pi-fw pi-user-minus',
+		},
+	]
 	const contentModalState = {
 		title: '',
 		button: '',

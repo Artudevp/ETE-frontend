@@ -15,7 +15,20 @@ function RoutesAdmin() {
 	const title = 'Gestión de Rutas'
 	const columnsDisplay = ['ID', 'Nombre', 'Duración', 'Precio']
 	const columns = ['id_ruta', 'nombre_ruta', 'duración_ruta', 'precio']
-	const actions = ['Nuevo', 'Editar', 'Eliminar']
+	const actions = [
+		{
+			label: 'Nuevo',
+			icon: 'pi pi-fw pi-plus',
+		},
+		{
+			label: 'Editar',
+			icon: 'pi pi-fw pi-pencil',
+		},
+		{
+			label: 'Eliminar',
+			icon: 'pi pi-fw pi-trash',
+		},
+	]
 	const contentModalState = {
 		title: '',
 		button: '',

@@ -15,7 +15,20 @@ function Activities() {
 	const title = 'Gestión de Actividades'
 	const columnsDisplay = ['ID', 'Nombre', 'Duración', 'Precio']
 	const columns = ['id_actividad', 'nombre_act', 'duración_act', 'precio_act']
-	const actions = ['Nuevo', 'Editar', 'Eliminar']
+	const actions = [
+		{
+			label: 'Nuevo',
+			icon: 'pi pi-fw pi-calendar-plus',
+		},
+		{
+			label: 'Editar',
+			icon: 'pi pi-fw pi-calendar-clock',
+		},
+		{
+			label: 'Eliminar',
+			icon: 'pi pi-fw pi-calendar-minus',
+		},
+	]
 	const contentModalState = {
 		title: '',
 		button: '',

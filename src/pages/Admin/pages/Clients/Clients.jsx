@@ -14,7 +14,20 @@ function Clients() {
 	const title = 'Gestión de Clientes'
 	const columnsDisplay = ['ID', 'Nombre', 'Cedula', 'Género', 'Edad']
 	const columns = ['id_cliente', 'nombre_cli', 'cedula', 'genero', 'edad']
-	const actions = ['Nuevo', 'Editar', 'Eliminar']
+	const actions = [
+		{
+			label: 'Nuevo',
+			icon: 'pi pi-fw pi-user-plus',
+		},
+		{
+			label: 'Editar',
+			icon: 'pi pi-fw pi-user-edit',
+		},
+		{
+			label: 'Eliminar',
+			icon: 'pi pi-fw pi-user-minus',
+		},
+	]
 	const contentModalState = {
 		title: '',
 		button: '',

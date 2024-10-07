@@ -42,7 +42,10 @@ function PageSchema({
 				<ul>
 					{actions.map((action, index) => (
 						<li key={index}>
-							<button onClick={() => activeModal(action)}>{action}</button>
+							<button onClick={() => activeModal(action.label)}>
+								<i className={action.icon}></i>
+								{action.label}
+							</button>
 						</li>
 					))}
 				</ul>
