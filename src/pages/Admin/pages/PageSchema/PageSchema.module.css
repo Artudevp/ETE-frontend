@@ -1,7 +1,7 @@
 .main {
 	color: #fff;
 	width: 80%;
-	margin: 20px auto 0px;
+	margin: 10px auto 0px;
 }
 
 .subHeader {
@@ -108,4 +108,40 @@ tbody tr:last-child td {
 	border-width: 1px 0;
 	padding: 1rem;
 	margin: 0 0 20px;
+	align-items: center;
+}
+
+.pagination > button {
+	padding: 8px 12px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 1rem;
+	border-radius: 8px;
+	color: white;
+	background-color: #3e4053;
+}
+
+.pagination > button:disabled {
+	background-color: #282936;
+	color: #a5a5a5;
+	cursor: not-allowed;
+}
+
+.rowsPerPage {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	align-items: center;
+}
+
+.rowsPerPage > select {
+	padding: 8px 12px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 1rem;
+	border-radius: 8px;
+	color: white;
+	background-color: #3e4053;
 }
