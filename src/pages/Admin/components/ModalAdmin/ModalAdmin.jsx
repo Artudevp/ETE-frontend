@@ -15,6 +15,16 @@ function ModalAdmin({ active, setActive, setData, content, rowSelected }) {
 		e.target.reset()
 	}
 
+	const handleFocus = e => {
+		e.target.previousElementSibling.classList.add(Styles.active)
+	}
+
+	const handleBlur = e => {
+		if (e.target.value === '') {
+			e.target.previousElementSibling.classList.remove(Styles.active)
+		}
+	}
+
 	useEffect(() => {
 		if (rowSelected !== null) {
 			setForm(rowSelected)
@@ -34,15 +44,29 @@ function ModalAdmin({ active, setActive, setData, content, rowSelected }) {
 				<form className={Styles.modalForm} onSubmit={handleSubmit}>
 					<div className={Styles.modalFormInputs}>
 						{content.inputs.map((input, index) => (
-							<input
-								key={index}
-								type={input.type}
-								placeholder={input.placeholder}
-								name={input.name}
-								onChange={handleChange}
-								value={form[input.name]}
-								required
-							/>
+							<div key={index} className={Styles.modalFormInput}>
+								<label
+									htmlFor={input.name}
+									className={Styles.modalFormInputLabel}
+									style={{
+										top: form[input.name] ? '-10px' : '25%',
+										left: form[input.name] ? '0px' : '10px',
+										transform: form[input.name] ? 'scale(0.8)' : 'scale(1)',
+									}}
+								>
+									{input.placeholder}
+								</label>
+								<input
+									id={input.name}
+									type={input.type}
+									name={input.name}
+									onChange={handleChange}
+									value={form[input.name]}
+									onFocus={handleFocus}
+									onBlur={handleBlur}
+									required
+								/>
+							</div>
 						))}
 					</div>
 					<div className={Styles.modalFormButtons}>
