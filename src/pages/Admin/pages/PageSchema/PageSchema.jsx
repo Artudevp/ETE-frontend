@@ -103,17 +103,17 @@ function PageSchema({
 							Anterior
 						</button>
 						<span>
-							{currentPage} - {totalPages}
+							{currentPage} - {totalPages === 0 ? 1 : totalPages}
 						</span>
 						<button
 							onClick={() => paginate(currentPage + 1)}
-							disabled={currentPage === totalPages}
+							disabled={currentPage === totalPages || totalPages === 0}
 						>
 							Siguiente
 						</button>
 						<button
 							onClick={() => paginate(totalPages)}
-							disabled={currentPage === totalPages}
+							disabled={currentPage === totalPages || totalPages === 0}
 						>
 							Final
 						</button>
