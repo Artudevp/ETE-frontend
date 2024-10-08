@@ -13,8 +13,24 @@ function Activities() {
 		errorModal,
 	} = useActivities()
 	const title = 'Gestión de Actividades'
-	const columnsDisplay = ['ID', 'Nombre', 'Duración', 'Precio']
-	const columns = ['id_actividad', 'nombre_act', 'duración_act', 'precio_act']
+	const columns = [
+		{
+			column: 'id_actividad',
+			header: 'ID',
+		},
+		{
+			column: 'nombre_act',
+			header: 'Nombre',
+		},
+		{
+			column: 'duración_act',
+			header: 'Duración',
+		},
+		{
+			column: 'precio_act',
+			header: 'Precio',
+		},
+	]
 	const actions = [
 		{
 			label: 'Nuevo',
@@ -141,7 +157,6 @@ function Activities() {
 			<PageSchema
 				title={title}
 				columns={columns}
-				columnsDisplay={columnsDisplay}
 				data={Array.isArray(activities) ? activities : []}
 				actions={actions}
 				activeModal={handleModal}

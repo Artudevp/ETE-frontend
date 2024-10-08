@@ -14,8 +14,24 @@ function Users() {
 	} = useUsers()
 
 	const title = 'Gestión de Usuarios'
-	const columnsDisplay = ['ID', 'Nombre', 'Correo', 'Contraseña']
-	const columns = ['id_usuario', 'nombre', 'correo', 'contraseña']
+	const columns = [
+		{
+			column: 'id_usuario',
+			header: 'ID',
+		},
+		{
+			column: 'nombre',
+			header: 'Nombre',
+		},
+		{
+			column: 'correo',
+			header: 'Correo',
+		},
+		{
+			column: 'contraseña',
+			header: 'Contraseña',
+		},
+	]
 	const actions = [
 		{
 			label: 'Nuevo',
@@ -136,7 +152,6 @@ function Users() {
 			<PageSchema
 				title={title}
 				columns={columns}
-				columnsDisplay={columnsDisplay}
 				data={Array.isArray(users) ? users : []}
 				actions={actions}
 				activeModal={handleModal}

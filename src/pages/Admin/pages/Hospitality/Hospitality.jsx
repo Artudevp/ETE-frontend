@@ -13,13 +13,27 @@ function Hospitality() {
 		errorModal,
 	} = useHospitality()
 	const title = 'Gestión de Hospedaje'
-	const columnsDisplay = ['ID', 'Tipo', 'Capacidad', 'Disponibilidad', 'Precio']
 	const columns = [
-		'id_hospedaje',
-		'tipo_hab',
-		'capacidad',
-		'disponibilidad',
-		'precio_hab',
+		{
+			column: 'id_hospedaje',
+			header: 'ID',
+		},
+		{
+			column: 'tipo_hab',
+			header: 'Tipo',
+		},
+		{
+			column: 'capacidad',
+			header: 'Capacidad',
+		},
+		{
+			column: 'disponibilidad',
+			header: 'Disponibilidad',
+		},
+		{
+			column: 'precio_hab',
+			header: 'Precio',
+		},
 	]
 	const actions = [
 		{
@@ -158,7 +172,6 @@ function Hospitality() {
 			<PageSchema
 				title={title}
 				columns={columns}
-				columnsDisplay={columnsDisplay}
 				data={Array.isArray(hospitality) ? hospitality : []}
 				actions={actions}
 				activeModal={handleModal}

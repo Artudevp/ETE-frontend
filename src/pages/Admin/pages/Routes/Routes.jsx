@@ -13,8 +13,24 @@ function RoutesAdmin() {
 		errorModal,
 	} = useRoutes()
 	const title = 'Gestión de Rutas'
-	const columnsDisplay = ['ID', 'Nombre', 'Duración', 'Precio']
-	const columns = ['id_ruta', 'nombre_ruta', 'duración_ruta', 'precio']
+	const columns = [
+		{
+			column: 'id_ruta',
+			header: 'ID',
+		},
+		{
+			column: 'nombre_ruta',
+			header: 'Nombre',
+		},
+		{
+			column: 'duración_ruta',
+			header: 'Duración',
+		},
+		{
+			column: 'precio',
+			header: 'Precio',
+		},
+	]
 	const actions = [
 		{
 			label: 'Nuevo',
@@ -139,7 +155,6 @@ function RoutesAdmin() {
 			<PageSchema
 				title={title}
 				columns={columns}
-				columnsDisplay={columnsDisplay}
 				data={Array.isArray(routes) ? routes : []}
 				actions={actions}
 				activeModal={handleModal}

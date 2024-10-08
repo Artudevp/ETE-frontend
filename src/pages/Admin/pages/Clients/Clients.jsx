@@ -12,8 +12,28 @@ function Clients() {
 		errorModal,
 	} = useClients()
 	const title = 'Gestión de Clientes'
-	const columnsDisplay = ['ID', 'Nombre', 'Cedula', 'Género', 'Edad']
-	const columns = ['id_cliente', 'nombre_cli', 'cedula', 'genero', 'edad']
+	const columns = [
+		{
+			column: 'id_cliente',
+			header: 'ID',
+		},
+		{
+			column: 'nombre_cli',
+			header: 'Nombre',
+		},
+		{
+			column: 'cedula',
+			header: 'Cedula',
+		},
+		{
+			column: 'genero',
+			header: 'Género',
+		},
+		{
+			column: 'edad',
+			header: 'Edad',
+		},
+	]
 	const actions = [
 		{
 			label: 'Nuevo',
@@ -150,7 +170,6 @@ function Clients() {
 			<PageSchema
 				title={title}
 				columns={columns}
-				columnsDisplay={columnsDisplay}
 				data={Array.isArray(clients) ? clients : []}
 				actions={actions}
 				activeModal={handleModal}

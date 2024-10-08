@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 function PageSchema({
 	title,
 	columns,
-	columnsDisplay,
 	data,
 	actions,
 	activeModal,
@@ -59,8 +58,8 @@ function PageSchema({
 						<table>
 							<thead>
 								<tr>
-									{columnsDisplay.map((column, index) => (
-										<th key={index}>{column}</th>
+									{columns.map((column, index) => (
+										<th key={index}>{column.header}</th>
 									))}
 								</tr>
 							</thead>
@@ -80,7 +79,7 @@ function PageSchema({
 											}}
 										>
 											{columns.map((column, colIndex) => (
-												<td key={colIndex}>{row[column.toLowerCase()]}</td>
+												<td key={colIndex}>{row[column.column]}</td>
 											))}
 										</tr>
 									))

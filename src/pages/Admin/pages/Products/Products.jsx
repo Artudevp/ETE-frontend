@@ -12,13 +12,27 @@ function Products() {
 		errorModal,
 	} = useProducts()
 	const title = 'Gestión de Productos'
-	const columnsDisplay = ['ID', 'Categoria', 'Nombre', 'Precio', 'Cantidad']
 	const columns = [
-		'id_producto',
-		'categoria',
-		'nombre_p',
-		'precio_p',
-		'cantidad_disponible',
+		{
+			column: 'id_producto',
+			header: 'ID',
+		},
+		{
+			column: 'categoria',
+			header: 'Categoria',
+		},
+		{
+			column: 'nombre_p',
+			header: 'Nombre',
+		},
+		{
+			column: 'precio_p',
+			header: 'Precio',
+		},
+		{
+			column: 'cantidad_disponible',
+			header: 'Cantidad',
+		},
 	]
 	const actions = [
 		{
@@ -155,7 +169,6 @@ function Products() {
 			<PageSchema
 				title={title}
 				columns={columns}
-				columnsDisplay={columnsDisplay}
 				data={Array.isArray(products) ? products : []}
 				actions={actions}
 				activeModal={handleModal}
