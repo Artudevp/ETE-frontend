@@ -1,15 +1,35 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
+import Error from '../../../../components/Error/Error'
 import { useUsers } from '../../../../context/UsersContext'
 import { useState } from 'react'
 
 function Users() {
-	const { users, handleSetUsers, handleUpdateUser, handleDeleteUser } =
-		useUsers()
+	const {
+		users,
+		handleSetUsers,
+		handleUpdateUser,
+		handleDeleteUser,
+		errorModal,
+	} = useUsers()
+
 	const title = 'Gestión de Usuarios'
 	const columnsDisplay = ['ID', 'Nombre', 'Correo', 'Contraseña']
 	const columns = ['id_usuario', 'nombre', 'correo', 'contraseña']
-	const actions = ['Nuevo', 'Editar', 'Eliminar']
+	const actions = [
+		{
+			label: 'Nuevo',
+			icon: 'pi pi-fw pi-user-plus',
+		},
+		{
+			label: 'Editar',
+			icon: 'pi pi-fw pi-user-edit',
+		},
+		{
+			label: 'Eliminar',
+			icon: 'pi pi-fw pi-user-minus',
+		},
+	]
 	const contentModalState = {
 		title: '',
 		button: '',
@@ -130,6 +150,7 @@ function Users() {
 				setData={handleUsers}
 				rowSelected={userSelected}
 			/>
+			<Error error={errorModal} />
 		</>
 	)
 }

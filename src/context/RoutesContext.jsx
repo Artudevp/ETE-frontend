@@ -19,6 +19,7 @@ export const RoutesProvider = ({ children }) => {
 		handleSetEntity: handleSetRoutes,
 		handleUpdateEntity: handleUpdateRoute,
 		handleDeleteEntity: handleDeleteRoute,
+		errorModal,
 	} = useEntityManagement(getRoutes, addRoute, updateRoute, deleteRoute, 'ruta')
 	return (
 		<RoutesContext.Provider
@@ -27,6 +28,7 @@ export const RoutesProvider = ({ children }) => {
 				handleSetRoutes,
 				handleUpdateRoute,
 				handleDeleteRoute,
+				errorModal,
 			}}
 		>
 			{children}

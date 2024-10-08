@@ -1,20 +1,15 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
 import { useProducts } from '../../../../context/ProductsContext'
-import {
-	getProducts,
-	addProduct,
-	updateProduct,
-	deleteProduct,
-} from '../../../../services/Productos'
-import { useState, useEffect } from 'react'
-
+import { useState } from 'react'
+import Error from '../../../../components/Error/Error'
 function Products() {
 	const {
 		products,
 		handleSetProducts,
 		handleUpdateProduct,
 		handleDeleteProduct,
+		errorModal,
 	} = useProducts()
 	const title = 'Gestión de Productos'
 	const columnsDisplay = ['ID', 'Categoria', 'Nombre', 'Precio', 'Cantidad']
@@ -25,7 +20,20 @@ function Products() {
 		'precio_p',
 		'cantidad_disponible',
 	]
-	const actions = ['Nuevo', 'Editar', 'Eliminar']
+	const actions = [
+		{
+			label: 'Nuevo',
+			icon: 'pi pi-fw pi-plus',
+		},
+		{
+			label: 'Editar',
+			icon: 'pi pi-fw pi-pencil',
+		},
+		{
+			label: 'Eliminar',
+			icon: 'pi pi-fw pi-trash',
+		},
+	]
 	const contentModalState = {
 		title: '',
 		button: '',
@@ -161,6 +169,7 @@ function Products() {
 				setData={handleProducts}
 				rowSelected={productSelected}
 			/>
+			<Error error={errorModal} />
 		</>
 	)
 }

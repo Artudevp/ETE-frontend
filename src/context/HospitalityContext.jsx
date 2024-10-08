@@ -19,6 +19,7 @@ export const HospitalityProvider = ({ children }) => {
 		handleSetEntity: handleSetHospitality,
 		handleUpdateEntity: handleUpdateHospitality,
 		handleDeleteEntity: handleDeleteHospitality,
+		errorModal,
 	} = useEntityManagement(
 		getHospitality,
 		addHospitality,
@@ -34,6 +35,7 @@ export const HospitalityProvider = ({ children }) => {
 				handleSetHospitality,
 				handleUpdateHospitality,
 				handleDeleteHospitality,
+				errorModal,
 			}}
 		>
 			{children}

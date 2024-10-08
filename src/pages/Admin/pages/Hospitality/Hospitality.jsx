@@ -1,5 +1,6 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
+import Error from '../../../../components/Error/Error'
 import { useHospitality } from '../../../../context/HospitalityContext'
 import { useState } from 'react'
 
@@ -9,6 +10,7 @@ function Hospitality() {
 		handleSetHospitality,
 		handleUpdateHospitality,
 		handleDeleteHospitality,
+		errorModal,
 	} = useHospitality()
 	const title = 'Gestión de Hospedaje'
 	const columnsDisplay = ['ID', 'Tipo', 'Capacidad', 'Disponibilidad', 'Precio']
@@ -19,7 +21,20 @@ function Hospitality() {
 		'disponibilidad',
 		'precio_hab',
 	]
-	const actions = ['Nuevo', 'Editar', 'Eliminar']
+	const actions = [
+		{
+			label: 'Nuevo',
+			icon: 'pi pi-fw pi-plus',
+		},
+		{
+			label: 'Editar',
+			icon: 'pi pi-fw pi-pencil',
+		},
+		{
+			label: 'Eliminar',
+			icon: 'pi pi-fw pi-trash',
+		},
+	]
 	const contentModalState = {
 		title: '',
 		button: '',
@@ -157,6 +172,7 @@ function Hospitality() {
 				setData={handleHospitality}
 				rowSelected={hospitalitySelected}
 			/>
+			<Error error={errorModal} />
 		</>
 	)
 }

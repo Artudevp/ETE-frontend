@@ -1,15 +1,33 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
+import Error from '../../../../components/Error/Error'
 import { useClients } from '../../../../context/ClientsContext'
 import { useState } from 'react'
-
 function Clients() {
-	const { clients, handleSetClients, handleUpdateClient, handleDeleteClient } =
-		useClients()
+	const {
+		clients,
+		handleSetClients,
+		handleUpdateClient,
+		handleDeleteClient,
+		errorModal,
+	} = useClients()
 	const title = 'Gestión de Clientes'
 	const columnsDisplay = ['ID', 'Nombre', 'Cedula', 'Género', 'Edad']
 	const columns = ['id_cliente', 'nombre_cli', 'cedula', 'genero', 'edad']
-	const actions = ['Nuevo', 'Editar', 'Eliminar']
+	const actions = [
+		{
+			label: 'Nuevo',
+			icon: 'pi pi-fw pi-user-plus',
+		},
+		{
+			label: 'Editar',
+			icon: 'pi pi-fw pi-user-edit',
+		},
+		{
+			label: 'Eliminar',
+			icon: 'pi pi-fw pi-user-minus',
+		},
+	]
 	const contentModalState = {
 		title: '',
 		button: '',
@@ -146,6 +164,7 @@ function Clients() {
 				setData={handleClients}
 				rowSelected={clientSelected}
 			/>
+			<Error error={errorModal} />
 		</>
 	)
 }

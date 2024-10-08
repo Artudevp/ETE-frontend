@@ -37,17 +37,36 @@
 	gap: 15px;
 }
 
-.modalFormInputs input {
+.modalFormInput input {
 	padding: 10px;
 	border-radius: 5px;
 	border: 1px solid #000;
-	background-color: #1d1e27;
+	background-color: transparent;
 	color: #fff;
 	font-size: 16px;
 }
 
-.modalForm input::placeholder {
-	color: #fff;
+.modalFormInput {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	gap: 5px;
+}
+
+.modalFormInput label {
+	position: absolute;
+	top: 25%;
+	left: 10px;
+	pointer-events: none;
+	background-color: #282936;
+	padding: 0 3px;
+	transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modalFormInput label.active {
+	top: -10px;
+	left: 10px;
+	transform: scale(0.8);
 }
 
 .modalFormButtons button {
