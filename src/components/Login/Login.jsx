@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import Style from './Login.module.css'
 import { Link } from 'react-router-dom'
 
@@ -62,6 +63,10 @@ function Login({ active }) {
 			</div>
 		</div>
 	)
+}
+
+Login.propTypes = {
+	active: PropTypes.bool,
 }
 
 export default Login

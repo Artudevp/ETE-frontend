@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Style from './Register.module.css'
+import PropTypes from 'prop-types'
 
 function Register({ active }) {
 	return (
@@ -66,6 +67,10 @@ function Register({ active }) {
 			</div>
 		</div>
 	)
+}
+
+Register.propTypes = {
+	active: PropTypes.bool,
 }
 
 export default Register

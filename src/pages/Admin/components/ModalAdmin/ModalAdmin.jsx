@@ -1,6 +1,7 @@
 import Styles from './ModalAdmin.module.css'
 import { IoCloseOutline } from 'react-icons/io5'
 import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 function ModalAdmin({ active, setActive, setData, content, rowSelected }) {
 	const [form, setForm] = useState({})
@@ -79,6 +80,18 @@ function ModalAdmin({ active, setActive, setData, content, rowSelected }) {
 			</div>
 		</div>
 	)
+}
+
+ModalAdmin.propTypes = {
+	active: PropTypes.bool,
+	setActive: PropTypes.func,
+	setData: PropTypes.func,
+	content: PropTypes.shape({
+		title: PropTypes.string,
+		button: PropTypes.string,
+		inputs: PropTypes.array,
+	}),
+	rowSelected: PropTypes.object,
 }
 
 export default ModalAdmin

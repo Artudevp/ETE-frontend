@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Styles from './Error.module.css'
 import { IoIosArrowDown } from 'react-icons/io'
+import PropTypes from 'prop-types'
 
 function Error({ error }) {
 	const { message, details } = error
@@ -56,6 +57,13 @@ function Error({ error }) {
 			</div>
 		</div>
 	)
+}
+
+Error.propTypes = {
+	Error: PropTypes.shape({
+		message: PropTypes.string,
+		details: PropTypes.string,
+	}),
 }
 
 export default Error
