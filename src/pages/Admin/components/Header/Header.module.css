@@ -3,6 +3,7 @@
 	border: 1px solid #3e4053;
 	border-radius: 12px;
 	background: #333544;
+	padding: 6px 32px;
 }
 
 .items {
@@ -11,8 +12,8 @@
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 12px 32px;
-	padding: 6px 32px;
 	list-style: none;
+	position: relative;
 }
 
 .item {
@@ -31,4 +32,11 @@
 
 .itemInactive {
 	background-color: transparent;
+}
+
+@media (min-width: 1186px) {
+	.items > li:last-child {
+		position: absolute;
+		right: 0;
+	}
 }

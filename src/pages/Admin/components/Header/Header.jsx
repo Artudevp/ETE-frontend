@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import Style from './Header.module.css'
 
 function Header() {
@@ -63,6 +63,12 @@ function Header() {
 							</NavLink>
 						</li>
 					))}
+					<li>
+						<Link to='/' className={Style.item}>
+							<i className='pi pi-fw pi-sign-out' />
+							Salir
+						</Link>
+					</li>
 				</ul>
 			</nav>
 		</header>
