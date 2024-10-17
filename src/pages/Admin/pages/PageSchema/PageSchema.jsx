@@ -1,5 +1,6 @@
 import Styles from './PageSchema.module.css'
-import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { useState } from 'react'
 
 function PageSchema({
 	title,
@@ -134,6 +135,22 @@ function PageSchema({
 			</section>
 		</main>
 	)
+}
+
+PageSchema.proptypes = {
+	title: PropTypes.string,
+	columns: PropTypes.shape({
+		column: PropTypes.string,
+		header: PropTypes.string,
+	}),
+	data: PropTypes.array,
+	actions: PropTypes.arrayOf({
+		label: PropTypes.string,
+		icon: PropTypes.string,
+	}),
+	activeModal: PropTypes.func,
+	handleRowClick: PropTypes.func,
+	dataInitialState: PropTypes.object,
 }
 
 export default PageSchema

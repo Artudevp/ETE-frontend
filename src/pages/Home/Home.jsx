@@ -5,6 +5,7 @@ import imgPlan from '../../assets/imgPlan.jpg'
 import Login from '../../components/Login/Login'
 import Register from '../../components/Register/Register'
 import Header from '../../components/Header/Header'
+import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 
 function Home({ login, register }) {
@@ -49,9 +50,7 @@ function Home({ login, register }) {
 							¡Conoce tu próximo destino para disfrutar en familia!
 						</h1>
 						<div className={Style.arrowBox}>
-							<a className='text-2xl' href='#content'>
-								Ver más
-							</a>
+							<a href='#content'>Ver más</a>
 							<svg
 								className={Style.arrow}
 								xmlns='http://www.w3.org/2000/svg'
@@ -108,6 +107,16 @@ function Home({ login, register }) {
 			<Register active={activeRegister} />
 		</>
 	)
+}
+
+Home.propTypes = {
+	login: PropTypes.bool,
+	register: PropTypes.bool,
+}
+
+Home.defaultProps = {
+	login: false,
+	register: false,
 }
 
 export default Home
