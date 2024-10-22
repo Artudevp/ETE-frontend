@@ -1,54 +1,49 @@
+import axiosInstancie from './axiosInstancie'
+
 const getUsers = async () => {
-	const response = await fetch('http://localhost:8080/usuarios')
-	if (!response.ok) {
-		throw new Error(`HTTP error! status: ${response.status}`)
+	try {
+		const response = await axiosInstancie.get('/usuarios')
+		return response.data
+	} catch (error) {
+		throw new Error(
+			`HTTP error! status: ${error.request.status}, message: ${error.message}`,
+		)
 	}
-	const text = await response.text()
-	return text ? JSON.parse(text) : []
 }
 
 const addUser = async user => {
-	const response = await fetch('http://localhost:8080/usuarios', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(user),
-	})
-	if (!response.ok) {
-		throw new Error(`HTTP error! status: ${response.status}`)
+	try {
+		const response = await axiosInstancie.post('/usuarios', user)
+		return response.data
+	} catch (error) {
+		throw new Error(
+			`HTTP error! status: ${error.request.status}, message: ${error.message}`,
+		)
 	}
-	const text = await response.text()
-	return text ? JSON.parse(text) : {}
 }
 
 const updateUser = async user => {
-	const response = await fetch(
-		`http://localhost:8080/usuarios/${user.id_usuario}`,
-		{
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(user),
-		},
-	)
-	if (!response.ok) {
-		throw new Error(`HTTP error! status: ${response.status}`)
+	try {
+		const response = await axiosInstancie.put(
+			`/usuarios/${user.id_usuario}`,
+			user,
+		)
+		return response.data
+	} catch (error) {
+		throw new Error(
+			`HTTP error! status: ${error.request.status}, message: ${error.message}`,
+		)
 	}
-	const text = await response.text()
-	return text ? JSON.parse(text) : {}
 }
 
 const deleteUser = async id => {
-	const response = await fetch(`http://localhost:8080/usuarios/${id}`, {
-		method: 'DELETE',
-	})
-	if (!response.ok) {
-		throw new Error(`HTTP error! status: ${response.status}`)
+	try {
+		await axiosInstancie.delete(`/usuarios/${id}`)
+	} catch (error) {
+		throw new Error(
+			`HTTP error! status: ${error.request.status}, message: ${error.message}`,
+		)
 	}
-	const text = await response.text()
-	return text ? JSON.parse(text) : {}
 }
 
 export { getUsers, addUser, updateUser, deleteUser }

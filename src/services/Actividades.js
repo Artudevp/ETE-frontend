@@ -1,54 +1,49 @@
+import axiosInstancie from './axiosInstancie'
+
 const getActivities = async () => {
-	const response = await fetch('http://localhost:8080/actividades')
-	if (!response.ok) {
-		throw new Error(`HTTP error! status: ${response.status}`)
+	try {
+		const response = await axiosInstancie.get('/actividades')
+		return response.data
+	} catch (error) {
+		throw new Error(
+			`HTTP error! status: ${error.request.status}, message: ${error.message}`,
+		)
 	}
-	const text = await response.text()
-	return text ? JSON.parse(text) : []
 }
 
 const addActivity = async activity => {
-	const response = await fetch('http://localhost:8080/actividades', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(activity),
-	})
-	if (!response.ok) {
-		throw new Error(`HTTP error! status: ${response.status}`)
+	try {
+		const response = await axiosInstancie.post('/actividades', activity)
+		return response.data
+	} catch (error) {
+		throw new Error(
+			`HTTP error! status: ${error.request.status}, message: ${error.message}`,
+		)
 	}
-	const text = await response.text()
-	return text ? JSON.parse(text) : {}
 }
 
 const updateActivity = async activity => {
-	const response = await fetch(
-		`http://localhost:8080/actividades/${activity.id_actividad}`,
-		{
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(activity),
-		},
-	)
-	if (!response.ok) {
-		throw new Error(`HTTP error! status: ${response.status}`)
+	try {
+		const response = await axiosInstancie.put(
+			`/actividades/${activity.id_actividad}`,
+			activity,
+		)
+		return response.data
+	} catch (error) {
+		throw new Error(
+			`HTTP error! status: ${error.request.status}, message: ${error.message}`,
+		)
 	}
-	const text = await response.text()
-	return text ? JSON.parse(text) : {}
 }
 
 const deleteActivity = async id => {
-	const response = await fetch(`http://localhost:8080/actividades/${id}`, {
-		method: 'DELETE',
-	})
-	if (!response.ok) {
-		throw new Error(`HTTP error! status: ${response.status}`)
+	try {
+		await axiosInstancie.delete(`/actividades/${id}`)
+	} catch (error) {
+		throw new Error(
+			`HTTP error! status: ${error.request.status}, message: ${error.message}`,
+		)
 	}
-	const text = await response.text()
-	return text ? JSON.parse(text) : {}
 }
 
 export { getActivities, addActivity, updateActivity, deleteActivity }
