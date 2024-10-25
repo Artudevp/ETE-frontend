@@ -8,6 +8,7 @@ import Activities from './pages/Activities/Activities'
 import RoutesAdmin from './pages/Routes/Routes'
 import Hospitality from './pages/Hospitality/Hospitality'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { CombinedContextProvider } from '../../context/CombinedContextProvider'
 
 const routes = [
 	{ path: 'home', element: <Home /> },
@@ -24,12 +25,18 @@ function AdminRoutes() {
 		<div className={Style.main}>
 			<Header />
 			<div className={Style.content}>
-				<Routes>
-					<Route path='/' element={<Navigate to='home' />} />
-					{routes.map(route => (
-						<Route key={route.path} path={route.path} element={route.element} />
-					))}
-				</Routes>
+				<CombinedContextProvider>
+					<Routes>
+						<Route path='/' element={<Navigate to='home' />} />
+						{routes.map(route => (
+							<Route
+								key={route.path}
+								path={route.path}
+								element={route.element}
+							/>
+						))}
+					</Routes>
+				</CombinedContextProvider>
 			</div>
 		</div>
 	)
