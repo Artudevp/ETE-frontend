@@ -114,9 +114,4 @@ Home.propTypes = {
 	register: PropTypes.bool,
 }
 
-Home.defaultProps = {
-	login: false,
-	register: false,
-}
-
 export default Home
