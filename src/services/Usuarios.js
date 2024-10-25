@@ -1,8 +1,8 @@
-import axiosInstancie from './axiosInstancie'
+import axiosInstance from './axiosInstance'
 
 const getUsers = async () => {
 	try {
-		const response = await axiosInstancie.get('/usuarios')
+		const response = await axiosInstance.get('/users')
 		return response.data
 	} catch (error) {
 		throw new Error(
@@ -13,7 +13,7 @@ const getUsers = async () => {
 
 const addUser = async user => {
 	try {
-		const response = await axiosInstancie.post('/usuarios', user)
+		const response = await axiosInstance.post('/usuarios', user)
 		return response.data
 	} catch (error) {
 		throw new Error(
@@ -24,7 +24,7 @@ const addUser = async user => {
 
 const updateUser = async user => {
 	try {
-		const response = await axiosInstancie.put(
+		const response = await axiosInstance.put(
 			`/usuarios/${user.id_usuario}`,
 			user,
 		)
@@ -38,7 +38,7 @@ const updateUser = async user => {
 
 const deleteUser = async id => {
 	try {
-		await axiosInstancie.delete(`/usuarios/${id}`)
+		await axiosInstance.delete(`/usuarios/${id}`)
 	} catch (error) {
 		throw new Error(
 			`HTTP error! status: ${error.request.status}, message: ${error.message}`,

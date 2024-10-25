@@ -1,8 +1,8 @@
-import axiosInstancie from './axiosInstancie'
+import axiosInstance from './axiosInstance'
 
 const getHospitality = async () => {
 	try {
-		const response = await axiosInstancie.get('/hospedajes')
+		const response = await axiosInstance.get('/hospedajes')
 		return response.data
 	} catch (error) {
 		throw new Error(
@@ -13,7 +13,7 @@ const getHospitality = async () => {
 
 const addHospitality = async hospedaje => {
 	try {
-		const response = await axiosInstancie.post('/hospedajes', hospedaje)
+		const response = await axiosInstance.post('/hospedajes', hospedaje)
 		return response.data
 	} catch (error) {
 		throw new Error(
@@ -24,7 +24,7 @@ const addHospitality = async hospedaje => {
 
 const updateHospitality = async hospedaje => {
 	try {
-		const response = await axiosInstancie.put(
+		const response = await axiosInstance.put(
 			`/hospedajes/${hospedaje.id_hospedaje}`,
 			hospedaje,
 		)
@@ -38,7 +38,7 @@ const updateHospitality = async hospedaje => {
 
 const deleteHospitality = async id => {
 	try {
-		await axiosInstancie.delete(`/hospedajes/${id}`)
+		await axiosInstance.delete(`/hospedajes/${id}`)
 	} catch (error) {
 		throw new Error(
 			`HTTP error! status: ${error.request.status}, message: ${error.message}`,
