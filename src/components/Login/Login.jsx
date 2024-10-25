@@ -1,11 +1,26 @@
 import PropTypes from 'prop-types'
 import Style from './Login.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import loginService from '../../services/LogIn'
 
 function Login({ active }) {
-	const onSubmit = e => {
+	const [username, setUsername] = useState('')
+	const [password, setPassword] = useState('')
+	const navigate = useNavigate()
+
+	const onSubmit = async e => {
 		e.preventDefault()
-		window.location = '/user/dashboard'
+		try {
+			const role = await loginService(username, password) // Obtener el rol del login
+			if (role === 'ROLE_ADMIN') {
+				navigate('/admin/dashboard')
+			} else if (role === 'ROLE_USER') {
+				navigate('/user/dashboard')
+			}
+		} catch (error) {
+			alert('Error en el inicio de sesión. Verifique sus credenciales.')
+		}
 	}
 
 	return (
@@ -21,12 +36,24 @@ function Login({ active }) {
 				<h1>Iniciar Sesión</h1>
 				<form noValidate id='formLogin' className={Style.formLogin}>
 					<div className={Style.label}>
-						<label htmlFor='emailLogin'>Correo electrónico</label>
-						<input type='email' name='emailLogin' id='emailLogin' />
+						<label htmlFor='usernameLogin'>Nombre de usuario</label>
+						<input
+							type='text'
+							name='usernameLogin'
+							id='usernameLogin'
+							onChange={e => setUsername(e.target.value)}
+							required
+						/>
 					</div>
 					<div className={Style.label}>
 						<label htmlFor='passwordLogin'>Contraseña</label>
-						<input type='password' name='passwordLogin' id='passwordLogin' />
+						<input
+							type='password'
+							name='passwordLogin'
+							id='passwordLogin'
+							onChange={e => setPassword(e.target.value)}
+							required
+						/>
 					</div>
 					<div className={Style.boxButton}>
 						<button
