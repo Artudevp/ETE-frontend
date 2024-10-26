@@ -1,26 +1,22 @@
 import PropTypes from 'prop-types'
 import Style from './Login.module.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import loginService from '../../services/LogIn'
+import useRoleManagement from '../../hooks/useRoleManagement'
 
 function Login({ active }) {
-	const [username, setUsername] = useState('')
+	const { handleRole } = useRoleManagement()
+	const [userName, setUserName] = useState('')
 	const [password, setPassword] = useState('')
-	const navigate = useNavigate()
 
 	const onSubmit = async e => {
 		e.preventDefault()
-		try {
-			const role = await loginService(username, password) // Obtener el rol del login
-			if (role === 'ROLE_ADMIN') {
-				navigate('/admin/dashboard')
-			} else if (role === 'ROLE_USER') {
-				navigate('/user/dashboard')
-			}
-		} catch (error) {
-			alert('Error en el inicio de sesión. Verifique sus credenciales.')
-		}
+		await handleRole({
+			sesionFunction: loginService,
+			userName,
+			password,
+		})
 	}
 
 	return (
@@ -41,7 +37,7 @@ function Login({ active }) {
 							type='text'
 							name='usernameLogin'
 							id='usernameLogin'
-							onChange={e => setUsername(e.target.value)}
+							onChange={e => setUserName(e.target.value)}
 							required
 						/>
 					</div>

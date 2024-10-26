@@ -1,35 +1,28 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Style from './Register.module.css'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import registerService from '../../services/Register'
+import useRoleManagement from '../../hooks/useRoleManagement'
 
 function Register({ active }) {
+	const { handleRole } = useRoleManagement()
 	const [userName, setUserName] = useState('')
 	const [firstName, setFirstName] = useState('')
 	const [lastName, setLastName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
-	const navigate = useNavigate()
 
 	const onSubmit = async e => {
 		e.preventDefault()
-		try {
-			const role = await registerService(
-				userName,
-				email,
-				password,
-				firstName,
-				lastName,
-			)
-			if (role === 'ROLE_ADMIN') {
-				navigate('/admin/dashboard')
-			} else if (role === 'ROLE_USER') {
-				navigate('/user/dashboard')
-			}
-		} catch (error) {
-			alert('Error en el inicio de sesión. Verifique sus credenciales.')
-		}
+		await handleRole({
+			sesionFunction: registerService,
+			userName,
+			password,
+			email,
+			firstName,
+			lastName,
+		})
 	}
 
 	return (
