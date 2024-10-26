@@ -3,8 +3,8 @@ import { jwtDecode } from 'jwt-decode'
 
 const registerService = async (
 	username,
-	correo,
 	contraseña,
+	correo,
 	nombre,
 	apellido,
 ) => {
