@@ -1,8 +1,37 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Style from './Register.module.css'
 import PropTypes from 'prop-types'
+import { useState } from 'react'
+import registerService from '../../services/Register'
 
 function Register({ active }) {
+	const [userName, setUserName] = useState('')
+	const [firstName, setFirstName] = useState('')
+	const [lastName, setLastName] = useState('')
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const navigate = useNavigate()
+
+	const onSubmit = async e => {
+		e.preventDefault()
+		try {
+			const role = await registerService(
+				userName,
+				email,
+				password,
+				firstName,
+				lastName,
+			)
+			if (role === 'ROLE_ADMIN') {
+				navigate('/admin/dashboard')
+			} else if (role === 'ROLE_USER') {
+				navigate('/user/dashboard')
+			}
+		} catch (error) {
+			alert('Error en el inicio de sesión. Verifique sus credenciales.')
+		}
+	}
+
 	return (
 		<div
 			className={Style.modalRegister}
@@ -21,12 +50,40 @@ function Register({ active }) {
 					className={Style.formRegister}
 				>
 					<div className={Style.label}>
-						<label htmlFor='nameRegister'>Nombre completo</label>
-						<input type='text' name='nameRegister' id='nameRegister' />
+						<label htmlFor='firstNameRegister'>Nombres</label>
+						<input
+							type='text'
+							name='firstNameRegister'
+							id='firstNameRegister'
+							onChange={e => setFirstName(e.target.value)}
+						/>
+					</div>
+					<div className={Style.label}>
+						<label htmlFor='lastNameRegister'>Apellidos</label>
+						<input
+							type='text'
+							name='lastNameRegister'
+							id='lastNameRegister'
+							onChange={e => setLastName(e.target.value)}
+						/>
+					</div>
+					<div className={Style.label}>
+						<label htmlFor='usernameRegister'>Nombre de usuario</label>
+						<input
+							type='text'
+							name='usernameRegister'
+							id='usernameRegister'
+							onChange={e => setUserName(e.target.value)}
+						/>
 					</div>
 					<div className={Style.label}>
 						<label htmlFor='emailRegister'>Correo electrónico</label>
-						<input type='email' name='emailRegister' id='emailRegister' />
+						<input
+							type='email'
+							name='emailRegister'
+							id='emailRegister'
+							onChange={e => setEmail(e.target.value)}
+						/>
 					</div>
 					<div className={Style.label}>
 						<label htmlFor='passwordRegister'>Contraseña</label>
@@ -34,10 +91,15 @@ function Register({ active }) {
 							type='password'
 							name='passwordRegister'
 							id='passwordRegister'
+							onChange={e => setPassword(e.target.value)}
 						/>
 					</div>
 					<div className={Style.boxButton}>
-						<button id='botonEnviarRegistro' type='submit'>
+						<button
+							id='botonEnviarRegistro'
+							type='submit'
+							onClick={e => onSubmit(e)}
+						>
 							Crear cuenta
 						</button>
 					</div>
