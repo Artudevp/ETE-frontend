@@ -2,7 +2,6 @@ import axios from 'axios'
 import { jwtDecode } from 'jwt-decode'
 
 const loginService = async (username, contraseña) => {
-	console.log({ username, contraseña })
 	try {
 		const response = await axios.post('http://localhost:8080/auth/login', {
 			username,
