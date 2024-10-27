@@ -88,12 +88,6 @@
 	padding: 0 1.5rem;
 }
 
-.section > img {
-	height: 20rem;
-	border-radius: 1rem;
-	object-fit: cover;
-}
-
 .sectionContent {
 	display: grid;
 	gap: 0.5rem;
@@ -125,10 +119,6 @@
 	.section {
 		flex-direction: row;
 		gap: 2.5rem;
-	}
-
-	.section > img {
-		max-width: 36rem;
 	}
 
 	.section:nth-child(odd) {

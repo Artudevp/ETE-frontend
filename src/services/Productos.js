@@ -1,8 +1,8 @@
-import axiosInstancie from './axiosInstancie'
+import axiosInstance from './axiosInstance'
 
 const getProducts = async () => {
 	try {
-		const response = await axiosInstancie.get('/productos')
+		const response = await axiosInstance.get('/productos')
 		return response.data
 	} catch (error) {
 		throw new Error(
@@ -13,7 +13,7 @@ const getProducts = async () => {
 
 const addProduct = async product => {
 	try {
-		const response = await axiosInstancie.post('/productos', product)
+		const response = await axiosInstance.post('/productos', product)
 		return response.data
 	} catch (error) {
 		throw new Error(
@@ -24,7 +24,7 @@ const addProduct = async product => {
 
 const updateProduct = async product => {
 	try {
-		const response = await axiosInstancie.put(
+		const response = await axiosInstance.put(
 			`/productos/${product.id_producto}`,
 			product,
 		)
@@ -38,7 +38,7 @@ const updateProduct = async product => {
 
 const deleteProduct = async id => {
 	try {
-		await axiosInstancie.delete(`/productos/${id}`)
+		await axiosInstance.delete(`/productos/${id}`)
 	} catch (error) {
 		throw new Error(
 			`HTTP error! status: ${error.request.status}, message: ${error.message}`,

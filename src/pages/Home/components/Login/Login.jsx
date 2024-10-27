@@ -1,11 +1,22 @@
 import PropTypes from 'prop-types'
 import Style from './Login.module.css'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import loginService from '../../../../services/LogIn'
+import useRoleManagement from '../../../../hooks/useRoleManagement'
 
 function Login({ active }) {
-	const onSubmit = e => {
+	const { handleRole } = useRoleManagement()
+	const [userName, setUserName] = useState('')
+	const [password, setPassword] = useState('')
+
+	const onSubmit = async e => {
 		e.preventDefault()
-		window.location = '/user/dashboard'
+		await handleRole({
+			sesionFunction: loginService,
+			userName,
+			password,
+		})
 	}
 
 	return (
@@ -21,12 +32,24 @@ function Login({ active }) {
 				<h1>Iniciar Sesión</h1>
 				<form noValidate id='formLogin' className={Style.formLogin}>
 					<div className={Style.label}>
-						<label htmlFor='emailLogin'>Correo electrónico</label>
-						<input type='email' name='emailLogin' id='emailLogin' />
+						<label htmlFor='usernameLogin'>Nombre de usuario</label>
+						<input
+							type='text'
+							name='usernameLogin'
+							id='usernameLogin'
+							onChange={e => setUserName(e.target.value)}
+							required
+						/>
 					</div>
 					<div className={Style.label}>
 						<label htmlFor='passwordLogin'>Contraseña</label>
-						<input type='password' name='passwordLogin' id='passwordLogin' />
+						<input
+							type='password'
+							name='passwordLogin'
+							id='passwordLogin'
+							onChange={e => setPassword(e.target.value)}
+							required
+						/>
 					</div>
 					<div className={Style.boxButton}>
 						<button
@@ -41,7 +64,6 @@ function Login({ active }) {
 				<div className={Style.links}>
 					<a href='#'>¿Olvidó sus credenciales?</a>
 					<Link to='/register'>¿Eres nuevo? Crea una cuenta ahora mismo!</Link>
-					<Link to='/admin/dashboard'>Admin</Link>
 				</div>
 				<Link to='/' className={Style.buttonExit}>
 					<svg

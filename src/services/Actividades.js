@@ -1,8 +1,8 @@
-import axiosInstancie from './axiosInstancie'
+import axiosInstance from './axiosInstance'
 
 const getActivities = async () => {
 	try {
-		const response = await axiosInstancie.get('/actividades')
+		const response = await axiosInstance.get('/actividades')
 		return response.data
 	} catch (error) {
 		throw new Error(
@@ -13,7 +13,7 @@ const getActivities = async () => {
 
 const addActivity = async activity => {
 	try {
-		const response = await axiosInstancie.post('/actividades', activity)
+		const response = await axiosInstance.post('/actividades', activity)
 		return response.data
 	} catch (error) {
 		throw new Error(
@@ -24,7 +24,7 @@ const addActivity = async activity => {
 
 const updateActivity = async activity => {
 	try {
-		const response = await axiosInstancie.put(
+		const response = await axiosInstance.put(
 			`/actividades/${activity.id_actividad}`,
 			activity,
 		)
@@ -38,7 +38,7 @@ const updateActivity = async activity => {
 
 const deleteActivity = async id => {
 	try {
-		await axiosInstancie.delete(`/actividades/${id}`)
+		await axiosInstance.delete(`/actividades/${id}`)
 	} catch (error) {
 		throw new Error(
 			`HTTP error! status: ${error.request.status}, message: ${error.message}`,

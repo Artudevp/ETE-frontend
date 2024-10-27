@@ -1,4 +1,4 @@
-.modalLogin {
+.modalRegister {
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -18,7 +18,7 @@
 	margin: 0 1.25rem;
 	display: flex;
 	width: 100%;
-	max-width: 28rem;
+	max-width: 35rem;
 	flex-direction: column;
 	gap: 1.5rem;
 	border-radius: 6px;
@@ -30,7 +30,8 @@
 .modalContent > img {
 	position: absolute;
 	top: -3rem;
-	left: 40%;
+	left: 50%;
+	transform: translate(-50%);
 	width: 6rem;
 }
 
@@ -40,10 +41,21 @@
 	font-weight: 400;
 }
 
-.formLogin {
+.formRegister {
 	display: flex;
 	flex-direction: column;
 	gap: 1.25rem;
+}
+
+.allLables {
+	display: inline-flex;
+	gap: 1rem;
+	justify-content: center;
+	text-align: left;
+}
+
+.allLables:nth-last-child(2) .label {
+	width: 70%;
 }
 
 .label {
@@ -51,6 +63,7 @@
 	flex-direction: column;
 	align-items: start;
 	gap: 0.25rem;
+	width: 100%;
 }
 
 .label > label {
@@ -91,7 +104,6 @@
 .links {
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
 }
 
 .links > a {
@@ -104,4 +116,25 @@
 	right: 0.75rem;
 	top: 0.75rem;
 	cursor: pointer;
+	color: #fff;
+}
+
+@media (width <= 425px) {
+	.modalContent {
+		gap: 1rem;
+	}
+
+	.formRegister {
+		gap: 1rem;
+	}
+
+	.allLables {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.allLables:nth-last-child(2) .label {
+		width: 100%;
+	}
 }

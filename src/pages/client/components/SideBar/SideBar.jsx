@@ -2,15 +2,20 @@ import { IoBedOutline } from 'react-icons/io5'
 import { CiStar } from 'react-icons/ci'
 import { MdOutlineRoomService } from 'react-icons/md'
 import { IoIosNotificationsOutline } from 'react-icons/io'
-import { IoIosNotifications } from 'react-icons/io'
 import { MdOutlineExitToApp } from 'react-icons/md'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Style from './SideBar.module.css'
 
 function SideBar() {
-	const onClick = () => {
-		window.location = '/'
+	const navigate = useNavigate()
+
+	const handleExit = () => {
+		localStorage.removeItem('token')
+		localStorage.removeItem('role')
+		navigate('/')
+		window.location.reload()
 	}
+
 	return (
 		<nav className={Style.nav}>
 			<ul>
@@ -69,7 +74,7 @@ function SideBar() {
 					</NavLink>
 				</li>
 				<li>
-					<a onClick={onClick}>
+					<a onClick={handleExit}>
 						<MdOutlineExitToApp size='2em' />
 						<p>Salir</p>
 					</a>

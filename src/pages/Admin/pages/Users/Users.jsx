@@ -16,7 +16,7 @@ function Users() {
 	const title = 'Gestión de Usuarios'
 	const columns = [
 		{
-			column: 'id_usuario',
+			column: 'id',
 			header: 'ID',
 		},
 		{
@@ -55,7 +55,7 @@ function Users() {
 		nombre: '',
 		correo: '',
 		contraseña: '',
-		id_usuario: '',
+		id: '',
 	}
 	const [modal, setModal] = useState(false)
 	const [contentModal, setContentModal] = useState(contentModalState)
@@ -120,7 +120,7 @@ function Users() {
 					inputs: [
 						{
 							type: 'text',
-							name: 'id_usuario',
+							name: 'id',
 							placeholder: 'ID',
 						},
 					],
@@ -134,7 +134,7 @@ function Users() {
 		} else if (contentModal.title === 'Editar Usuario') {
 			handleUpdateUser(userData)
 		} else if (contentModal.title === 'Eliminar Usuario') {
-			handleDeleteUser(userData.id_usuario)
+			handleDeleteUser(userData.id)
 		}
 	}
 
@@ -143,7 +143,7 @@ function Users() {
 			nombre: row.nombre || '',
 			correo: row.correo || '',
 			contraseña: row.contraseña || '',
-			id_usuario: row.id_usuario || '',
+			id: row.id || '',
 		})
 	}
 

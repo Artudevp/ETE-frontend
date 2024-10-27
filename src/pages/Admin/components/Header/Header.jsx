@@ -1,7 +1,16 @@
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Style from './Header.module.css'
 
 function Header() {
+	const navigate = useNavigate()
+
+	const handleExit = () => {
+		localStorage.removeItem('token')
+		localStorage.removeItem('role')
+		navigate('/')
+		window.location.reload()
+	}
+
 	const items = [
 		{
 			label: 'Inicio',
@@ -64,10 +73,10 @@ function Header() {
 						</li>
 					))}
 					<li>
-						<Link to='/' className={Style.item}>
+						<button className={Style.exit} onClick={handleExit}>
 							<i className='pi pi-fw pi-sign-out' />
 							Salir
-						</Link>
+						</button>
 					</li>
 				</ul>
 			</nav>
