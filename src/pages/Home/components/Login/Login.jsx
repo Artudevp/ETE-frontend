@@ -64,7 +64,6 @@ function Login({ active }) {
 				<div className={Style.links}>
 					<a href='#'>¿Olvidó sus credenciales?</a>
 					<Link to='/register'>¿Eres nuevo? Crea una cuenta ahora mismo!</Link>
-					<Link to='/admin/dashboard'>Admin</Link>
 				</div>
 				<Link to='/' className={Style.buttonExit}>
 					<svg

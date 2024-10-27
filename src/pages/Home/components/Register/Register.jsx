@@ -42,50 +42,56 @@ function Register({ active }) {
 					action='#'
 					className={Style.formRegister}
 				>
-					<div className={Style.label}>
-						<label htmlFor='firstNameRegister'>Nombres</label>
-						<input
-							type='text'
-							name='firstNameRegister'
-							id='firstNameRegister'
-							onChange={e => setFirstName(e.target.value)}
-						/>
+					<div className={Style.allLables}>
+						<div className={Style.label}>
+							<label htmlFor='firstNameRegister'>Nombres</label>
+							<input
+								type='text'
+								name='firstNameRegister'
+								id='firstNameRegister'
+								onChange={e => setFirstName(e.target.value)}
+							/>
+						</div>
+						<div className={Style.label}>
+							<label htmlFor='lastNameRegister'>Apellidos</label>
+							<input
+								type='text'
+								name='lastNameRegister'
+								id='lastNameRegister'
+								onChange={e => setLastName(e.target.value)}
+							/>
+						</div>
 					</div>
-					<div className={Style.label}>
-						<label htmlFor='lastNameRegister'>Apellidos</label>
-						<input
-							type='text'
-							name='lastNameRegister'
-							id='lastNameRegister'
-							onChange={e => setLastName(e.target.value)}
-						/>
+					<div className={Style.allLables}>
+						<div className={Style.label}>
+							<label htmlFor='usernameRegister'>Nombre de usuario</label>
+							<input
+								type='text'
+								name='usernameRegister'
+								id='usernameRegister'
+								onChange={e => setUserName(e.target.value)}
+							/>
+						</div>
+						<div className={Style.label}>
+							<label htmlFor='emailRegister'>Correo electrónico</label>
+							<input
+								type='email'
+								name='emailRegister'
+								id='emailRegister'
+								onChange={e => setEmail(e.target.value)}
+							/>
+						</div>
 					</div>
-					<div className={Style.label}>
-						<label htmlFor='usernameRegister'>Nombre de usuario</label>
-						<input
-							type='text'
-							name='usernameRegister'
-							id='usernameRegister'
-							onChange={e => setUserName(e.target.value)}
-						/>
-					</div>
-					<div className={Style.label}>
-						<label htmlFor='emailRegister'>Correo electrónico</label>
-						<input
-							type='email'
-							name='emailRegister'
-							id='emailRegister'
-							onChange={e => setEmail(e.target.value)}
-						/>
-					</div>
-					<div className={Style.label}>
-						<label htmlFor='passwordRegister'>Contraseña</label>
-						<input
-							type='password'
-							name='passwordRegister'
-							id='passwordRegister'
-							onChange={e => setPassword(e.target.value)}
-						/>
+					<div className={Style.allLables}>
+						<div className={Style.label}>
+							<label htmlFor='passwordRegister'>Contraseña</label>
+							<input
+								type='password'
+								name='passwordRegister'
+								id='passwordRegister'
+								onChange={e => setPassword(e.target.value)}
+							/>
+						</div>
 					</div>
 					<div className={Style.boxButton}>
 						<button
