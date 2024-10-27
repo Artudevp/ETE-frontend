@@ -2,9 +2,10 @@ import Style from './Home.module.css'
 import imgWelcome from '../../assets/imgWelcome.jpg'
 import imgAtardecer from '../../assets/imgAtardecer.jpg'
 import imgPlan from '../../assets/imgPlan.jpg'
-import Login from '../../components/Login/Login'
-import Register from '../../components/Register/Register'
-import Header from '../../components/Header/Header'
+import Header from './components/Header/Header'
+import Image from './components/Image/Image'
+import Login from './components/Login/Login'
+import Register from './components/Register/Register'
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 
@@ -82,7 +83,13 @@ function Home({ login, register }) {
 							avistamiento de aves y cascadas.
 						</p>
 					</div>
-					<img src={imgAtardecer} alt='Image' width='auto' height='auto' />
+					<Image
+						src={imgAtardecer}
+						alt='Image'
+						width='100%'
+						minWidth='250px'
+						maxWidth='560px'
+					/>
 				</section>
 
 				{/* Section Nuestras Atracciones */}
@@ -96,7 +103,13 @@ function Home({ login, register }) {
 							disfrutes y descanses de tu rutina!
 						</p>
 					</div>
-					<img src={imgPlan} alt='Image-plan' width='auto' height='auto' />
+					<Image
+						src={imgPlan}
+						alt='Image-plan'
+						width='100%'
+						minWidth='250px'
+						maxWidth='560px'
+					/>
 				</section>
 
 				<section className={Style.comingSoon}>
