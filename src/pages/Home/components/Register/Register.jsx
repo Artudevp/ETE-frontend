@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 import Style from './Register.module.css'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
-import registerService from '../../services/Register'
-import useRoleManagement from '../../hooks/useRoleManagement'
+import registerService from '../../../../services/Register'
+import useRoleManagement from '../../../../hooks/useRoleManagement'
 
 function Register({ active }) {
 	const { handleRole } = useRoleManagement()

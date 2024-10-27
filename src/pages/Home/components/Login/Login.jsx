@@ -2,8 +2,8 @@ import PropTypes from 'prop-types'
 import Style from './Login.module.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import loginService from '../../services/LogIn'
-import useRoleManagement from '../../hooks/useRoleManagement'
+import loginService from '../../../../services/LogIn'
+import useRoleManagement from '../../../../hooks/useRoleManagement'
 
 function Login({ active }) {
 	const { handleRole } = useRoleManagement()
