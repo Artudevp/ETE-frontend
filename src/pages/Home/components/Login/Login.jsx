@@ -5,17 +5,25 @@ import { useState } from 'react'
 import loginService from '../../../../services/LogIn'
 import useRoleManagement from '../../../../hooks/useRoleManagement'
 
-function Login({ active }) {
+function Login({ active, handleError }) {
 	const { handleRole } = useRoleManagement()
 	const [userName, setUserName] = useState('')
 	const [password, setPassword] = useState('')
 
 	const onSubmit = async e => {
 		e.preventDefault()
+		if ([userName, password].some(field => field.length === 0))
+			return handleError({
+				error: {
+					message: 'Ingrese las credenciales válidas',
+					details: 'Los campos no pueden estar vacíos',
+				},
+			})
 		await handleRole({
 			sesionFunction: loginService,
 			userName,
 			password,
+			handleError,
 		})
 	}
 
@@ -30,7 +38,7 @@ function Login({ active }) {
 			<div className={Style.modalContent}>
 				<img src='./icon.png' alt='Icon EcoTourExpress' />
 				<h1>Iniciar Sesión</h1>
-				<form noValidate id='formLogin' className={Style.formLogin}>
+				<form id='formLogin' className={Style.formLogin}>
 					<div className={Style.label}>
 						<label htmlFor='usernameLogin'>Nombre de usuario</label>
 						<input
@@ -47,8 +55,8 @@ function Login({ active }) {
 							type='password'
 							name='passwordLogin'
 							id='passwordLogin'
-							onChange={e => setPassword(e.target.value)}
 							required
+							onChange={e => setPassword(e.target.value)}
 						/>
 					</div>
 					<div className={Style.boxButton}>

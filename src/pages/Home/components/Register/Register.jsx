@@ -5,7 +5,7 @@ import { useState } from 'react'
 import registerService from '../../../../services/Register'
 import useRoleManagement from '../../../../hooks/useRoleManagement'
 
-function Register({ active }) {
+function Register({ active, handleError }) {
 	const { handleRole } = useRoleManagement()
 	const [userName, setUserName] = useState('')
 	const [firstName, setFirstName] = useState('')
@@ -15,6 +15,17 @@ function Register({ active }) {
 
 	const onSubmit = async e => {
 		e.preventDefault()
+		if (
+			[userName, firstName, lastName, email, password].some(
+				field => field.length === 0,
+			)
+		)
+			return handleError({
+				error: {
+					message: 'Ingrese las credenciales válidas',
+					details: 'Los campos no pueden estar vacíos',
+				},
+			})
 		await handleRole({
 			sesionFunction: registerService,
 			userName,
@@ -22,6 +33,7 @@ function Register({ active }) {
 			email,
 			firstName,
 			lastName,
+			handleError,
 		})
 	}
 
@@ -36,12 +48,7 @@ function Register({ active }) {
 			<div className={Style.modalContent}>
 				<img src='./icon.png' alt='Icon EcoTourExpress' />
 				<h1>Registro</h1>
-				<form
-					noValidate
-					id='formRegister'
-					action='#'
-					className={Style.formRegister}
-				>
+				<form id='formRegister' className={Style.formRegister}>
 					<div className={Style.allLables}>
 						<div className={Style.label}>
 							<label htmlFor='firstNameRegister'>Nombres</label>
