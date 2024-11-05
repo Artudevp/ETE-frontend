@@ -14,6 +14,9 @@ function Error({ error }) {
 		} else {
 			setActive(false)
 		}
+		return () => {
+			setActive(false)
+		}
 	}, [error])
 
 	const detailsContainerHeaderClasses = `${Styles.detailsContainerHeader} ${
