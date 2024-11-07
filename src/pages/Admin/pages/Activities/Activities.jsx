@@ -1,7 +1,7 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
 import Error from '../../../../components/Error/Error'
-import { useActivities } from '../../../../context/ActivitiesContext'
+import { useActivities } from '../../../../context/AdminProviders'
 import { useState } from 'react'
 
 function Activities() {

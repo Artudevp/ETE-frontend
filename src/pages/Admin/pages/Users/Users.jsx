@@ -1,7 +1,7 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
 import Error from '../../../../components/Error/Error'
-import { useUsers } from '../../../../context/UsersContext'
+import { useUsers } from '../../../../context/AdminProviders'
 import { useState } from 'react'
 
 function Users() {

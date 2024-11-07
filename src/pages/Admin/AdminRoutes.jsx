@@ -9,7 +9,7 @@ import RoutesAdmin from './pages/Routes/Routes'
 import Hospitality from './pages/Hospitality/Hospitality'
 import AddUser from './pages/AddUser/AddUser'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { CombinedContextProvider } from '../../context/CombinedContextProvider'
+import { AdminProvider } from '../../context/AdminProvider'
 
 const routes = [
 	{ path: 'home', element: <Home /> },
@@ -27,7 +27,7 @@ function AdminRoutes() {
 		<div className={Style.main}>
 			<Header />
 			<div className={Style.content}>
-				<CombinedContextProvider>
+				<AdminProvider>
 					<Routes>
 						<Route path='/' element={<Navigate to='home' />} />
 						{routes.map(route => (
@@ -38,7 +38,7 @@ function AdminRoutes() {
 							/>
 						))}
 					</Routes>
-				</CombinedContextProvider>
+				</AdminProvider>
 			</div>
 		</div>
 	)

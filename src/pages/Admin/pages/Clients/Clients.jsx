@@ -1,7 +1,7 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
 import Error from '../../../../components/Error/Error'
-import { useClients } from '../../../../context/ClientsContext'
+import { useClients } from '../../../../context/AdminProviders'
 import { useState } from 'react'
 function Clients() {
 	const {

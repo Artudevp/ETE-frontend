@@ -1,11 +1,11 @@
 import { createContext, useContext } from 'react'
-import useEntityManagement from '../hooks/useEntityManagement'
+import useEntityManagement from '../../hooks/useEntityManagement'
 import {
 	getProducts,
 	addProduct,
 	updateProduct,
 	deleteProduct,
-} from '../services/Productos'
+} from '../../services/Productos'
 
 export const ProductsContext = createContext()
 

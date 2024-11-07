@@ -1,11 +1,11 @@
 import { createContext, useContext } from 'react'
-import useEntityManagement from '../hooks/useEntityManagement'
+import useEntityManagement from '../../hooks/useEntityManagement'
 import {
 	getClients,
 	addClient,
 	updateClient,
 	deleteClient,
-} from '../services/Clientes'
+} from '../../services/Clientes'
 
 export const ClientsContext = createContext()
 
