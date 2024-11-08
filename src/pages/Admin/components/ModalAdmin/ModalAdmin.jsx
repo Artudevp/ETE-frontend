@@ -65,6 +65,7 @@ function ModalAdmin({ active, setActive, setData, content, rowSelected }) {
 									value={form[input.name]}
 									onFocus={handleFocus}
 									onBlur={handleBlur}
+									disabled={input.disabled ? input.disabled : false}
 									required
 								/>
 							</div>

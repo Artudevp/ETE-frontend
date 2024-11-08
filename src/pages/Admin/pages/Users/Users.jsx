@@ -38,7 +38,7 @@ function Users() {
 			icon: 'pi pi-fw pi-user-plus',
 		},
 		{
-			label: 'Editar',
+			label: 'Ver o editar',
 			icon: 'pi pi-fw pi-user-edit',
 		},
 		{
@@ -53,8 +53,11 @@ function Users() {
 	}
 	const userSelectedState = {
 		nombre: '',
+		apellido: '',
+		username: '',
 		correo: '',
 		contraseña: '',
+		rol: '',
 		id: '',
 	}
 	const [modal, setModal] = useState(false)
@@ -88,16 +91,32 @@ function Users() {
 					],
 				})
 				break
-			case 'Editar':
+			case 'Ver o editar':
 				setModal(!modal)
 				setContentModal({
-					title: 'Editar Usuario',
+					title: 'Ver Usuario',
 					button: 'Editar',
 					inputs: [
 						{
 							type: 'text',
+							name: 'id',
+							placeholder: 'Id',
+							disabled: true,
+						},
+						{
+							type: 'text',
 							name: 'nombre',
 							placeholder: 'Nombre',
+						},
+						{
+							type: 'text',
+							name: 'apellido',
+							placeholder: 'Apellido',
+						},
+						{
+							type: 'text',
+							name: 'username',
+							placeholder: 'Nombre de usuario',
 						},
 						{
 							type: 'email',
@@ -108,6 +127,12 @@ function Users() {
 							type: 'password',
 							name: 'contraseña',
 							placeholder: 'Contraseña',
+						},
+						{
+							type: 'text',
+							name: 'rol',
+							placeholder: 'Rol de usuario',
+							disabled: true,
 						},
 					],
 				})
@@ -131,7 +156,7 @@ function Users() {
 	const handleUsers = async userData => {
 		if (contentModal.title === 'Agregar Usuario') {
 			handleSetUsers(userData)
-		} else if (contentModal.title === 'Editar Usuario') {
+		} else if (contentModal.title === 'Ver Usuario') {
 			handleUpdateUser(userData)
 		} else if (contentModal.title === 'Eliminar Usuario') {
 			handleDeleteUser(userData.id)
@@ -139,10 +164,14 @@ function Users() {
 	}
 
 	const handleRowClick = row => {
+		console.log(row)
 		setUserSelected({
 			nombre: row.nombre || '',
+			apellido: row.apellido || '',
+			username: row.username || '',
 			correo: row.correo || '',
 			contraseña: row.contraseña || '',
+			rol: row.rol || '',
 			id: row.id || '',
 		})
 	}
