@@ -1,0 +1,126 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	gap: 12px;
+	padding: 20px 0 0;
+}
+
+.main > h1 {
+	font-size: 30px;
+	line-height: 36px;
+	font-weight: bold;
+}
+
+.container {
+	display: flex;
+	margin: 0 40px 0 0;
+	flex-wrap: wrap;
+	gap: 5rem;
+	font-size: 18px;
+	line-height: 28px;
+}
+
+.boxLeft {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 20px;
+}
+
+.boxLeft > img {
+	width: 100%;
+	border-radius: 12px;
+}
+
+.descripActividad {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.descripActividad > h2 {
+	font-size: 24px;
+	line-height: 32px;
+	font-weight: bold;
+}
+
+.precioAct {
+	font-size: 20px;
+	line-height: 28px;
+	font-weight: bold;
+}
+
+.calificacionHab {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.calificacionHab > h2 {
+	font-size: 24px;
+	line-height: 32px;
+	font-weight: bold;
+}
+
+.calificacionList {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.calificacionBox {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 42rem;
+	gap: 4px;
+	border-radius: 6px;
+	background: #dcfce7;
+	padding: 20px;
+	box-shadow: 10px 10px 10px -3px rgba(0, 0, 0, 0.1);
+}
+
+.userName {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 12px;
+}
+
+.userName > h3 {
+	font-weight: bold;
+}
+
+.boxRight {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	gap: 12px;
+}
+
+.boxRight > h2 {
+	font-size: 24px;
+	line-height: 32px;
+}
+
+.boxRight > button {
+	width: fit-content;
+	border-radius: 6px;
+	border: 2px solid #85f9ae;
+	background: #85f9ae;
+	padding: 8px 20px;
+}
+
+@media (min-width: 1024px) {
+	.container {
+		margin: 0;
+	}
+
+	.boxLeft,
+	.boxRight {
+		width: 40%;
+	}
+}
