@@ -2,12 +2,14 @@ import {
 	ClientMainProvider,
 	AlojamientosProvider,
 	ActividadesProvider,
+	RutasProvider,
 } from './ClientProviders'
 
 const providers = [
 	ClientMainProvider,
 	AlojamientosProvider,
 	ActividadesProvider,
+	RutasProvider,
 ]
 
 export const ClientProvider = ({ children }) => {

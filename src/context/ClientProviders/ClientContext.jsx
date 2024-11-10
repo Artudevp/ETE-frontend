@@ -9,6 +9,7 @@ export const useClient = () => {
 export const ClientMainProvider = ({ children }) => {
 	const [hospedajeSelected, setHospedajeSelected] = useState({})
 	const [actividadSelected, setActividadSelected] = useState({})
+	const [rutaSelected, setRutaSelected] = useState({})
 
 	return (
 		<ClientContext.Provider
@@ -17,6 +18,8 @@ export const ClientMainProvider = ({ children }) => {
 				setHospedajeSelected,
 				actividadSelected,
 				setActividadSelected,
+				rutaSelected,
+				setRutaSelected,
 			}}
 		>
 			{children}
