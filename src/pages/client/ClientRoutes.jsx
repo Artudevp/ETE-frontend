@@ -2,9 +2,10 @@ import Style from './ClientRoutes.module.css'
 import SideBar from './components/SideBar/SideBar'
 import Alojamientos from './pages/Alojamientos/Alojamientos'
 import InfoAlojamiento from './pages/InfoAlojamiento/InfoAlojamiento'
-import InfoActividad from './pages/InfoActividad/InfoActividad'
 import Actividades from './pages/Actividades/Actividades'
-import Servicios from './pages/Servicios/Servicios'
+import InfoActividad from './pages/InfoActividad/InfoActividad'
+import Rutas from './pages/Rutas/Rutas'
+import InfoRuta from './pages/InfoRuta/InfoRuta'
 import NotFound from './pages/NotFound/NotFound'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { ClientProvider } from '../../context/ClientProvider'
@@ -14,7 +15,8 @@ const routes = [
 	{ path: 'alojamientos/habitacion', element: <InfoAlojamiento /> },
 	{ path: 'actividades', element: <Actividades /> },
 	{ path: 'actividades/actividad', element: <InfoActividad /> },
-	{ path: 'servicios', element: <Servicios /> },
+	{ path: 'rutas', element: <Rutas /> },
+	{ path: 'rutas/ruta', element: <InfoRuta /> },
 	{ path: '*', element: <NotFound /> },
 ]
 
