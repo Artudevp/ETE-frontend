@@ -52,47 +52,6 @@
 	font-weight: bold;
 }
 
-.calificacionHab {
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-}
-
-.calificacionHab > h2 {
-	font-size: 24px;
-	line-height: 32px;
-	font-weight: bold;
-}
-
-.calificacionList {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-}
-
-.calificacionBox {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	max-width: 42rem;
-	gap: 4px;
-	border-radius: 6px;
-	background: #dcfce7;
-	padding: 20px;
-	box-shadow: 10px 10px 10px -3px rgba(0, 0, 0, 0.1);
-}
-
-.userName {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: 12px;
-}
-
-.userName > h3 {
-	font-weight: bold;
-}
-
 .boxRight {
 	display: flex;
 	flex-direction: column;
