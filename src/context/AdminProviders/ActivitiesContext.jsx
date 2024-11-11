@@ -1,11 +1,11 @@
 import { createContext, useContext } from 'react'
-import useEntityManagement from '../hooks/useEntityManagement'
+import useEntityManagement from '../../hooks/useEntityManagement'
 import {
 	getActivities,
 	addActivity,
 	updateActivity,
 	deleteActivity,
-} from '../services/Actividades'
+} from '../../services/Actividades'
 
 export const ActivitiesContext = createContext()
 

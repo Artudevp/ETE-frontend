@@ -12,6 +12,7 @@ function useRoleManagement() {
 		email = '',
 		firstName = '',
 		lastName = '',
+		handleError,
 	}) => {
 		try {
 			const role = await sesionFunction(
@@ -31,7 +32,12 @@ function useRoleManagement() {
 			}
 		} catch (error) {
 			console.error('Error:', error)
-			alert('Error en el inicio de sesión. Verifique sus credenciales.')
+			handleError({
+				error: {
+					message: 'Compruebe las credenciales e intente nuevamente',
+					details: error.message,
+				},
+			})
 		}
 	}
 

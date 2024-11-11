@@ -1,6 +1,6 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
-import { useProducts } from '../../../../context/ProductsContext'
+import { useProducts } from '../../../../context/AdminProviders'
 import { useState } from 'react'
 import Error from '../../../../components/Error/Error'
 function Products() {

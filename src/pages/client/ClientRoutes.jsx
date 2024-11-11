@@ -3,15 +3,20 @@ import SideBar from './components/SideBar/SideBar'
 import Alojamientos from './pages/Alojamientos/Alojamientos'
 import InfoAlojamiento from './pages/InfoAlojamiento/InfoAlojamiento'
 import Actividades from './pages/Actividades/Actividades'
-import Servicios from './pages/Servicios/Servicios'
+import InfoActividad from './pages/InfoActividad/InfoActividad'
+import Rutas from './pages/Rutas/Rutas'
+import InfoRuta from './pages/InfoRuta/InfoRuta'
 import NotFound from './pages/NotFound/NotFound'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { ClientProvider } from '../../context/ClientProvider'
 
 const routes = [
 	{ path: 'alojamientos', element: <Alojamientos /> },
 	{ path: 'alojamientos/habitacion', element: <InfoAlojamiento /> },
 	{ path: 'actividades', element: <Actividades /> },
-	{ path: 'servicios', element: <Servicios /> },
+	{ path: 'actividades/actividad', element: <InfoActividad /> },
+	{ path: 'rutas', element: <Rutas /> },
+	{ path: 'rutas/ruta', element: <InfoRuta /> },
 	{ path: '*', element: <NotFound /> },
 ]
 
@@ -20,12 +25,18 @@ function ClientRoutes() {
 		<main className={Style.main}>
 			<SideBar />
 			<div className={Style.content}>
-				<Routes>
-					<Route path='/' element={<Navigate to='alojamientos' />} />
-					{routes.map(route => (
-						<Route key={route.path} path={route.path} element={route.element} />
-					))}
-				</Routes>
+				<ClientProvider>
+					<Routes>
+						<Route path='/' element={<Navigate to='alojamientos' />} />
+						{routes.map(route => (
+							<Route
+								key={route.path}
+								path={route.path}
+								element={route.element}
+							/>
+						))}
+					</Routes>
+				</ClientProvider>
 			</div>
 		</main>
 	)

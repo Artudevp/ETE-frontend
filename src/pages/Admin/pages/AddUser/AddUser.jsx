@@ -1,17 +1,22 @@
-import { Link } from 'react-router-dom'
-import Style from './Register.module.css'
-import PropTypes from 'prop-types'
+import Style from './AddUser.module.css'
+import Error from '../../../../components/Error/Error'
+import registerAdminService from '../../../../services/RegisterAdmin'
 import { useState } from 'react'
-import registerService from '../../../../services/Register'
-import useRoleManagement from '../../../../hooks/useRoleManagement'
 
-function Register({ active, handleError }) {
-	const { handleRole } = useRoleManagement()
+const errorModalState = {
+	message: null,
+	details: null,
+}
+
+function AddUser() {
 	const [userName, setUserName] = useState('')
 	const [firstName, setFirstName] = useState('')
 	const [lastName, setLastName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [roleSelect, setRoleSelect] = useState('ROLE_USER')
+	const [error, setError] = useState(errorModalState)
+	const [role, setRole] = useState('')
 
 	const onSubmit = async e => {
 		e.preventDefault()
@@ -19,35 +24,32 @@ function Register({ active, handleError }) {
 			[userName, firstName, lastName, email, password].some(
 				field => field.length === 0,
 			)
-		)
-			return handleError({
-				error: {
-					message: 'Ingrese las credenciales válidas',
-					details: 'Los campos no pueden estar vacíos',
-				},
+		) {
+			return setError({
+				message: 'Ingrese las credenciales válidas',
+				details: 'Los campos no pueden estar vacíos',
 			})
-		await handleRole({
-			sesionFunction: registerService,
-			userName,
-			password,
-			email,
-			firstName,
-			lastName,
-			handleError,
-		})
+		}
+
+		try {
+			const getRole = await registerAdminService(
+				userName,
+				password,
+				email,
+				firstName,
+				lastName,
+				roleSelect,
+			)
+			setRole(getRole)
+		} catch (error) {
+			setError(error)
+		}
 	}
 
 	return (
-		<div
-			className={Style.modalRegister}
-			style={{
-				opacity: active ? '1' : '0',
-				pointerEvents: active ? 'all' : 'none',
-			}}
-		>
-			<div className={Style.modalContent}>
-				<img src='./icon.png' alt='Icon EcoTourExpress' />
-				<h1>Registro</h1>
+		<>
+			<main className={Style.main}>
+				<h1>Registrar Usuario</h1>
 				<form id='formRegister' className={Style.formRegister}>
 					<div className={Style.allLables}>
 						<div className={Style.label}>
@@ -99,6 +101,17 @@ function Register({ active, handleError }) {
 								onChange={e => setPassword(e.target.value)}
 							/>
 						</div>
+						<div className={Style.label}>
+							<label htmlFor='roleRegister'>Rol de usuario</label>
+							<select
+								name='roleRegister'
+								id='roleRegister'
+								onChange={e => setRoleSelect(e.target.value)}
+							>
+								<option value='ROLE_USER'>Rol usuario</option>
+								<option value='ROLE_ADMIN'>Rol administrador</option>
+							</select>
+						</div>
 					</div>
 					<div className={Style.boxButton}>
 						<button
@@ -109,36 +122,14 @@ function Register({ active, handleError }) {
 							Crear cuenta
 						</button>
 					</div>
+					{role && (
+						<p style={{ textAlign: 'center' }}>Usuario creado con exito</p>
+					)}
 				</form>
-				<div className={Style.links}>
-					<Link to='/login' className='btnChangeWindow'>
-						¿Ya tiene cuenta? inicie sesión aquí!
-					</Link>
-				</div>
-				<Link to='/' className={Style.buttonExit}>
-					<svg
-						xmlns='http://www.w3.org/2000/svg'
-						width='1.5em'
-						height='1.5em'
-						viewBox='0 0 32 32'
-					>
-						<path
-							fill='none'
-							stroke='currentColor'
-							strokeLinecap='round'
-							strokeLinejoin='round'
-							strokeWidth='2'
-							d='M9 23L23 9m0 14L9 9'
-						/>
-					</svg>
-				</Link>
-			</div>
-		</div>
+			</main>
+			<Error error={error} />
+		</>
 	)
 }
 
-Register.propTypes = {
-	active: PropTypes.bool,
-}
-
-export default Register
+export default AddUser

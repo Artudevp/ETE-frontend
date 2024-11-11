@@ -1,7 +1,7 @@
 import PageSchema from '../PageSchema/PageSchema'
 import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
 import Error from '../../../../components/Error/Error'
-import { useHospitality } from '../../../../context/HospitalityContext'
+import { useHospitality } from '../../../../context/AdminProviders'
 import { useState } from 'react'
 
 function Hospitality() {

@@ -14,6 +14,9 @@ function Error({ error }) {
 		} else {
 			setActive(false)
 		}
+		return () => {
+			setActive(false)
+		}
 	}, [error])
 
 	const detailsContainerHeaderClasses = `${Styles.detailsContainerHeader} ${
@@ -33,20 +36,21 @@ function Error({ error }) {
 			<div className={Styles.error}>
 				<h1>Error</h1>
 				<p>Lo sentimos, ocurrió un error inesperado: {message}</p>
-				<div className={Styles.detailsContainer}>
-					<div
-						onClick={() => setShowDetails(!showDetails)}
-						className={detailsContainerHeaderClasses}
-					>
-						<p>Ver detalles</p>
-						<IoIosArrowDown />
-					</div>
-					{showDetails && (
+				{showDetails && (
+					<div className={Styles.detailsContainer}>
+						<div
+							onClick={() => setShowDetails(!showDetails)}
+							className={detailsContainerHeaderClasses}
+						>
+							<p>Ver detalles</p>
+							<IoIosArrowDown />
+						</div>
+
 						<div className={Styles.details}>
 							<p>{details}</p>
 						</div>
-					)}
-				</div>
+					</div>
+				)}
 				<button
 					onClick={() => {
 						setActive(false)

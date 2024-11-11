@@ -34,19 +34,19 @@
 	border-radius: 12px;
 }
 
-.descripHabitacion {
+.descripActividad {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
 }
 
-.descripHabitacion > h2 {
+.descripActividad > h2 {
 	font-size: 24px;
 	line-height: 32px;
 	font-weight: bold;
 }
 
-.precioHab {
+.precioAct {
 	font-size: 20px;
 	line-height: 28px;
 	font-weight: bold;

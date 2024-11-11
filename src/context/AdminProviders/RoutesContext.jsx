@@ -1,11 +1,11 @@
 import { createContext, useContext } from 'react'
-import useEntityManagement from '../hooks/useEntityManagement'
+import useEntityManagement from '../../hooks/useEntityManagement'
 import {
 	getRoutes,
 	addRoute,
 	updateRoute,
 	deleteRoute,
-} from '../services/Rutas'
+} from '../../services/Rutas'
 
 export const RoutesContext = createContext()
 

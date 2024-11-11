@@ -1,6 +1,6 @@
 import { IoBedOutline } from 'react-icons/io5'
 import { CiStar } from 'react-icons/ci'
-import { MdOutlineRoomService } from 'react-icons/md'
+import { CiMap } from 'react-icons/ci'
 import { IoIosNotificationsOutline } from 'react-icons/io'
 import { MdOutlineExitToApp } from 'react-icons/md'
 import { NavLink, useNavigate } from 'react-router-dom'
@@ -47,32 +47,19 @@ function SideBar() {
 				</li>
 				<li>
 					<NavLink
-						to='/user/dashboard/servicios'
+						to='/user/dashboard/rutas'
 						style={({ isActive }) => {
 							return {
 								fontWeight: isActive ? 'bold' : '',
 							}
 						}}
 					>
-						<MdOutlineRoomService size='2em' />
-						<p>Servicios</p>
+						<CiMap size='2em' />
+						<p>Rutas</p>
 					</NavLink>
 				</li>
 			</ul>
 			<ul>
-				<li>
-					<NavLink
-						to='/user/dashboard/notificaciones'
-						style={({ isActive }) => {
-							return {
-								fontWeight: isActive ? 'bold' : '',
-							}
-						}}
-					>
-						<IoIosNotificationsOutline size='2em' />
-						<p>Notificaciones</p>
-					</NavLink>
-				</li>
 				<li>
 					<a onClick={handleExit}>
 						<MdOutlineExitToApp size='2em' />

@@ -1,0 +1,26 @@
+.containerRutas {
+	width: 100%;
+	padding: 1.25rem 0 0;
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+}
+
+.containerRuta {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.containerRuta > h1 {
+	font-size: 30px;
+	line-height: 36px;
+	font-weight: bold;
+}
+
+.rutaList {
+	margin: 0 0 0 20px;
+	display: flex;
+	width: fit-content;
+	gap: 20px;
+}

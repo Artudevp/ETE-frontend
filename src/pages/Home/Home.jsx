@@ -6,12 +6,23 @@ import Header from './components/Header/Header'
 import Image from './components/Image/Image'
 import Login from './components/Login/Login'
 import Register from './components/Register/Register'
+import Error from '../../components/Error/Error'
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
+
+const errorModalState = {
+	message: null,
+	details: null,
+}
 
 function Home({ login, register }) {
 	const [activeLogin, setActiveLogin] = useState(false)
 	const [activeRegister, setActiveRegister] = useState(false)
+	const [error, setError] = useState(errorModalState)
+
+	const handleSetError = ({ error }) => {
+		setError(error)
+	}
 
 	useEffect(() => {
 		if (login) {
@@ -116,8 +127,9 @@ function Home({ login, register }) {
 					Próximamente se añadirá más contenido :D
 				</section>
 			</main>
-			<Login active={activeLogin} />
-			<Register active={activeRegister} />
+			<Login active={activeLogin} handleError={handleSetError} />
+			<Register active={activeRegister} handleError={handleSetError} />
+			<Error error={error} />
 		</>
 	)
 }
