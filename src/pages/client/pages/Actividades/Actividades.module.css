@@ -21,6 +21,7 @@
 .actividadList {
 	margin: 0 0 0 20px;
 	display: flex;
-	width: fit-content;
+	flex-wrap: wrap;
+	justify-content: center;
 	gap: 20px;
 }

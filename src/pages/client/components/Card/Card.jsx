@@ -14,7 +14,7 @@ function Card({
 			<img src={habitación} alt='habitacion image' width='auto' height='auto' />
 			<div className={Style.cardInfo}>
 				<h2>{tipo_prod}</h2>
-				<p>{precio_prod}</p>
+				<p>$ {precio_prod}</p>
 				<Link
 					to={`/user/dashboard/${ruta}`}
 					onClick={() => handleHospedajeSelected(producto)}

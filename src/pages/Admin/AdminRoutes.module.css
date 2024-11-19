@@ -1,7 +1,9 @@
+
 .main {
 	background: #121212;
 	padding: 12px 0 0;
 	height: 100vh;
+	overflow: hidden;
 }
 
 .content {
@@ -22,5 +24,54 @@
 @media (max-width: 1073px) {
 	.content {
 		height: calc(100vh - 140px);
+	}
+	
+	.table-wrapper {
+		overflow-x: auto;
+	}
+
+	.modalContent {
+		width: 90%;
+		max-width: 600px;
+		padding: 20px;
+	}
+
+	.modalFormInput input {
+		font-size: 18px;
+		padding: 15px;
+	}
+
+	.modalFormButtons button {
+		font-size: 18px;
+		padding: 15px 30px;
+	}
+
+	.sidebar {
+		width: 250px;
+	}
+}
+
+@media (max-width: 600px) {
+	.content {
+		height: calc(100vh - 120px);
+	}
+
+	.table-wrapper {
+		overflow-x: scroll;
+	}
+
+	.modalContent {
+		width: 90%;
+		max-width: 500px;
+	}
+
+	.modalFormInput input {
+		font-size: 16px;
+		padding: 12px;
+	}
+
+	.modalFormButtons button {
+		font-size: 16px;
+		padding: 12px 25px;
 	}
 }

@@ -5,11 +5,11 @@ import { useClient } from '../../../../context/ClientProviders'
 function InfoActividad({ children }) {
 	const { actividadSelected } = useClient()
 	const {
-		nombre_act,
-		precio_act,
+		nombre,
+		precio,
 		capacidad,
-		duracion_act,
-		descripcion_act,
+		duracion,
+		descripcion,
 		disponible,
 	} = actividadSelected
 
@@ -22,17 +22,17 @@ function InfoActividad({ children }) {
 						<div className={Style.boxLeft}>
 							<img src={habitación} alt='Image Actividad' />
 							<div className={Style.descripActividad}>
-								<h2>{nombre_act}</h2>
-								<p>{descripcion_act}</p>
+								<h2>{nombre}</h2>
+								<p>{descripcion}</p>
 								<p className={Style.precioAct}>
-									Precio: ${precio_act} por persona
+									Precio: ${precio} por persona
 								</p>
 								<p>Capacidad: {capacidad} personas</p>
-								<p>Duración: {duracion_act} horas</p>
+								<p>Duración: {duracion} horas</p>
 							</div>
 						</div>
 						<div className={Style.boxRight}>
-							<h2>No esperes más, y disfruta de la actividad {nombre_act}</h2>
+							<h2>No esperes más, y disfruta de la actividad {nombre}</h2>
 							<button>Quiero asistir</button>
 						</div>
 					</div>

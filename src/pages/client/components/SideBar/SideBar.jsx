@@ -1,6 +1,7 @@
 import { IoBedOutline } from 'react-icons/io5'
 import { CiStar } from 'react-icons/ci'
 import { CiMap } from 'react-icons/ci'
+import { CiTrophy } from 'react-icons/ci'
 import { IoIosNotificationsOutline } from 'react-icons/io'
 import { MdOutlineExitToApp } from 'react-icons/md'
 import { NavLink, useNavigate } from 'react-router-dom'
@@ -56,6 +57,19 @@ function SideBar() {
 					>
 						<CiMap size='2em' />
 						<p>Rutas</p>
+					</NavLink>
+				</li>
+				<li>
+					<NavLink
+						to='/user/dashboard/productos'
+						style={({ isActive }) => {
+							return {
+								fontWeight: isActive ? 'bold' : '',
+							}
+						}}
+					>
+						<CiTrophy size='2em' />
+						<p>Productos</p>
 					</NavLink>
 				</li>
 			</ul>

@@ -1,4 +1,4 @@
-.containerRutas {
+.containerProductos {
 	width: 100%;
 	padding: 1.25rem 0 0;
 	display: flex;
@@ -6,19 +6,19 @@
 	gap: 28px;
 }
 
-.containerRuta {
+.containerProducto {
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
 }
 
-.containerRuta > h1 {
+.containerProducto > h1 {
 	font-size: 30px;
 	line-height: 36px;
 	font-weight: bold;
 }
 
-.rutaList {
+.productoList {
 	margin: 0 0 0 20px;
 	display: flex;
 	flex-wrap: wrap;

@@ -5,11 +5,11 @@ import { useClient } from '../../../../context/ClientProviders'
 function InfoAlojamiento() {
 	const { hospedajeSelected } = useClient()
 	const {
-		tipo_hab,
-		precio_hab,
-		disponibilidad,
+		tipo,
+		precio,
+		cantidad,
 		capacidad,
-		descripcion_hab,
+		descripcion,
 		disponible,
 	} = hospedajeSelected
 
@@ -22,15 +22,15 @@ function InfoAlojamiento() {
 						<div className={Style.boxLeft}>
 							<img src={habitación} alt='Image habitación' />
 							<div className={Style.descripHabitacion}>
-								<h2>{tipo_hab}</h2>
-								<p>{descripcion_hab}</p>
-								<p className={Style.precioHab}>Precio: ${precio_hab}</p>
-								<p>Capacidad: {capacidad}</p>
-								<p>Habitaciones disponibles: {disponibilidad}</p>
+								<h2>{tipo}</h2>
+								<p>{descripcion}</p>
+								<p className={Style.precioHab}>Precio: ${precio}</p>
+								<p>Capacidad: <b>{capacidad}</b> personas</p>
+								<p>Habitaciones disponibles: <b>{cantidad}</b></p>
 							</div>
 						</div>
 						<div className={Style.boxRight}>
-							<h2>No esperes más, reserva ahora tu habitación {tipo_hab}</h2>
+							<h2>No esperes más, reserva ahora tu {tipo}</h2>
 							<button>Reservar ahora</button>
 						</div>
 					</div>

@@ -3,6 +3,7 @@ import {
 	AlojamientosProvider,
 	ActividadesProvider,
 	RutasProvider,
+	ProductosProvider
 } from './ClientProviders'
 
 const providers = [
@@ -10,6 +11,7 @@ const providers = [
 	AlojamientosProvider,
 	ActividadesProvider,
 	RutasProvider,
+	ProductosProvider
 ]
 
 export const ClientProvider = ({ children }) => {

@@ -3,6 +3,8 @@ import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
 import Error from '../../../../components/Error/Error'
 import { useActivities } from '../../../../context/AdminProviders'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function Activities() {
 	const {
@@ -19,16 +21,24 @@ function Activities() {
 			header: 'ID',
 		},
 		{
-			column: 'nombre_act',
+			column: 'nombre',
 			header: 'Nombre',
 		},
 		{
-			column: 'duración_act',
+			column: 'duracion',
 			header: 'Duración',
 		},
 		{
-			column: 'precio_act',
+			column: 'precio',
 			header: 'Precio',
+		},
+		{
+			column: 'capacidad',
+			header: 'Capacidad (personas)'
+		},
+		{
+			column: 'descripcion',
+			header: 'Descripcion'
 		},
 	]
 	const actions = [
@@ -52,9 +62,11 @@ function Activities() {
 	}
 	const activitySelectedState = {
 		id_actividad: '',
-		nombre_act: '',
-		duración_act: '',
-		precio_act: '',
+		nombre: '',
+		duracion: '',
+		precio: '',
+		capacidad: '',
+		descripcion: '',
 	}
 
 	const [modal, setModal] = useState(false)
@@ -74,19 +86,29 @@ function Activities() {
 					inputs: [
 						{
 							type: 'text',
-							name: 'nombre_act',
+							name: 'nombre',
 							placeholder: 'Nombre',
 						},
 						{
-							type: 'text',
-							name: 'duración_act',
+							type: 'number',
+							name: 'duracion',
 							placeholder: 'Duración (Horas)',
 						},
 						{
 							type: 'number',
-							name: 'precio_act',
+							name: 'precio',
 							placeholder: 'Precio',
 						},
+						{
+							type: "number",
+							name: 'capacidad',
+							placeholder: "Capacidad"
+						},
+						{
+							type: 'text',
+							name: 'descripcion',
+							placeholder: 'Descripción'
+						}
 					],
 				})
 				break
@@ -98,35 +120,35 @@ function Activities() {
 					inputs: [
 						{
 							type: 'text',
-							name: 'nombre_act',
+							name: 'nombre',
 							placeholder: 'Nombre',
 						},
 						{
-							type: 'text',
-							name: 'duración_act',
+							type: 'number',
+							name: 'duracion',
 							placeholder: 'Duración (Horas)',
 						},
 						{
 							type: 'number',
-							name: 'precio_act',
+							name: 'precio',
 							placeholder: 'Precio',
 						},
+						{
+							type: "number",
+							name: 'capacidad',
+							placeholder: "Capacidad"
+						},
+						{
+							type: 'text',
+							name: 'descripcion',
+							placeholder: 'Descripción'
+						}
 					],
 				})
 				break
 			case 'Eliminar':
-				setModal(!modal)
-				setContentModal({
-					title: 'Eliminar Actividad',
-					button: 'Eliminar',
-					inputs: [
-						{
-							type: 'text',
-							name: 'id_actividad',
-							placeholder: 'ID',
-						},
-					],
-				})
+				handleDeleteActivity(activitySelected.id_actividad)
+				toast.error("La actividad se ha eliminado")
 				break
 			default:
 				break
@@ -136,19 +158,21 @@ function Activities() {
 	const handleActivities = async activityData => {
 		if (contentModal.title === 'Agregar Actividad') {
 			handleSetActivities(activityData)
+			toast.success("La actividad se ha creado correctamente")
 		} else if (contentModal.title === 'Editar Actividad') {
 			handleUpdateActivity(activityData)
-		} else if (contentModal.title === 'Eliminar Actividad') {
-			handleDeleteActivity(activityData.id_actividad)
+			toast.info("La actividad se ha actualizado correctamente")
 		}
 	}
 
 	const handleRowClick = row => {
 		setActivitySelected({
-			nombre_act: row.nombre_act || '',
-			duración_act: row.duración_act || '',
-			precio_act: row.precio_act || '',
+			nombre: row.nombre || '',
+			duracion: row.duracion || '',
+			precio: row.precio || '',
 			id_actividad: row.id_actividad || '',
+			capacidad: row.capacidad || '',
+			descripcion: row.descripcion || '',
 		})
 	}
 

@@ -1,38 +1,99 @@
 .card {
-	border-bottom-right-radius: 12px;
-	border-bottom-left-radius: 12px;
-	box-shadow: 10px 10px 10px -3px rgba(0, 0, 0, 0.1);
+	flex: 1 1 calc(25% - 20px);
+	max-width: 300px;
+	box-sizing: border-box;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card > img {
-	width: 18rem;
-	border-top-left-radius: 12px;
-	border-top-right-radius: 12px;
+.card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 10px 15px rgba(255, 255, 255, 0.2);
 }
+
+
+.card > img {
+	border-top-right-radius: 12px;
+	width: 100%;
+	height: auto;
+}
+
 
 .cardInfo {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 4px;
-	border-bottom-right-radius: 12px;
+	gap: 8px;
 	border-bottom-left-radius: 12px;
-	background-color: #fff;
-	padding: 8px 0;
+	border-bottom-right-radius: 12px;
+	background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+	color: #fff;
+	padding: 12px 0;
 	text-align: center;
 }
 
+
 .cardInfo > h2 {
-	font-weight: 400;
-	font-size: 16px;
+	font-weight: 600;
+	font-size: 18px;
+	margin: 0;
 }
+
+.cardInfo > p {
+	font-size: 14px;
+	color: #85f9ae;
+	margin: 0;
+}
+
 
 .cardInfo > a {
 	cursor: pointer;
 	border-radius: 4px;
 	border: 1px solid #0be159;
 	background: #85f9ae;
-	padding: 4px 40px;
+	padding: 8px 40px;
 	color: #000;
 	text-decoration: none;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cardInfo > a:hover {
+	background: #0be159;
+	transform: scale(1.05);
+}
+
+
+@media (max-width: 1024px) {
+	.card {
+		flex: 1 1 calc(33.33% - 20px);
+	}
+}
+
+@media (max-width: 768px) {
+	.card {
+		flex: 1 1 calc(50% - 20px);
+	}
+}
+
+@media (max-width: 480px) {
+	.card {
+		flex: 1 1 100%;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.card {
+	animation: fadeIn 0.5s ease-in-out;
 }
