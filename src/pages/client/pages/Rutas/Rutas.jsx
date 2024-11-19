@@ -29,7 +29,7 @@ function Rutas() {
 								item.disponible && (
 									<Card
 										key={index}
-										tipo_prod={item.nombre_ruta}
+										tipo_prod={item.nombre}
 										precio_prod={item.precio}
 										producto={item}
 										handleHospedajeSelected={handleRutaSelected}

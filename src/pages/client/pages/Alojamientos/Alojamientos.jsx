@@ -29,8 +29,8 @@ function Alojamientos() {
 								item.disponible && (
 									<Card
 										key={index}
-										tipo_prod={item.tipo_hab}
-										precio_prod={item.precio_hab}
+										tipo_prod={item.tipo}
+										precio_prod={item.precio}
 										producto={item}
 										handleHospedajeSelected={handleHospedajeSelected}
 										ruta='alojamientos/habitacion'

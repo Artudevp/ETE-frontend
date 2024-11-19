@@ -3,6 +3,9 @@ import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
 import { useProducts } from '../../../../context/AdminProviders'
 import { useState } from 'react'
 import Error from '../../../../components/Error/Error'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 function Products() {
 	const {
 		products,
@@ -22,18 +25,22 @@ function Products() {
 			header: 'Categoria',
 		},
 		{
-			column: 'nombre_p',
+			column: 'nombre',
 			header: 'Nombre',
 		},
 		{
-			column: 'precio_p',
+			column: 'precio',
 			header: 'Precio',
 		},
 		{
-			column: 'cantidad_disponible',
+			column: 'cantidad',
 			header: 'Cantidad',
 		},
-	]
+		{
+			column: 'descripcion',
+			header: 'Descripción'
+		},
+		]
 	const actions = [
 		{
 			label: 'Nuevo',
@@ -56,9 +63,10 @@ function Products() {
 	const productSelectedState = {
 		id_producto: '',
 		categoria: '',
-		nombre_p: '',
-		precio_p: '',
-		cantidad_disponible: '',
+		nombre: '',
+		precio: '',
+		cantidad: '',
+		descripcion: '',
 	}
 	const [modal, setModal] = useState(false)
 	const [contentModal, setContentModal] = useState(contentModalState)
@@ -80,19 +88,24 @@ function Products() {
 						},
 						{
 							type: 'text',
-							name: 'nombre_p',
+							name: 'nombre',
 							placeholder: 'Nombre Producto',
 						},
 						{
 							type: 'number',
-							name: 'precio_p',
+							name: 'precio',
 							placeholder: 'Precio',
 						},
 						{
 							type: 'number',
-							name: 'cantidad_disponible',
+							name: 'cantidad',
 							placeholder: 'Cantidad en Stock',
 						},
+						{
+							type: 'text',
+							name: 'descripcion',
+							placeholder: 'Descripción'
+						}
 					],
 				})
 				break
@@ -109,35 +122,30 @@ function Products() {
 						},
 						{
 							type: 'text',
-							name: 'nombre_p',
+							name: 'nombre',
 							placeholder: 'Nombre Producto',
 						},
 						{
 							type: 'number',
-							name: 'precio_p',
+							name: 'precio',
 							placeholder: 'Precio',
 						},
 						{
 							type: 'number',
-							name: 'cantidad_disponible',
+							name: 'cantidad',
 							placeholder: 'Cantidad en Stock',
+						},
+						{
+							type: 'text',
+							name: 'descripcion',
+							placeholder: 'Descripción'
 						},
 					],
 				})
 				break
 			case 'Eliminar':
-				setModal(!modal)
-				setContentModal({
-					title: 'Eliminar Producto',
-					button: 'Eliminar',
-					inputs: [
-						{
-							type: 'text',
-							name: 'id_producto',
-							placeholder: 'ID',
-						},
-					],
-				})
+				handleDeleteProduct(productSelected.id_producto);
+				toast.error("Producto eliminado");
 				break
 			default:
 				break
@@ -146,21 +154,22 @@ function Products() {
 
 	const handleProducts = async productData => {
 		if (contentModal.title === 'Agregar Producto') {
-			handleSetProducts(productData)
+			handleSetProducts(productData);
+			toast.success("Producto agregado con éxito");
 		} else if (contentModal.title === 'Editar Producto') {
-			handleUpdateProduct(productData)
-		} else if (contentModal.title === 'Eliminar Producto') {
-			handleDeleteProduct(productData.id_producto)
+			handleUpdateProduct(productData);
+			toast.info("Producto actualizado con éxito");
 		}
 	}
 
 	const handleRowClick = row => {
 		setProductSelected({
 			categoria: row.categoria || '',
-			nombre_p: row.nombre_p || '',
-			precio_p: row.precio_p || '',
-			cantidad_disponible: row.cantidad_disponible || '',
+			nombre: row.nombre || '',
+			precio: row.precio || '',
+			cantidad: row.cantidad || '',
 			id_producto: row.id_producto || '',
+			descripcion: row.descripcion || '',
 		})
 	}
 

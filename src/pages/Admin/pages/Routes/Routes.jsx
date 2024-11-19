@@ -3,6 +3,8 @@ import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
 import Error from '../../../../components/Error/Error'
 import { useRoutes } from '../../../../context/AdminProviders'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function RoutesAdmin() {
 	const {
@@ -19,16 +21,24 @@ function RoutesAdmin() {
 			header: 'ID',
 		},
 		{
-			column: 'nombre_ruta',
+			column: 'nombre',
 			header: 'Nombre',
 		},
 		{
-			column: 'duración_ruta',
+			column: 'duracion',
 			header: 'Duración',
 		},
 		{
 			column: 'precio',
 			header: 'Precio',
+		},
+		{
+			column: 'capacidad',
+			header: 'Capacidad'
+		},
+		{
+			column: 'descripcion',
+			header: 'Descripcion'
 		},
 	]
 	const actions = [
@@ -52,9 +62,11 @@ function RoutesAdmin() {
 	}
 	const routeSelectedState = {
 		id_ruta: '',
-		nombre_ruta: '',
-		duración_ruta: '',
+		nombre: '',
+		duracion: '',
 		precio: '',
+		capacidad: '',
+		descripcion: '',
 	}
 
 	const [modal, setModal] = useState(false)
@@ -72,12 +84,12 @@ function RoutesAdmin() {
 					inputs: [
 						{
 							type: 'text',
-							name: 'nombre_ruta',
+							name: 'nombre',
 							placeholder: 'Nombre',
 						},
 						{
 							type: 'number',
-							name: 'duración_ruta',
+							name: 'duracion',
 							placeholder: 'Duración (Horas)',
 						},
 						{
@@ -85,6 +97,16 @@ function RoutesAdmin() {
 							name: 'precio',
 							placeholder: 'Precio',
 						},
+						{
+							type: "number",
+							name: 'capacidad',
+							placeholder: "Capacidad"
+						},
+						{
+							type: 'text',
+							name: 'descripcion',
+							placeholder: 'Descripción'
+						}
 					],
 				})
 				break
@@ -96,12 +118,12 @@ function RoutesAdmin() {
 					inputs: [
 						{
 							type: 'text',
-							name: 'nombre_ruta',
+							name: 'nombre',
 							placeholder: 'Nombre',
 						},
 						{
 							type: 'number',
-							name: 'duración_ruta',
+							name: 'duracion',
 							placeholder: 'Duración (Horas)',
 						},
 						{
@@ -109,22 +131,22 @@ function RoutesAdmin() {
 							name: 'precio',
 							placeholder: 'Precio',
 						},
+						{
+							type: "number",
+							name: 'capacidad',
+							placeholder: "Capacidad"
+						},
+						{
+							type: 'text',
+							name: 'descripcion',
+							placeholder: 'Descripción'
+						}
 					],
 				})
 				break
 			case 'Eliminar':
-				setModal(!modal)
-				setContentModal({
-					title: 'Eliminar Ruta',
-					button: 'Eliminar',
-					inputs: [
-						{
-							type: 'text',
-							name: 'id_ruta',
-							placeholder: 'ID',
-						},
-					],
-				})
+				handleDeleteRoute(routeSelected.id_ruta)
+				toast.error("El producto se ha eliminado")
 				break
 			default:
 				break
@@ -134,19 +156,21 @@ function RoutesAdmin() {
 	const handleRoutes = async routeData => {
 		if (contentModal.title === 'Nuevo Ruta') {
 			handleSetRoutes(routeData)
+			toast.success("El producto se ha agregado satisfactoriamente")
 		} else if (contentModal.title === 'Editar Ruta') {
 			handleUpdateRoute(routeData)
-		} else if (contentModal.title === 'Eliminar Ruta') {
-			handleDeleteRoute(routeData.id_ruta)
+			toast.info("El producto se ha editado correctamente")
 		}
 	}
 
 	const handleRowClick = row => {
 		setRouteSelected({
 			id_ruta: row.id_ruta || '',
-			nombre_ruta: row.nombre_ruta || '',
-			duración_ruta: row.duración_ruta || '',
+			nombre: row.nombre || '',
+			duracion: row.duracion || '',
 			precio: row.precio || '',
+			capacidad: row.capacidad || '',
+			descripcion: row.descripcion || '',
 		})
 	}
 

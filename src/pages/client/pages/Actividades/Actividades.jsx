@@ -29,8 +29,8 @@ function Actividades() {
 								item.disponible && (
 									<Card
 										key={index}
-										tipo_prod={item.nombre_act}
-										precio_prod={item.precio_act}
+										tipo_prod={item.nombre}
+										precio_prod={item.precio}
 										producto={item}
 										handleHospedajeSelected={handleActividadSelected}
 										ruta='actividades/actividad'
@@ -38,7 +38,7 @@ function Actividades() {
 								),
 						)
 					) : (
-						<p>No hay alojamientos disponibles</p>
+						<p>No hay actividades disponibles</p>
 					)}
 				</div>
 			</div>

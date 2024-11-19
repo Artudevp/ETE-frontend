@@ -3,6 +3,8 @@ import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
 import Error from '../../../../components/Error/Error'
 import { useHospitality } from '../../../../context/AdminProviders'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function Hospitality() {
 	const {
@@ -15,11 +17,11 @@ function Hospitality() {
 	const title = 'Gestión de Hospedaje'
 	const columns = [
 		{
-			column: 'id_hospedaje',
+			column: 'id_habitacion',
 			header: 'ID',
 		},
 		{
-			column: 'tipo_hab',
+			column: 'tipo',
 			header: 'Tipo',
 		},
 		{
@@ -27,13 +29,17 @@ function Hospitality() {
 			header: 'Capacidad',
 		},
 		{
-			column: 'disponibilidad',
+			column: 'cantidad',
 			header: 'Disponibilidad',
 		},
 		{
-			column: 'precio_hab',
+			column: 'precio',
 			header: 'Precio',
 		},
+		{
+			column: 'descripcion',
+			header: 'Descripción'
+		}
 	]
 	const actions = [
 		{
@@ -55,11 +61,12 @@ function Hospitality() {
 		inputs: [],
 	}
 	const hospitalitySelectedState = {
-		id_hospedaje: '',
-		tipo_hab: '',
+		id_habitacion: '',
+		tipo: '',
 		capacidad: '',
 		disponibilidad: '',
-		precio_hab: '',
+		precio: '',
+		descripcion: '',
 	}
 	const [modal, setModal] = useState(false)
 	const [contentModal, setContentModal] = useState(contentModalState)
@@ -78,7 +85,7 @@ function Hospitality() {
 					inputs: [
 						{
 							type: 'text',
-							name: 'tipo_hab',
+							name: 'tipo',
 							placeholder: 'Tipo',
 						},
 						{
@@ -88,14 +95,19 @@ function Hospitality() {
 						},
 						{
 							type: 'text',
-							name: 'disponibilidad',
+							name: 'cantidad',
 							placeholder: 'Disponibilidad',
 						},
 						{
 							type: 'number',
-							name: 'precio_hab',
+							name: 'precio',
 							placeholder: 'Precio',
 						},
+						{
+							type: 'text',
+							name: 'descripcion',
+							placeholder: 'descripción'
+						}
 					],
 				})
 				break
@@ -107,7 +119,7 @@ function Hospitality() {
 					inputs: [
 						{
 							type: 'text',
-							name: 'tipo_hab',
+							name: 'tipo',
 							placeholder: 'Tipo',
 						},
 						{
@@ -117,30 +129,25 @@ function Hospitality() {
 						},
 						{
 							type: 'text',
-							name: 'disponibilidad',
+							name: 'cantidad',
 							placeholder: 'Disponibilidad',
 						},
 						{
 							type: 'number',
-							name: 'precio_hab',
+							name: 'precio',
 							placeholder: 'Precio',
 						},
+						{
+							type: 'text',
+							name: 'descripcion',
+							placeholder: 'descripción'
+						}
 					],
 				})
 				break
 			case 'Eliminar':
-				setModal(!modal)
-				setContentModal({
-					title: 'Eliminar Hospedaje',
-					button: 'Eliminar',
-					inputs: [
-						{
-							type: 'text',
-							name: 'id_hospedaje',
-							placeholder: 'ID',
-						},
-					],
-				})
+				handleDeleteHospitality(hospitalitySelected.id_habitacion)
+				toast.error("El hospedaje se ha eliminado")
 				break
 			default:
 				break
@@ -150,20 +157,21 @@ function Hospitality() {
 	const handleHospitality = async hospedajeData => {
 		if (contentModal.title === 'Agregar Hospedaje') {
 			handleSetHospitality(hospedajeData)
+			toast.success("El hospedaje se ha creado correctamente")
 		} else if (contentModal.title === 'Editar Hospedaje') {
 			handleUpdateHospitality(hospedajeData)
-		} else if (contentModal.title === 'Eliminar Hospedaje') {
-			handleDeleteHospitality(hospedajeData.id_hospedaje)
+			toast.info("El hospedaje se ha actualizado correctamente")
 		}
 	}
 
 	const handleRowClick = row => {
 		setHospitalitySelect({
-			id_hospedaje: row.id_hospedaje || '',
-			tipo_hab: row.tipo_hab || '',
+			id_habitacion: row.id_habitacion || '',
+			tipo: row.tipo || '',
 			capacidad: row.capacidad || '',
-			disponibilidad: row.disponibilidad || '',
-			precio_hab: row.precio_hab || '',
+			cantidad: row.cantidad || '',
+			precio: row.precio || '',
+			descripcion: row.descripcion || '',
 		})
 	}
 

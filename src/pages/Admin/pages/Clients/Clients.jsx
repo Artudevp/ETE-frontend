@@ -3,6 +3,9 @@ import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
 import Error from '../../../../components/Error/Error'
 import { useClients } from '../../../../context/AdminProviders'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 function Clients() {
 	const {
 		clients,
@@ -18,7 +21,7 @@ function Clients() {
 			header: 'ID',
 		},
 		{
-			column: 'nombre_cli',
+			column: 'nombre',
 			header: 'Nombre',
 		},
 		{
@@ -54,7 +57,7 @@ function Clients() {
 		inputs: [],
 	}
 	const clientSelectedState = {
-		nombre_cli: '',
+		nombre: '',
 		cedula: '',
 		genero: '',
 		edad: '',
@@ -76,7 +79,7 @@ function Clients() {
 					inputs: [
 						{
 							type: 'text',
-							name: 'nombre_cli',
+							name: 'nombre',
 							placeholder: 'Nombre',
 						},
 						{
@@ -85,9 +88,9 @@ function Clients() {
 							placeholder: 'Cédula',
 						},
 						{
-							type: 'text',
+							type: 'select',
 							name: 'genero',
-							placeholder: 'Género',
+							options: ['MASCULINO', 'FEMENINO', 'OTRO'],
 						},
 						{
 							type: 'number',
@@ -105,7 +108,7 @@ function Clients() {
 					inputs: [
 						{
 							type: 'text',
-							name: 'nombre_cli',
+							name: 'nombre',
 							placeholder: 'Nombre',
 						},
 						{
@@ -114,9 +117,10 @@ function Clients() {
 							placeholder: 'Cédula',
 						},
 						{
-							type: 'text',
+							type: 'select',
 							name: 'genero',
 							placeholder: 'Género',
+							options: ['MASCULINO', 'FEMENINO', 'OTRO'],
 						},
 						{
 							type: 'number',
@@ -127,18 +131,12 @@ function Clients() {
 				})
 				break
 			case 'Eliminar':
-				setModal(!modal)
-				setContentModal({
-					title: 'Eliminar Cliente',
-					button: 'Eliminar',
-					inputs: [
-						{
-							name: 'id_cliente',
-							placeholder: 'ID Cliente',
-							type: 'number',
-						},
-					],
-				})
+				if (clientSelected.id_cliente) {
+					handleDeleteClient(clientSelected.id_cliente)
+					toast.success("Cliente eliminado con éxito")
+				} else {
+					toast.error("No se seleccionó un cliente para eliminar")
+				}
 				break
 			default:
 				break
@@ -148,16 +146,16 @@ function Clients() {
 	const handleClients = async clientData => {
 		if (contentModal.title === 'Agregar Cliente') {
 			handleSetClients(clientData)
+			toast.success("Cliente agregado con éxito")
 		} else if (contentModal.title === 'Editar Cliente') {
 			handleUpdateClient(clientData)
-		} else if (contentModal.title === 'Eliminar Cliente') {
-			handleDeleteClient(clientData.id_cliente)
+			toast.success("Cliente editado con éxito")
 		}
 	}
 
 	const handleRowClick = row => {
 		setClientSelected({
-			nombre_cli: row.nombre_cli || '',
+			nombre: row.nombre || '',
 			cedula: row.cedula || '',
 			genero: row.genero || '',
 			edad: row.edad || '',

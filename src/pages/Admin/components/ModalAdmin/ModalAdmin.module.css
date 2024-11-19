@@ -4,92 +4,145 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.7);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 20px;
-	transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	padding: 0 20px;
+	transition: opacity 0.3s ease;
+	opacity: 0;
+}
+
+.modal.active {
+	opacity: 1;
 }
 
 .modalContent {
-	background-color: #282936;
-	padding: 20px;
-	border-radius: 10px;
+	background-color: #1e1e2f;
+	padding: 40px 60px;
+	border-radius: 12px;
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
 	width: 100%;
-	max-width: 400px;
+	max-width: 800px;
 	color: #fff;
 	position: relative;
+	transition: transform 0.3s ease;
+	transform: scale(0.9);
+}
+
+.modalContent.active {
+	transform: scale(1);
 }
 
 .modalForm {
 	display: flex;
 	flex-direction: column;
-	gap: 40px;
+	gap: 25px;
 }
 
 .modalFormInputs {
 	display: flex;
 	flex-direction: column;
-	gap: 15px;
+	gap: 18px;
 }
 
-.modalFormInput input {
-	padding: 10px;
-	border-radius: 5px;
-	border: 1px solid #000;
+.modalFormInput input,
+.modalFormInput select {
+	padding: 15px;
+	border-radius: 10px;
+	border: 1px solid #444;
 	background-color: transparent;
 	color: #fff;
 	font-size: 16px;
+	transition: all 0.3s ease;
+	width: 100%;
 }
 
 .modalFormInput {
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	gap: 5px;
+	gap: 10px;
 }
 
 .modalFormInput label {
 	position: absolute;
-	top: 25%;
-	left: 10px;
+	top: 30%;
+	left: 12px;
 	pointer-events: none;
-	background-color: #282936;
-	padding: 0 3px;
-	transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	background-color: #1e1e2f;
+	padding: 0 8px;
+	transition: all 0.3s ease;
+	color: #aaa;
+	font-size: 16px;
 }
 
 .modalFormInput label.active {
-	top: -10px;
-	left: 10px;
-	transform: scale(0.8);
+	top: -12px;
+	left: 12px;
+	transform: scale(0.85);
+	color: #007bff;
+}
+
+.modalFormInput input:focus,
+.modalFormInput select:focus {
+	border: 1px solid #007bff;
+	background-color: #333;
+}
+
+.modalFormInput input.error,
+.modalFormInput select.error {
+	border: 1px solid red;
+}
+
+.modalFormInput input.success,
+.modalFormInput select.success {
+	border: 1px solid green;
 }
 
 .modalFormButtons button {
-	padding: 13px 30px;
-	border-radius: 5px;
+	padding: 15px 30px;
+	border-radius: 10px;
 	background-color: #007bff;
 	color: white;
 	border: none;
 	cursor: pointer;
 	font-size: 16px;
+	transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.modalFormButtons button:hover {
+	background-color: #0056b3;
+	transform: scale(1.05);
+}
+
+.modalFormButtons button:active {
+	transform: scale(0.98);
 }
 
 .modalFormButtons {
 	display: flex;
 	justify-content: flex-end;
-	gap: 10px;
+	gap: 20px;
 }
 
 .modalClose {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 15px;
+	right: 15px;
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
+	transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.modalClose:hover {
+	transform: rotate(90deg);
+	color: #007bff;
+}
+
+.modalContent:focus {
+	outline: 3px solid #007bff;
 }
