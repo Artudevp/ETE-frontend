@@ -7,7 +7,6 @@ import Clients from './pages/Clients/Clients'
 import Activities from './pages/Activities/Activities'
 import RoutesAdmin from './pages/Routes/Routes'
 import Hospitality from './pages/Hospitality/Hospitality'
-import AddUser from './pages/AddUser/AddUser'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { AdminProvider } from '../../context/AdminProvider'
 
@@ -19,7 +18,6 @@ const routes = [
 	{ path: 'actividades', element: <Activities /> },
 	{ path: 'rutas', element: <RoutesAdmin /> },
 	{ path: 'hospedaje', element: <Hospitality /> },
-	{ path: 'crear-usuario', element: <AddUser /> },
 ]
 
 function AdminRoutes() {
