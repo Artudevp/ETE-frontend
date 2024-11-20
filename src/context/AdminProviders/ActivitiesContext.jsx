@@ -20,6 +20,7 @@ export const ActivitiesProvider = ({ children }) => {
 		handleUpdateEntity: handleUpdateActivity,
 		handleDeleteEntity: handleDeleteActivity,
 		errorModal,
+		handleClearError,
 	} = useEntityManagement(
 		getActivities,
 		addActivity,
@@ -36,6 +37,7 @@ export const ActivitiesProvider = ({ children }) => {
 				handleUpdateActivity,
 				handleDeleteActivity,
 				errorModal,
+				handleClearError,
 			}}
 		>
 			{children}

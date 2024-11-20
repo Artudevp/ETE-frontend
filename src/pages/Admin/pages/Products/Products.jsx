@@ -13,6 +13,7 @@ function Products() {
 		handleUpdateProduct,
 		handleDeleteProduct,
 		errorModal,
+		handleClearError,
 	} = useProducts()
 	const title = 'Gestión de Productos'
 	const columns = [
@@ -38,9 +39,9 @@ function Products() {
 		},
 		{
 			column: 'descripcion',
-			header: 'Descripción'
+			header: 'Descripción',
 		},
-		]
+	]
 	const actions = [
 		{
 			label: 'Nuevo',
@@ -104,8 +105,8 @@ function Products() {
 						{
 							type: 'text',
 							name: 'descripcion',
-							placeholder: 'Descripción'
-						}
+							placeholder: 'Descripción',
+						},
 					],
 				})
 				break
@@ -138,14 +139,14 @@ function Products() {
 						{
 							type: 'text',
 							name: 'descripcion',
-							placeholder: 'Descripción'
+							placeholder: 'Descripción',
 						},
 					],
 				})
 				break
 			case 'Eliminar':
-				handleDeleteProduct(productSelected.id_producto);
-				toast.error("Producto eliminado");
+				handleDeleteProduct(productSelected.id_producto)
+				toast.error('Producto eliminado')
 				break
 			default:
 				break
@@ -154,11 +155,11 @@ function Products() {
 
 	const handleProducts = async productData => {
 		if (contentModal.title === 'Agregar Producto') {
-			handleSetProducts(productData);
-			toast.success("Producto agregado con éxito");
+			handleSetProducts(productData)
+			toast.success('Producto agregado con éxito')
 		} else if (contentModal.title === 'Editar Producto') {
-			handleUpdateProduct(productData);
-			toast.info("Producto actualizado con éxito");
+			handleUpdateProduct(productData)
+			toast.info('Producto actualizado con éxito')
 		}
 	}
 
@@ -191,7 +192,7 @@ function Products() {
 				setData={handleProducts}
 				rowSelected={productSelected}
 			/>
-			<Error error={errorModal} />
+			<Error error={errorModal} clearErrors={handleClearError} />
 		</>
 	)
 }

@@ -13,6 +13,7 @@ function Hospitality() {
 		handleUpdateHospitality,
 		handleDeleteHospitality,
 		errorModal,
+		handleClearError,
 	} = useHospitality()
 	const title = 'Gestión de Hospedaje'
 	const columns = [
@@ -193,7 +194,7 @@ function Hospitality() {
 				setData={handleHospitality}
 				rowSelected={hospitalitySelected}
 			/>
-			<Error error={errorModal} />
+			<Error error={errorModal} clearErrors={handleClearError} />
 		</>
 	)
 }

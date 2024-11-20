@@ -3,7 +3,7 @@ import Styles from './Error.module.css'
 import { IoIosArrowDown } from 'react-icons/io'
 import PropTypes from 'prop-types'
 
-function Error({ error }) {
+function Error({ error, clearErrors }) {
 	const { message, details } = error
 	const [active, setActive] = useState(false)
 	const [showDetails, setShowDetails] = useState(false)
@@ -54,6 +54,7 @@ function Error({ error }) {
 				<button
 					onClick={() => {
 						setActive(false)
+						clearErrors()
 					}}
 				>
 					Cerrar

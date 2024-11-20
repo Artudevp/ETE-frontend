@@ -20,6 +20,7 @@ export const UsersProvider = ({ children }) => {
 		handleUpdateEntity: handleUpdateUser,
 		handleDeleteEntity: handleDeleteUser,
 		errorModal,
+		handleClearError,
 	} = useEntityManagement(getUsers, addUser, updateUser, deleteUser, 'usuario')
 
 	return (
@@ -30,6 +31,7 @@ export const UsersProvider = ({ children }) => {
 				handleUpdateUser,
 				handleDeleteUser,
 				errorModal,
+				handleClearError,
 			}}
 		>
 			{children}

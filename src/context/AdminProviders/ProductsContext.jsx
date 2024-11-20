@@ -20,6 +20,7 @@ export const ProductsProvider = ({ children }) => {
 		handleUpdateEntity: handleUpdateProduct,
 		handleDeleteEntity: handleDeleteProduct,
 		errorModal,
+		handleClearError,
 	} = useEntityManagement(
 		getProducts,
 		addProduct,
@@ -35,6 +36,7 @@ export const ProductsProvider = ({ children }) => {
 				handleUpdateProduct,
 				handleDeleteProduct,
 				errorModal,
+				handleClearError,
 			}}
 		>
 			{children}

@@ -77,6 +77,26 @@ function ModalAdmin({ active, setActive, setData, content, rowSelected }) {
 										<option value='OTRO'>Otro</option>
 									</select>
 								) : (
+									<></>
+								)}
+
+								{input.type === 'select' ? (
+									<select
+										id={input.name}
+										name={input.name}
+										onChange={handleChange}
+										value={form[input.name]}
+										onFocus={handleFocus}
+										onBlur={handleBlur}
+										required
+									>
+										{input.options.map(option => (
+											<option key={option} value={option}>
+												{option}
+											</option>
+										))}
+									</select>
+								) : (
 									<input
 										id={input.name}
 										type={input.type}

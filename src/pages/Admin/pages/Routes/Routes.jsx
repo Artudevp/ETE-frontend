@@ -13,6 +13,7 @@ function RoutesAdmin() {
 		handleUpdateRoute,
 		handleDeleteRoute,
 		errorModal,
+		handleClearError,
 	} = useRoutes()
 	const title = 'Gestión de Rutas'
 	const columns = [
@@ -34,11 +35,11 @@ function RoutesAdmin() {
 		},
 		{
 			column: 'capacidad',
-			header: 'Capacidad'
+			header: 'Capacidad',
 		},
 		{
 			column: 'descripcion',
-			header: 'Descripcion'
+			header: 'Descripcion',
 		},
 	]
 	const actions = [
@@ -98,15 +99,15 @@ function RoutesAdmin() {
 							placeholder: 'Precio',
 						},
 						{
-							type: "number",
+							type: 'number',
 							name: 'capacidad',
-							placeholder: "Capacidad"
+							placeholder: 'Capacidad',
 						},
 						{
 							type: 'text',
 							name: 'descripcion',
-							placeholder: 'Descripción'
-						}
+							placeholder: 'Descripción',
+						},
 					],
 				})
 				break
@@ -132,21 +133,21 @@ function RoutesAdmin() {
 							placeholder: 'Precio',
 						},
 						{
-							type: "number",
+							type: 'number',
 							name: 'capacidad',
-							placeholder: "Capacidad"
+							placeholder: 'Capacidad',
 						},
 						{
 							type: 'text',
 							name: 'descripcion',
-							placeholder: 'Descripción'
-						}
+							placeholder: 'Descripción',
+						},
 					],
 				})
 				break
 			case 'Eliminar':
 				handleDeleteRoute(routeSelected.id_ruta)
-				toast.error("El producto se ha eliminado")
+				toast.error('El producto se ha eliminado')
 				break
 			default:
 				break
@@ -156,10 +157,10 @@ function RoutesAdmin() {
 	const handleRoutes = async routeData => {
 		if (contentModal.title === 'Nuevo Ruta') {
 			handleSetRoutes(routeData)
-			toast.success("El producto se ha agregado satisfactoriamente")
+			toast.success('El producto se ha agregado satisfactoriamente')
 		} else if (contentModal.title === 'Editar Ruta') {
 			handleUpdateRoute(routeData)
-			toast.info("El producto se ha editado correctamente")
+			toast.info('El producto se ha editado correctamente')
 		}
 	}
 
@@ -192,7 +193,7 @@ function RoutesAdmin() {
 				setData={handleRoutes}
 				rowSelected={routeSelected}
 			/>
-			<Error error={errorModal} />
+			<Error error={errorModal} clearErrors={handleClearError} />
 		</>
 	)
 }

@@ -87,6 +87,10 @@ const useEntityManagement = (
 		[deleteEntity, entityName],
 	)
 
+	const handleClearError = () => {
+		setErrorModal(errorModalState)
+	}
+
 	useEffect(() => {
 		fetchEntities()
 	}, [fetchEntities])
@@ -97,6 +101,7 @@ const useEntityManagement = (
 		handleUpdateEntity,
 		handleDeleteEntity,
 		errorModal,
+		handleClearError,
 	}
 }
 

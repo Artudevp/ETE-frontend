@@ -13,6 +13,7 @@ function Activities() {
 		handleUpdateActivity,
 		handleDeleteActivity,
 		errorModal,
+		handleClearError,
 	} = useActivities()
 	const title = 'Gestión de Actividades'
 	const columns = [
@@ -34,11 +35,11 @@ function Activities() {
 		},
 		{
 			column: 'capacidad',
-			header: 'Capacidad (personas)'
+			header: 'Capacidad (personas)',
 		},
 		{
 			column: 'descripcion',
-			header: 'Descripcion'
+			header: 'Descripcion',
 		},
 	]
 	const actions = [
@@ -100,15 +101,15 @@ function Activities() {
 							placeholder: 'Precio',
 						},
 						{
-							type: "number",
+							type: 'number',
 							name: 'capacidad',
-							placeholder: "Capacidad"
+							placeholder: 'Capacidad',
 						},
 						{
 							type: 'text',
 							name: 'descripcion',
-							placeholder: 'Descripción'
-						}
+							placeholder: 'Descripción',
+						},
 					],
 				})
 				break
@@ -134,21 +135,21 @@ function Activities() {
 							placeholder: 'Precio',
 						},
 						{
-							type: "number",
+							type: 'number',
 							name: 'capacidad',
-							placeholder: "Capacidad"
+							placeholder: 'Capacidad',
 						},
 						{
 							type: 'text',
 							name: 'descripcion',
-							placeholder: 'Descripción'
-						}
+							placeholder: 'Descripción',
+						},
 					],
 				})
 				break
 			case 'Eliminar':
 				handleDeleteActivity(activitySelected.id_actividad)
-				toast.error("La actividad se ha eliminado")
+				toast.error('La actividad se ha eliminado')
 				break
 			default:
 				break
@@ -158,10 +159,10 @@ function Activities() {
 	const handleActivities = async activityData => {
 		if (contentModal.title === 'Agregar Actividad') {
 			handleSetActivities(activityData)
-			toast.success("La actividad se ha creado correctamente")
+			toast.success('La actividad se ha creado correctamente')
 		} else if (contentModal.title === 'Editar Actividad') {
 			handleUpdateActivity(activityData)
-			toast.info("La actividad se ha actualizado correctamente")
+			toast.info('La actividad se ha actualizado correctamente')
 		}
 	}
 
@@ -194,7 +195,7 @@ function Activities() {
 				setData={handleActivities}
 				rowSelected={activitySelected}
 			/>
-			<Error error={errorModal} />
+			<Error error={errorModal} clearErrors={handleClearError} />
 		</>
 	)
 }

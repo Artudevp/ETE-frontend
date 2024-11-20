@@ -12,6 +12,7 @@ function Users() {
 		handleUpdateUser,
 		handleDeleteUser,
 		errorModal,
+		handleClearError,
 	} = useUsers()
 
 	const title = 'Gestión de Usuarios'
@@ -38,6 +39,7 @@ function Users() {
 		apellido: '',
 		username: '',
 		correo: '',
+		contraseña: '',
 		rol: '',
 		id: '',
 	}
@@ -55,16 +57,33 @@ function Users() {
 					title: 'Agregar Usuario',
 					button: 'Agregar',
 					inputs: [
-						{ type: 'text', name: 'nombre', placeholder: 'Nombre' },
-						{ type: 'text', name: 'apellido', placeholder: 'Apellido' },
-						{ type: 'email', name: 'correo', placeholder: 'Correo' },
+						{ type: 'text', name: 'nombre', placeholder: 'Nombre', value: '' },
+						{
+							type: 'text',
+							name: 'apellido',
+							placeholder: 'Apellido',
+							value: '',
+						},
+						{ type: 'email', name: 'correo', placeholder: 'Correo', value: '' },
 						{
 							type: 'text',
 							name: 'username',
 							placeholder: 'Nombre de usuario',
+							value: '',
 						},
-						{ type: 'password', name: 'contraseña', placeholder: 'Contraseña' },
-						{ type: 'text', name: 'rol', placeholder: 'Rol de usuario' },
+						{
+							type: 'password',
+							name: 'contraseña',
+							placeholder: 'Contraseña',
+							value: '',
+						},
+						{
+							type: 'select',
+							name: 'rol',
+							placeholder: 'Rol de usuario',
+							options: ['ROLE_USER', 'ROLE_ADMIN'],
+							value: '',
+						},
 					],
 				})
 				break
@@ -109,6 +128,7 @@ function Users() {
 							type: 'password',
 							name: 'contraseña',
 							placeholder: 'Contraseña (Dejar en blanco para no cambiarla)',
+							value: userSelected.contraseña || '',
 							required: false,
 						},
 						{
@@ -184,7 +204,7 @@ function Users() {
 				setData={handleUsers}
 				rowSelected={userSelected}
 			/>
-			<Error error={errorModal} />
+			<Error error={errorModal} clearErrors={handleClearError} />
 		</>
 	)
 }

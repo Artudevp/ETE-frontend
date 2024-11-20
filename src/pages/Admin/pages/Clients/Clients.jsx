@@ -13,6 +13,7 @@ function Clients() {
 		handleUpdateClient,
 		handleDeleteClient,
 		errorModal,
+		handleClearError,
 	} = useClients()
 	const title = 'Gestión de Clientes'
 	const columns = [
@@ -133,9 +134,9 @@ function Clients() {
 			case 'Eliminar':
 				if (clientSelected.id_cliente) {
 					handleDeleteClient(clientSelected.id_cliente)
-					toast.success("Cliente eliminado con éxito")
+					toast.success('Cliente eliminado con éxito')
 				} else {
-					toast.error("No se seleccionó un cliente para eliminar")
+					toast.error('No se seleccionó un cliente para eliminar')
 				}
 				break
 			default:
@@ -146,10 +147,10 @@ function Clients() {
 	const handleClients = async clientData => {
 		if (contentModal.title === 'Agregar Cliente') {
 			handleSetClients(clientData)
-			toast.success("Cliente agregado con éxito")
+			toast.success('Cliente agregado con éxito')
 		} else if (contentModal.title === 'Editar Cliente') {
 			handleUpdateClient(clientData)
-			toast.success("Cliente editado con éxito")
+			toast.success('Cliente editado con éxito')
 		}
 	}
 
@@ -181,7 +182,7 @@ function Clients() {
 				setData={handleClients}
 				rowSelected={clientSelected}
 			/>
-			<Error error={errorModal} />
+			<Error error={errorModal} clearErrors={handleClearError} />
 		</>
 	)
 }

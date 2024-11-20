@@ -20,6 +20,7 @@ export const ClientsProvider = ({ children }) => {
 		handleUpdateEntity: handleUpdateClient,
 		handleDeleteEntity: handleDeleteClient,
 		errorModal,
+		handleClearError,
 	} = useEntityManagement(
 		getClients,
 		addClient,
@@ -36,6 +37,7 @@ export const ClientsProvider = ({ children }) => {
 				handleUpdateClient,
 				handleDeleteClient,
 				errorModal,
+				handleClearError,
 			}}
 		>
 			{children}
