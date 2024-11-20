@@ -38,8 +38,8 @@ function Hospitality() {
 		},
 		{
 			column: 'descripcion',
-			header: 'Descripción'
-		}
+			header: 'Descripción',
+		},
 	]
 	const actions = [
 		{
@@ -64,7 +64,7 @@ function Hospitality() {
 		id_habitacion: '',
 		tipo: '',
 		capacidad: '',
-		disponibilidad: '',
+		cantidad: '',
 		precio: '',
 		descripcion: '',
 	}
@@ -96,7 +96,7 @@ function Hospitality() {
 						{
 							type: 'text',
 							name: 'cantidad',
-							placeholder: 'Disponibilidad',
+							placeholder: 'Cantidad',
 						},
 						{
 							type: 'number',
@@ -106,8 +106,8 @@ function Hospitality() {
 						{
 							type: 'text',
 							name: 'descripcion',
-							placeholder: 'descripción'
-						}
+							placeholder: 'descripción',
+						},
 					],
 				})
 				break
@@ -140,14 +140,14 @@ function Hospitality() {
 						{
 							type: 'text',
 							name: 'descripcion',
-							placeholder: 'descripción'
-						}
+							placeholder: 'descripción',
+						},
 					],
 				})
 				break
 			case 'Eliminar':
 				handleDeleteHospitality(hospitalitySelected.id_habitacion)
-				toast.error("El hospedaje se ha eliminado")
+				toast.error('El hospedaje se ha eliminado')
 				break
 			default:
 				break
@@ -157,10 +157,10 @@ function Hospitality() {
 	const handleHospitality = async hospedajeData => {
 		if (contentModal.title === 'Agregar Hospedaje') {
 			handleSetHospitality(hospedajeData)
-			toast.success("El hospedaje se ha creado correctamente")
+			toast.success('El hospedaje se ha creado correctamente')
 		} else if (contentModal.title === 'Editar Hospedaje') {
 			handleUpdateHospitality(hospedajeData)
-			toast.info("El hospedaje se ha actualizado correctamente")
+			toast.info('El hospedaje se ha actualizado correctamente')
 		}
 	}
 

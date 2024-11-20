@@ -25,7 +25,7 @@ const addHospitality = async hospedaje => {
 const updateHospitality = async hospedaje => {
 	try {
 		const response = await axiosInstance.put(
-			`/hospedajes/${hospedaje.id_hospedaje}`,
+			`/hospedajes/${hospedaje.id_habitacion}`,
 			hospedaje,
 		)
 		return response.data

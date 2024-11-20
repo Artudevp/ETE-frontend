@@ -25,7 +25,7 @@ export const HospitalityProvider = ({ children }) => {
 		addHospitality,
 		updateHospitality,
 		deleteHospitality,
-		'hospedaje',
+		'habitacion',
 	)
 
 	return (
