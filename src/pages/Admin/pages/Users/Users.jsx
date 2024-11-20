@@ -6,7 +6,13 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 function Users() {
-	const { users, handleSetUsers, handleUpdateUser, handleDeleteUser, errorModal } = useUsers()
+	const {
+		users,
+		handleSetUsers,
+		handleUpdateUser,
+		handleDeleteUser,
+		errorModal,
+	} = useUsers()
 
 	const title = 'Gestión de Usuarios'
 	const columns = [
@@ -40,7 +46,7 @@ function Users() {
 	const [contentModal, setContentModal] = useState(contentModalState)
 	const [userSelected, setUserSelected] = useState(userSelectedState)
 
-	const handleModal = (action) => {
+	const handleModal = action => {
 		switch (action) {
 			case 'Nuevo':
 				setModal(true)
@@ -52,7 +58,11 @@ function Users() {
 						{ type: 'text', name: 'nombre', placeholder: 'Nombre' },
 						{ type: 'text', name: 'apellido', placeholder: 'Apellido' },
 						{ type: 'email', name: 'correo', placeholder: 'Correo' },
-						{ type: 'text', name: 'username', placeholder: 'Nombre de usuario' },
+						{
+							type: 'text',
+							name: 'username',
+							placeholder: 'Nombre de usuario',
+						},
 						{ type: 'password', name: 'contraseña', placeholder: 'Contraseña' },
 						{ type: 'text', name: 'rol', placeholder: 'Rol de usuario' },
 					],
@@ -64,23 +74,59 @@ function Users() {
 					title: 'Ver Usuario',
 					button: 'Editar',
 					inputs: [
-						{ type: 'text', name: 'id', placeholder: 'Numero', value: userSelected.id || '', disabled: true },
-						{ type: 'text', name: 'nombre', placeholder: 'Nombre', value: userSelected.nombre || '' },
-						{ type: 'text', name: 'apellido', placeholder: 'Apellido', value: userSelected.apellido || '' },
-						{ type: 'text', name: 'username', placeholder: 'Nombre de usuario', value: userSelected.username || '' },
-						{ type: 'email', name: 'correo', placeholder: 'Correo', value: userSelected.correo || '' },
-						{ type: 'password', name: 'contraseña', placeholder: 'Contraseña (Dejar en blanco para no cambiarla)', required: false },
-						{ type: 'text', name: 'rol', placeholder: 'Rol de usuario', value: userSelected.rol || '', disabled: true },
+						{
+							type: 'text',
+							name: 'id',
+							placeholder: 'Numero',
+							value: userSelected.id || '',
+							disabled: true,
+						},
+						{
+							type: 'text',
+							name: 'nombre',
+							placeholder: 'Nombre',
+							value: userSelected.nombre || '',
+						},
+						{
+							type: 'text',
+							name: 'apellido',
+							placeholder: 'Apellido',
+							value: userSelected.apellido || '',
+						},
+						{
+							type: 'text',
+							name: 'username',
+							placeholder: 'Nombre de usuario',
+							value: userSelected.username || '',
+						},
+						{
+							type: 'email',
+							name: 'correo',
+							placeholder: 'Correo',
+							value: userSelected.correo || '',
+						},
+						{
+							type: 'password',
+							name: 'contraseña',
+							placeholder: 'Contraseña (Dejar en blanco para no cambiarla)',
+							required: false,
+						},
+						{
+							type: 'text',
+							name: 'rol',
+							placeholder: 'Rol de usuario',
+							value: userSelected.rol || '',
+							disabled: true,
+						},
 					],
 				})
 				break
 			case 'Eliminar':
-
 				if (userSelected.id) {
 					handleDeleteUser(userSelected.id)
-					toast.success("Usuario eliminado con éxito")
+					toast.success('Usuario eliminado con éxito')
 				} else {
-					toast.error("No se seleccionó un usuario para eliminar")
+					toast.error('No se seleccionó un usuario para eliminar')
 				}
 				break
 			default:
@@ -88,43 +134,37 @@ function Users() {
 		}
 	}
 
-	const handleUsers = async (userData) => {
-		console.log(userData);
+	const handleUsers = async userData => {
+		console.log(userData)
 		if (contentModal.title === 'Agregar Usuario') {
 			handleSetUsers(userData)
-			toast.success("Usuario agregado con éxito")
+			toast.success('Usuario agregado con éxito')
 		} else if (contentModal.title === 'Ver Usuario') {
 			if (!userData.id || isNaN(userData.id)) {
-				toast.error("ID del usuario es inválido")
+				toast.error('ID del usuario es inválido')
 				return
 			}
 
 			if (userData.contraseña && userData.contraseña !== '') {
 				handleUpdateUser(userData)
-				toast.success("Usuario editado con contraseña actualizada")
+				toast.success('Usuario editado con contraseña actualizada')
 			} else {
 				handleUpdateUser({ ...userData, contraseña: userSelected.contraseña })
-				toast.success("Usuario editado sin cambios en la contraseña")
+				toast.success('Usuario editado sin cambios en la contraseña')
 			}
 		}
 	}
-	
-	const handleRowClick = (row) => {
-		if (!row.id || isNaN(row.id)) {
-		  toast.error("ID del usuario es inválido");
-		  return;
-		}
-	  
+
+	const handleRowClick = row => {
 		setUserSelected({
-		  id: row.id || '',
-		  nombre: row.nombre || '',
-		  apellido: row.apellido || '',
-		  username: row.username || '',
-		  correo: row.correo || '',
-		  rol: row.rol || '',
-		});
-	  }
-	  
+			id: row.id || '',
+			nombre: row.nombre || '',
+			apellido: row.apellido || '',
+			username: row.username || '',
+			correo: row.correo || '',
+			rol: row.rol || '',
+		})
+	}
 
 	return (
 		<>
