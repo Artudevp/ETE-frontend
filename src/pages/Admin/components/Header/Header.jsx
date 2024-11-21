@@ -54,12 +54,6 @@ export function Header() {
 			url: '/admin/dashboard/hospedaje',
 			id: 7,
 		},
-		{
-			label: 'Crear usuario',
-			icon: 'pi pi-fw pi-user-plus',
-			url: '/admin/dashboard/crear-usuario',
-			id: 8,
-		},
 	]
 	return (
 		<header className={Style.header}>
