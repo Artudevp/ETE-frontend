@@ -1,11 +1,11 @@
 import PageSchema from '../PageSchema/PageSchema'
-import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
+import { ModalAdmin } from '../../components'
 import Error from '../../../../components/Error/Error'
 import { useUsers } from '../../../../context/AdminProviders'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
-function Users() {
+export function Users() {
 	const {
 		users,
 		handleSetUsers,
@@ -57,32 +57,28 @@ function Users() {
 					title: 'Agregar Usuario',
 					button: 'Agregar',
 					inputs: [
-						{ type: 'text', name: 'nombre', placeholder: 'Nombre', value: '' },
+						{ type: 'text', name: 'nombre', placeholder: 'Nombre' },
 						{
 							type: 'text',
 							name: 'apellido',
 							placeholder: 'Apellido',
-							value: '',
 						},
-						{ type: 'email', name: 'correo', placeholder: 'Correo', value: '' },
+						{ type: 'email', name: 'correo', placeholder: 'Correo' },
 						{
 							type: 'text',
 							name: 'username',
 							placeholder: 'Nombre de usuario',
-							value: '',
 						},
 						{
 							type: 'password',
 							name: 'contraseña',
 							placeholder: 'Contraseña',
-							value: '',
 						},
 						{
 							type: 'select',
 							name: 'rol',
 							placeholder: 'Rol de usuario',
 							options: ['ROLE_USER', 'ROLE_ADMIN'],
-							value: '',
 						},
 					],
 				})
@@ -208,5 +204,3 @@ function Users() {
 		</>
 	)
 }
-
-export default Users

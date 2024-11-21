@@ -2,7 +2,7 @@ import Style from './Header.module.css'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-function Header() {
+export function Header() {
 	const [visible, setVisible] = useState(true)
 	const [ubicacionPrincipal, setUbicacionPrincipal] = useState(window.scrollY)
 
@@ -46,5 +46,3 @@ function Header() {
 		</header>
 	)
 }
-
-export default Header

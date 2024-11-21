@@ -1,17 +1,18 @@
 import Style from './ClientRoutes.module.css'
-import SideBar from './components/SideBar/SideBar'
-import Alojamientos from './pages/Alojamientos/Alojamientos'
-import InfoAlojamiento from './pages/InfoAlojamiento/InfoAlojamiento'
-import Actividades from './pages/Actividades/Actividades'
-import InfoActividad from './pages/InfoActividad/InfoActividad'
-import Rutas from './pages/Rutas/Rutas'
-import InfoRuta from './pages/InfoRuta/InfoRuta'
-import Productos from './pages/Productos/Productos'
-import InfoProducto from './pages/InfoProductos/InfoProducto'
-import NotFound from './pages/NotFound/NotFound'
+import { SideBar } from './components'
+import {
+	Alojamientos,
+	InfoAlojamiento,
+	Actividades,
+	InfoActividad,
+	Rutas,
+	InfoRuta,
+	Productos,
+	InfoProducto,
+	NotFound,
+} from './pages'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { ClientProvider } from '../../context/ClientProvider'
-
 
 const routes = [
 	{ path: 'alojamientos', element: <Alojamientos /> },
@@ -20,8 +21,8 @@ const routes = [
 	{ path: 'actividades/actividad', element: <InfoActividad /> },
 	{ path: 'rutas', element: <Rutas /> },
 	{ path: 'rutas/ruta', element: <InfoRuta /> },
-	{ path: 'productos', element: <Productos/>},
-	{ path: 'productos/producto', element: <InfoProducto/>},
+	{ path: 'productos', element: <Productos /> },
+	{ path: 'productos/producto', element: <InfoProducto /> },
 	{ path: '*', element: <NotFound /> },
 ]
 

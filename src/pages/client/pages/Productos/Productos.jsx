@@ -1,8 +1,8 @@
 import Style from './Productos.module.css'
-import Card from '../../components/Card/Card'
+import { Card } from '../../components'
 import { useProductos, useClient } from '../../../../context/ClientProviders'
 
-function Productos() {
+export function Productos() {
 	const { productos } = useProductos()
 	const { setProductoSelected } = useClient()
 
@@ -45,5 +45,3 @@ function Productos() {
 		</div>
 	)
 }
-
-export default Productos

@@ -1,8 +1,8 @@
 import Style from './Alojamientos.module.css'
-import Card from '../../components/Card/Card'
+import { Card } from '../../components'
 import { useAlojamientos, useClient } from '../../../../context/ClientProviders'
 
-function Alojamientos() {
+export function Alojamientos() {
 	const { alojamientos } = useAlojamientos()
 	const { setHospedajeSelected } = useClient()
 
@@ -45,5 +45,3 @@ function Alojamientos() {
 		</div>
 	)
 }
-
-export default Alojamientos

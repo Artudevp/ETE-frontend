@@ -1,12 +1,12 @@
 import PageSchema from '../PageSchema/PageSchema'
-import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
+import { ModalAdmin } from '../../components'
 import { useProducts } from '../../../../context/AdminProviders'
 import { useState } from 'react'
 import Error from '../../../../components/Error/Error'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-function Products() {
+export function Products() {
 	const {
 		products,
 		handleSetProducts,
@@ -196,5 +196,3 @@ function Products() {
 		</>
 	)
 }
-
-export default Products

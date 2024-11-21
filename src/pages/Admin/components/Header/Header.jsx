@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import Style from './Header.module.css'
 
-function Header() {
+export function Header() {
 	const navigate = useNavigate()
 
 	const handleExit = () => {
@@ -89,5 +89,3 @@ function Header() {
 		</header>
 	)
 }
-
-export default Header

@@ -1,12 +1,14 @@
 import Style from './AdminRoutes.module.css'
-import Header from './components/Header/Header'
-import Home from './pages/Home/Home'
-import Users from './pages/Users/Users'
-import Products from './pages/Products/Products'
-import Clients from './pages/Clients/Clients'
-import Activities from './pages/Activities/Activities'
-import RoutesAdmin from './pages/Routes/Routes'
-import Hospitality from './pages/Hospitality/Hospitality'
+import { Header } from './components'
+import {
+	Home,
+	Users,
+	Products,
+	Clients,
+	Activities,
+	RoutesAdmin,
+	Hospitality,
+} from './pages'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { AdminProvider } from '../../context/AdminProvider'
 

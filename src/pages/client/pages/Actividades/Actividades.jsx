@@ -1,8 +1,8 @@
 import Style from './Actividades.module.css'
-import Card from '../../components/Card/Card'
+import { Card } from '../../components'
 import { useActividades, useClient } from '../../../../context/ClientProviders'
 
-function Actividades() {
+export function Actividades() {
 	const { actividades } = useActividades()
 	const { setActividadSelected } = useClient()
 
@@ -45,5 +45,3 @@ function Actividades() {
 		</div>
 	)
 }
-
-export default Actividades

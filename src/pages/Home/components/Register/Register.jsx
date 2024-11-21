@@ -5,7 +5,7 @@ import { useState } from 'react'
 import registerService from '../../../../services/Register'
 import useRoleManagement from '../../../../hooks/useRoleManagement'
 
-function Register({ active, handleError }) {
+export function Register({ active, handleError }) {
 	const { handleRole } = useRoleManagement()
 	const [userName, setUserName] = useState('')
 	const [firstName, setFirstName] = useState('')
@@ -140,5 +140,3 @@ function Register({ active, handleError }) {
 Register.propTypes = {
 	active: PropTypes.bool,
 }
-
-export default Register

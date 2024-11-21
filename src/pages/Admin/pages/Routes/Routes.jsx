@@ -1,12 +1,12 @@
 import PageSchema from '../PageSchema/PageSchema'
-import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
+import { ModalAdmin } from '../../components'
 import Error from '../../../../components/Error/Error'
 import { useRoutes } from '../../../../context/AdminProviders'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-function RoutesAdmin() {
+export function RoutesAdmin() {
 	const {
 		routes,
 		handleSetRoutes,
@@ -197,5 +197,3 @@ function RoutesAdmin() {
 		</>
 	)
 }
-
-export default RoutesAdmin

@@ -1,8 +1,8 @@
 import Style from './Rutas.module.css'
-import Card from '../../components/Card/Card'
+import { Card } from '../../components'
 import { useRutas, useClient } from '../../../../context/ClientProviders'
 
-function Rutas() {
+export function Rutas() {
 	const { rutas } = useRutas()
 	const { setRutaSelected } = useClient()
 
@@ -45,5 +45,3 @@ function Rutas() {
 		</div>
 	)
 }
-
-export default Rutas

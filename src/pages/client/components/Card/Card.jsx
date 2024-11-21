@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import habitación from '../../../../assets/habitacion.png'
 import Style from './Card.module.css'
 
-function Card({
+export function Card({
 	tipo_prod,
 	precio_prod,
 	producto,
@@ -25,5 +25,3 @@ function Card({
 		</div>
 	)
 }
-
-export default Card

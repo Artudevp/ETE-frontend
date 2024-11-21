@@ -3,7 +3,7 @@ import Style from './Home.module.css'
 
 import 'primeicons/primeicons.css' //icons
 
-const Home = () => {
+export const Home = () => {
 	const buttons = [
 		{
 			label: 'Ir a Usuarios',
@@ -86,5 +86,3 @@ const Home = () => {
 		</div>
 	)
 }
-
-export default Home

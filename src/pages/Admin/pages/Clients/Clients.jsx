@@ -1,12 +1,12 @@
 import PageSchema from '../PageSchema/PageSchema'
-import ModalAdmin from '../../components/ModalAdmin/ModalAdmin'
+import { ModalAdmin } from '../../components'
 import Error from '../../../../components/Error/Error'
 import { useClients } from '../../../../context/AdminProviders'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-function Clients() {
+export function Clients() {
 	const {
 		clients,
 		handleSetClients,
@@ -92,6 +92,7 @@ function Clients() {
 							type: 'select',
 							name: 'genero',
 							options: ['MASCULINO', 'FEMENINO', 'OTRO'],
+							placeholder: 'Género',
 						},
 						{
 							type: 'number',
@@ -186,5 +187,3 @@ function Clients() {
 		</>
 	)
 }
-
-export default Clients

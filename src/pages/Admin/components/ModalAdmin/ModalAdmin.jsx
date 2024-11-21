@@ -3,7 +3,13 @@ import { IoCloseOutline } from 'react-icons/io5'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-function ModalAdmin({ active, setActive, setData, content, rowSelected }) {
+export function ModalAdmin({
+	active,
+	setActive,
+	setData,
+	content,
+	rowSelected,
+}) {
 	const [form, setForm] = useState({})
 
 	const handleChange = e => {
@@ -60,26 +66,6 @@ function ModalAdmin({ active, setActive, setData, content, rowSelected }) {
 									{input.placeholder}
 								</label>
 
-								{/* Componente select para 'genero' */}
-								{input.name === 'genero' ? (
-									<select
-										id={input.name}
-										name={input.name}
-										onChange={handleChange}
-										value={form[input.name]}
-										onFocus={handleFocus}
-										onBlur={handleBlur}
-										required
-									>
-										<option value=''>Selecciona un género</option>
-										<option value='MASCULINO'>Masculino</option>
-										<option value='FEMENINO'>Femenino</option>
-										<option value='OTRO'>Otro</option>
-									</select>
-								) : (
-									<></>
-								)}
-
 								{input.type === 'select' ? (
 									<select
 										id={input.name}
@@ -90,6 +76,7 @@ function ModalAdmin({ active, setActive, setData, content, rowSelected }) {
 										onBlur={handleBlur}
 										required
 									>
+										<option value=''></option>
 										{input.options.map(option => (
 											<option key={option} value={option}>
 												{option}
@@ -135,5 +122,3 @@ ModalAdmin.propTypes = {
 	}),
 	rowSelected: PropTypes.object,
 }
-
-export default ModalAdmin

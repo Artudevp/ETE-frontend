@@ -7,7 +7,7 @@ import { MdOutlineExitToApp } from 'react-icons/md'
 import { NavLink, useNavigate } from 'react-router-dom'
 import Style from './SideBar.module.css'
 
-function SideBar() {
+export function SideBar() {
 	const navigate = useNavigate()
 
 	const handleExit = () => {
@@ -84,5 +84,3 @@ function SideBar() {
 		</nav>
 	)
 }
-
-export default SideBar

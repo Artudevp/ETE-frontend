@@ -1,6 +1,6 @@
 import Style from './Image.module.css'
 
-function Image({
+export function Image({
 	src,
 	alt,
 	width = '',
@@ -26,5 +26,3 @@ function Image({
 		/>
 	)
 }
-
-export default Image

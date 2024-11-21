@@ -2,16 +2,10 @@ import habitación from '../../../../assets/habitacion.png'
 import Style from './InfoAlojamiento.module.css'
 import { useClient } from '../../../../context/ClientProviders'
 
-function InfoAlojamiento() {
+export function InfoAlojamiento() {
 	const { hospedajeSelected } = useClient()
-	const {
-		tipo,
-		precio,
-		cantidad,
-		capacidad,
-		descripcion,
-		disponible,
-	} = hospedajeSelected
+	const { tipo, precio, cantidad, capacidad, descripcion, disponible } =
+		hospedajeSelected
 
 	return (
 		<div className={Style.main}>
@@ -25,8 +19,12 @@ function InfoAlojamiento() {
 								<h2>{tipo}</h2>
 								<p>{descripcion}</p>
 								<p className={Style.precioHab}>Precio: ${precio}</p>
-								<p>Capacidad: <b>{capacidad}</b> personas</p>
-								<p>Habitaciones disponibles: <b>{cantidad}</b></p>
+								<p>
+									Capacidad: <b>{capacidad}</b> personas
+								</p>
+								<p>
+									Habitaciones disponibles: <b>{cantidad}</b>
+								</p>
 							</div>
 						</div>
 						<div className={Style.boxRight}>
@@ -41,5 +39,3 @@ function InfoAlojamiento() {
 		</div>
 	)
 }
-
-export default InfoAlojamiento

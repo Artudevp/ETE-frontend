@@ -2,16 +2,10 @@ import habitación from '../../../../assets/habitacion.png'
 import Style from './InfoRuta.module.css'
 import { useClient } from '../../../../context/ClientProviders'
 
-function InfoRuta() {
+export function InfoRuta() {
 	const { rutaSelected } = useClient()
-	const {
-		nombre,
-		precio,
-		capacidad,
-		duración,
-		descripcion,
-		disponible,
-	} = rutaSelected
+	const { nombre, precio, capacidad, duración, descripcion, disponible } =
+		rutaSelected
 
 	return (
 		<div className={Style.main}>
@@ -43,5 +37,3 @@ function InfoRuta() {
 		</div>
 	)
 }
-
-export default InfoRuta

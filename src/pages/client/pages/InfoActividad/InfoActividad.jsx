@@ -2,16 +2,10 @@ import habitación from '../../../../assets/habitacion.png'
 import Style from './InfoActividad.module.css'
 import { useClient } from '../../../../context/ClientProviders'
 
-function InfoActividad({ children }) {
+export function InfoActividad({ children }) {
 	const { actividadSelected } = useClient()
-	const {
-		nombre,
-		precio,
-		capacidad,
-		duracion,
-		descripcion,
-		disponible,
-	} = actividadSelected
+	const { nombre, precio, capacidad, duracion, descripcion, disponible } =
+		actividadSelected
 
 	return (
 		<div className={Style.main}>
@@ -24,9 +18,7 @@ function InfoActividad({ children }) {
 							<div className={Style.descripActividad}>
 								<h2>{nombre}</h2>
 								<p>{descripcion}</p>
-								<p className={Style.precioAct}>
-									Precio: ${precio} por persona
-								</p>
+								<p className={Style.precioAct}>Precio: ${precio} por persona</p>
 								<p>Capacidad: {capacidad} personas</p>
 								<p>Duración: {duracion} horas</p>
 							</div>
@@ -43,5 +35,3 @@ function InfoActividad({ children }) {
 		</div>
 	)
 }
-
-export default InfoActividad

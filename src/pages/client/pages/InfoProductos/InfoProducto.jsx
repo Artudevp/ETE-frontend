@@ -2,16 +2,10 @@ import habitación from '../../../../assets/habitacion.png'
 import Style from './InfoProducto.module.css'
 import { useClient } from '../../../../context/ClientProviders'
 
-function InfoProducto() {
+export function InfoProducto() {
 	const { productoSelected } = useClient()
-	const {
-		nombre,
-		precio,
-		categoria,
-		descripcion,
-		disponible,
-		cantidad,
-	} = productoSelected
+	const { nombre, precio, categoria, descripcion, disponible, cantidad } =
+		productoSelected
 
 	return (
 		<div className={Style.main}>
@@ -25,9 +19,7 @@ function InfoProducto() {
 								<h2>{nombre}</h2>
 								<h4>Categoria: {categoria}</h4>
 								<p>{descripcion}</p>
-								<p className={Style.precioPro}>
-									Precio: ${precio} C/U
-								</p>
+								<p className={Style.precioPro}>Precio: ${precio} C/U</p>
 								<p>En inventario: {cantidad} disponibles</p>
 							</div>
 						</div>
@@ -43,5 +35,3 @@ function InfoProducto() {
 		</div>
 	)
 }
-
-export default InfoProducto

@@ -5,7 +5,7 @@ import { useState } from 'react'
 import loginService from '../../../../services/LogIn'
 import useRoleManagement from '../../../../hooks/useRoleManagement'
 
-function Login({ active, handleError }) {
+export function Login({ active, handleError }) {
 	const { handleRole } = useRoleManagement()
 	const [userName, setUserName] = useState('')
 	const [password, setPassword] = useState('')
@@ -98,5 +98,3 @@ function Login({ active, handleError }) {
 Login.propTypes = {
 	active: PropTypes.bool,
 }
-
-export default Login
