@@ -18,7 +18,7 @@ export function Clients() {
 	const title = 'Gestión de Clientes'
 	const columns = [
 		{
-			column: 'id_cliente',
+			column: 'id',
 			header: 'ID',
 		},
 		{
@@ -62,7 +62,7 @@ export function Clients() {
 		cedula: '',
 		genero: '',
 		edad: '',
-		id_cliente: '',
+		id: '',
 	}
 
 	const [modal, setModal] = useState(false)
@@ -133,8 +133,8 @@ export function Clients() {
 				})
 				break
 			case 'Eliminar':
-				if (clientSelected.id_cliente) {
-					handleDeleteClient(clientSelected.id_cliente)
+				if (clientSelected.id) {
+					handleDeleteClient(clientSelected.id)
 					toast.success('Cliente eliminado con éxito')
 				} else {
 					toast.error('No se seleccionó un cliente para eliminar')
@@ -161,7 +161,7 @@ export function Clients() {
 			cedula: row.cedula || '',
 			genero: row.genero || '',
 			edad: row.edad || '',
-			id_cliente: row.id_cliente || '',
+			id: row.id || '',
 		})
 	}
 

@@ -18,7 +18,7 @@ export function Activities() {
 	const title = 'Gestión de Actividades'
 	const columns = [
 		{
-			column: 'id_actividad',
+			column: 'id',
 			header: 'ID',
 		},
 		{
@@ -62,7 +62,7 @@ export function Activities() {
 		inputs: [],
 	}
 	const activitySelectedState = {
-		id_actividad: '',
+		id: '',
 		nombre: '',
 		duracion: '',
 		precio: '',
@@ -148,8 +148,12 @@ export function Activities() {
 				})
 				break
 			case 'Eliminar':
-				handleDeleteActivity(activitySelected.id_actividad)
-				toast.error('La actividad se ha eliminado')
+				if (activitySelected.id) {
+					handleDeleteActivity(activitySelected.id)
+					toast.error('La actividad se ha eliminado')
+				} else {
+					toast.error('No se seleccionó una actividad para eliminar')
+				}
 				break
 			default:
 				break
@@ -171,7 +175,7 @@ export function Activities() {
 			nombre: row.nombre || '',
 			duracion: row.duracion || '',
 			precio: row.precio || '',
-			id_actividad: row.id_actividad || '',
+			id: row.id || '',
 			capacidad: row.capacidad || '',
 			descripcion: row.descripcion || '',
 		})

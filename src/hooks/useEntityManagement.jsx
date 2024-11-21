@@ -51,9 +51,7 @@ const useEntityManagement = (
 				const data = await updateEntity(entityData)
 				setEntities(prevEntities =>
 					prevEntities.map(entity =>
-						entity[`id_${entityName}`] === entityData[`id_${entityName}`]
-							? data
-							: entity,
+						entity.id === entityData.id ? data : entity,
 					),
 				)
 				setErrorModal(errorModalState)
@@ -72,9 +70,9 @@ const useEntityManagement = (
 		async id => {
 			try {
 				await deleteEntity(id)
-				setEntities(prevEntities =>
-					prevEntities.filter(entity => entity[`id_${entityName}`] !== id),
-				)
+				setEntities(prevEntities => {
+					prevEntities.filter(entity => entity.id !== id)
+				})
 				setErrorModal(errorModalState)
 			} catch (error) {
 				console.error(`Error al eliminar ${entityName}:`, error)

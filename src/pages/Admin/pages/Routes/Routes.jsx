@@ -18,7 +18,7 @@ export function RoutesAdmin() {
 	const title = 'Gestión de Rutas'
 	const columns = [
 		{
-			column: 'id_ruta',
+			column: 'id',
 			header: 'ID',
 		},
 		{
@@ -62,7 +62,7 @@ export function RoutesAdmin() {
 		inputs: [],
 	}
 	const routeSelectedState = {
-		id_ruta: '',
+		id: '',
 		nombre: '',
 		duracion: '',
 		precio: '',
@@ -146,8 +146,12 @@ export function RoutesAdmin() {
 				})
 				break
 			case 'Eliminar':
-				handleDeleteRoute(routeSelected.id_ruta)
-				toast.error('El producto se ha eliminado')
+				if (routeSelected.id) {
+					handleDeleteRoute(routeSelected.id)
+					toast.error('La ruta se ha eliminado')
+				} else {
+					toast.error('No se seleccionó una ruta para eliminar')
+				}
 				break
 			default:
 				break
@@ -166,7 +170,7 @@ export function RoutesAdmin() {
 
 	const handleRowClick = row => {
 		setRouteSelected({
-			id_ruta: row.id_ruta || '',
+			id: row.id || '',
 			nombre: row.nombre || '',
 			duracion: row.duracion || '',
 			precio: row.precio || '',

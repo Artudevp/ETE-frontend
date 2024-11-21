@@ -24,7 +24,7 @@ const addRoute = async route => {
 
 const updateRoute = async route => {
 	try {
-		const response = await axiosInstance.put(`/rutas/${route.id_ruta}`, route)
+		const response = await axiosInstance.put(`/rutas/${route.id}`, route)
 		return response.data
 	} catch (error) {
 		throw new Error(

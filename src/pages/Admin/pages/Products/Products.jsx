@@ -18,7 +18,7 @@ export function Products() {
 	const title = 'Gestión de Productos'
 	const columns = [
 		{
-			column: 'id_producto',
+			column: 'id',
 			header: 'ID',
 		},
 		{
@@ -62,7 +62,7 @@ export function Products() {
 		inputs: [],
 	}
 	const productSelectedState = {
-		id_producto: '',
+		id: '',
 		categoria: '',
 		nombre: '',
 		precio: '',
@@ -145,8 +145,12 @@ export function Products() {
 				})
 				break
 			case 'Eliminar':
-				handleDeleteProduct(productSelected.id_producto)
-				toast.error('Producto eliminado')
+				if (productSelected.id) {
+					handleDeleteProduct(productSelected.id)
+					toast.error('El producto se ha eliminado')
+				} else {
+					toast.error('No se seleccionó un producto para eliminar')
+				}
 				break
 			default:
 				break
@@ -169,7 +173,7 @@ export function Products() {
 			nombre: row.nombre || '',
 			precio: row.precio || '',
 			cantidad: row.cantidad || '',
-			id_producto: row.id_producto || '',
+			id: row.id || '',
 			descripcion: row.descripcion || '',
 		})
 	}

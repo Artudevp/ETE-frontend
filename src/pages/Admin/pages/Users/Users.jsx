@@ -140,7 +140,7 @@ export function Users() {
 			case 'Eliminar':
 				if (userSelected.id) {
 					handleDeleteUser(userSelected.id)
-					toast.success('Usuario eliminado con éxito')
+					toast.success('El usuario se ha eliminado')
 				} else {
 					toast.error('No se seleccionó un usuario para eliminar')
 				}

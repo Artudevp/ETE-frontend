@@ -24,10 +24,7 @@ const addClient = async client => {
 
 const updateClient = async client => {
 	try {
-		const response = await axiosInstance.put(
-			`/clientes/${client.id_cliente}`,
-			client,
-		)
+		const response = await axiosInstance.put(`/clientes/${client.id}`, client)
 		return response.data
 	} catch (error) {
 		throw new Error(

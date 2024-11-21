@@ -24,7 +24,7 @@ const addUser = async user => {
 
 const updateUser = async user => {
 	try {
-		const response = await axiosInstance.put(`/users/${user.id_usuario}`, user)
+		const response = await axiosInstance.put(`/users/${user.id}`, user)
 		return response.data
 	} catch (error) {
 		throw new Error(

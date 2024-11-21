@@ -25,7 +25,7 @@ const addProduct = async product => {
 const updateProduct = async product => {
 	try {
 		const response = await axiosInstance.put(
-			`/productos/${product.id_producto}`,
+			`/productos/${product.id}`,
 			product,
 		)
 		return response.data

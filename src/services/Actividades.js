@@ -25,7 +25,7 @@ const addActivity = async activity => {
 const updateActivity = async activity => {
 	try {
 		const response = await axiosInstance.put(
-			`/actividades/${activity.id_actividad}`,
+			`/actividades/${activity.id}`,
 			activity,
 		)
 		return response.data

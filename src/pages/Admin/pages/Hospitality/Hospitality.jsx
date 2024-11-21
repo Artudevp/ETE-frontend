@@ -18,7 +18,7 @@ export function Hospitality() {
 	const title = 'Gestión de Hospedaje'
 	const columns = [
 		{
-			column: 'id_habitacion',
+			column: 'id',
 			header: 'ID',
 		},
 		{
@@ -62,7 +62,7 @@ export function Hospitality() {
 		inputs: [],
 	}
 	const hospitalitySelectedState = {
-		id_habitacion: '',
+		id: '',
 		tipo: '',
 		capacidad: '',
 		cantidad: '',
@@ -147,8 +147,12 @@ export function Hospitality() {
 				})
 				break
 			case 'Eliminar':
-				handleDeleteHospitality(hospitalitySelected.id_habitacion)
-				toast.error('El hospedaje se ha eliminado')
+				if (hospitalitySelected.id) {
+					handleDeleteHospitality(hospitalitySelected.id)
+					toast.error('El hospedaje se ha eliminado')
+				} else {
+					toast.error('No se seleccionó un hospedaje para eliminar')
+				}
 				break
 			default:
 				break
@@ -167,7 +171,7 @@ export function Hospitality() {
 
 	const handleRowClick = row => {
 		setHospitalitySelect({
-			id_habitacion: row.id_habitacion || '',
+			id: row.id || '',
 			tipo: row.tipo || '',
 			capacidad: row.capacidad || '',
 			cantidad: row.cantidad || '',
